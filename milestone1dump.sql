@@ -7,6 +7,9 @@
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
+CREATE DATABASE IF NOT EXISTS `lecture4` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `lecture4`;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
