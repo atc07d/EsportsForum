@@ -49,10 +49,12 @@
 	}
 	else
 	{
-		echo '<a href="logForm.php">Please log in</a>
-		<br></br>
-		
-		<br></br>
+		echo '
+				<br></br>
+				<a href="logForm.php">Please log in</a>
+				<br></br>
+				
+				<br></br>
 		';
 	}
 	
