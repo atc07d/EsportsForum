@@ -70,7 +70,7 @@
 		// Need a way to save state of $UserID, other than that it works!
 		//===============================================================
 
-		static $UserID = 15;
+		static $UserID = 16;
 		$UserID++;
 		$sql2 = "INSERT INTO users (user_id,user_name,user_pw)
 			 VALUES ('$UserID','$_POST[User_Name]','$_POST[User_PW]')";
