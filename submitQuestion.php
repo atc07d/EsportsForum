@@ -23,7 +23,7 @@
 if($_SESSION['logged_in'] == 0)
 {
     //the user is not signed in
-    echo 'Sorry, you have to be <a href="/forum/1234.php">Logged in</a> to submit a question.';
+    echo 'Sorry, you have to be <a href="logIn.php">Logged in</a> to submit a question.';
 }
 else
 {
@@ -44,7 +44,7 @@ else
          
         if(!$result)
         {
-            //the query failed, uh-oh :-(
+            //the query failed
 			echo $result;
             echo 'Error while selecting from database.dasdas Please try again later.';
 			echo $result;

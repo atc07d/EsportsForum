@@ -45,13 +45,17 @@ error_reporting(0);
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">eSports Compendium</a>
+          
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
+			<li><a href="profile.php">Profile Page</a></li>
             <li><a href="logForm.php">Login</a></li>
+			<li><a href="signupForm.php">Sign Up</a></li>
             <li><a href="qArchive.php">Q Archive</a></li>
+            
+			
           </ul>
         </div>
       </div>
@@ -118,17 +122,17 @@ error_reporting(0);
 							if ($conn->connect_error) {
 								die("Connection failed: " . $conn->connect_error);
 							} 
-
+							//Show questions in each category where answers have highest total
 							$sql = "SELECT *  FROM question";
 							$result = $conn->query($sql);
 							
 							while($row = mysqli_fetch_array($result))
 							  {
-								echo '<tr><td><a href="conversation.php?var=' . $row['q_id'] . '">' . $row['q_title'] . '</a></td><td>' . $row['q_asker'] . '</td></tr>'; 
+								echo '<tr><td><a href="conversTEST.php?var=' . $row['q_id'] . '">' . $row['q_title'] . '</a></td><td>' . $row['q_asker'] . '</td></tr>'; 
 								
 							  }
 
-							mysqli_close($con);
+							   mysqli_close($con);
 						?>
 					</tbody>
 				  </table>

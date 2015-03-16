@@ -1,4 +1,5 @@
 <?php
+	
 	//Checks logIn name/pw with user database
 	session_start();
 	$servername = "localhost";
@@ -39,9 +40,9 @@
 				//echo "Login failed.  ";
 				//echo $_POST["uname"] . " " . $_POST["pword"];
 				//echo " - username and password: " . $row["username"]. " " . $row["password"]. "<br>"; 
-				header("Location: logForm.php");
+				//header("Location: index.php");
 				//break;
-				
+				header ("Location: index.php");
 			}
 		}
 	} else {

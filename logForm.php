@@ -51,4 +51,11 @@ session_start();
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
+  
+	<!--<form action=index.php>
+		<input type="submit" value="Go Home">
+	</form>-->
+				
+	
+		
 </html>

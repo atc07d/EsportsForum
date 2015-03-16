@@ -15,37 +15,50 @@ echo '<link href="/css/bootstrap.min.css" rel="stylesheet">';
 	$questionID=$_GET['askerID']; 
 	//Other characters are getting passed through url. Need to strip out all types except ints to place into a_id
 	//static $onlyINT ;
-	$onlyINT= intval(preg_replace('/[^0-9]+/', '', $questionID), 10);
+	//$onlyINT= intval(preg_replace('/[^0-9]+/', '', $questionID), 10);
+	//$questionINT = (int) $questionID;
+	//$_SESSION['varID'] = $_GET['askerID'];
+	//$QID = (int) $_SESSION['varID'];
+	//echo $_SESSION['varID'];
+	//$questSESH = 
 	//echo $onlyINT;
 	//$questionAsker=$_GET["$asker"];
 	//$questionTitle=$_GET["$qTitle"];
 	//$questionType=$_GET["qType"];
-	$aRating=1;
-
-
-
+	//$aRating=$questionINT;
+	//echo $_GET['askerID'];
+	//$aTopic=$_GET['askerID'];
+	//echo 'Please input question ID along with answer. Q ID is ' . $questionID . '<br>';
+	//echo gettype($questionINT) . '<br>';
+	//echo gettype($questionID);
+	//echo gettype($_SESSION['varID']) . '<br>';
+	//echo gettype($QID);
+	$aRating = 0;
 	
 
 	
 
          
-    echo '<form method="post" action="?" method="post">
-         <br>Answer: <textarea class="form-control" rows="3" name="answer" /></textarea>
-         <input type="submit" name="submit"	value="Submit" />
-		 </form>';
+    
 					
-		
+	$conn = new mysqli($servername, $username, $password, $dbname);
+		$sql = "INSERT INTO answer (a_id,a_asker,  a_content, a_rating)
+				VALUES ('$_POST[id]','$_SESSION[username]',  '$_POST[answer]','$aRating')";
+					
+	
 	if (isset($_POST['submit']))
 	{
 		
-		//echo $onlyINT;
-		$conn = new mysqli($servername, $username, $password, $dbname);
-				$sql = "INSERT INTO answer (a_id,a_asker, a_content, a_rating)
-						VALUES ('$onlyINT','$_SESSION[username]', '$_POST[answer]','$aRating')";
+		
+		
 
+		
 		if ($conn->query($sql) === TRUE) 
 			{
-				echo "New answer created successfully";
+				
+				//echo "New answer created successfully";
+				header("Location: index.php");
+				
 			} 
 		else 
 			{

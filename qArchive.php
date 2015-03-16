@@ -48,7 +48,7 @@ if ($result->num_rows > 0)
 		</p>				'; */
     echo '<tr>';
                         echo '<td class="left">';
-                            echo '<h3><a href="conversation.php?var=' . $row['q_id'] . '">' . $row['q_title'] . ' '  . '</a><h3>';
+                            echo '<h3><a href="conversTEST.php?var=' . $row['q_id'] . '">' . $row['q_title'] . ' '  . '</a><h3>';
                         echo '</td>';
                         echo '<td class="mid">';
                             echo '<h3>' . $row['q_asker'] . ' ' . '<h3>';
@@ -66,5 +66,14 @@ else
 	{
 	echo "No results";
 	}
+	
 	$conn->close();
+	echo '
+		<form action=index.php>
+			<input type="submit" value="Home">
+		</form>
+				
+	
+		';
+	
 ?>
