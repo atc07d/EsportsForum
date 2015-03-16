@@ -22,7 +22,7 @@
 		
 		$result = $conn->query($sql);
 		// STRONG HAS BEEN DEPRECATED!!!
-		echo '<strong>Question Data: <br></>(VALUE|TITLE|TYPE) </strong><br></br> ';
+		echo '<strong>Question Data: <br></>(VALUE|TITLE|GAME) </strong><br></br> ';
 
 		while($row = $result->fetch_assoc()) 
 		{

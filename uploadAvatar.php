@@ -29,12 +29,12 @@
         $uploadfile = $uploaddir . basename($_FILES['mkfile']['name']);
         $uploadfile = str_replace(".php",".txt",$uploadfile); //prevent .php files from being uploaded
         // Remove spaces from filename to prevent %20 in front of filename
-        $uploadfile = str_replace(" ", "", $uploadfile);
+       // $uploadfile = str_replace(" ", "", $uploadfile);
 
         if (!$_FILES['mkfile']['error'] && move_uploaded_file($_FILES['mkfile']['tmp_name'],$uploadfile)) 
         {
           echo "File is valid, and was successfully uploaded.\n";
-          //chmod($uploadfile,0644);
+          chmod($uploadfile,0644);
 
         } 
         elseif($_FILES['mkfile']['error'])
@@ -43,7 +43,7 @@
         } 
         else 
         {
-          echo "Possible file upload attack!";
+          echo "Something is wrong";
         }
 
         //print_r($_FILES);
