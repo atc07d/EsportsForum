@@ -4,8 +4,8 @@
 	include_once 'connect.php';
 	$conn = new mysqli($servername, $username, $password, $dbname);
 
-	echo $_SERVER['SERVER_NAME'] . '<br></>';
-	echo __FILE__ . '<br></>';
+	//echo $_SERVER['SERVER_NAME'] . '<br></>';
+	//echo __FILE__ . '<br></>';
 
 	if (isset($_SESSION['username']))
 	{

@@ -44,8 +44,8 @@
         else 
         {
           echo "Something is wrong";
-          echo $uploadfile;
-          echo $uploaddir;
+          //echo $uploadfile;
+          //echo $uploaddir;
         }
 
         //print_r($_FILES);
