@@ -107,6 +107,8 @@ error_reporting(0);
 						<th>Title</th>
 				
 						<th>Asker</th>
+
+            <th>Value</th>
 						
 					  </tr>
 					</thead>
@@ -123,12 +125,13 @@ error_reporting(0);
 								die("Connection failed: " . $conn->connect_error);
 							} 
 							//Show questions in each category where answers have highest total
-							$sql = "SELECT *  FROM question";
+							$sql = "SELECT *  FROM question
+                      ORDER BY q_value DESC LIMIT 5";
 							$result = $conn->query($sql);
 							
 							while($row = mysqli_fetch_array($result))
 							  {
-								echo '<tr><td><a href="conversTEST.php?var=' . $row['q_id'] . '">' . $row['q_title'] . '</a></td><td>' . $row['q_asker'] . '</td></tr>'; 
+								  echo '<tr><td><a href="conversTEST.php?var=' . $row['q_id'] . '">' . $row['q_title'] . '</a></td><td>' . $row['q_asker'] . '</td><td>' . $row['q_value'] . '</td></tr>'; 
 								
 							  }
 

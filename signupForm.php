@@ -29,18 +29,9 @@
 				<button type="Submit"> Register</button>
 			</div>
 
-
 		</form>
-		<br></br>
-		<br></br>
-		<p><strong>Upload Avatar below:</strong></p>
-
-		<form enctype="multipart/form-data" action="" method="post">
-  			<input type="hidden" name="MAX_FILE_SIZE" value="30000">
-  				
-			<input name="mkfile" type="file">
-  			<input type="submit" value="Upload">
-		</form>
+		<br></>
+		<a href="uploadAvatar.php">Upload Here After Signing Up</a>
 	</body>
  
 <!--
@@ -54,5 +45,17 @@
 //When a username is provided for registration that already exists in your database, reject the rejections and ask the user to select another.
 
 // From the CS418 notes
+
+</form>
+		<br></br>
+		<br></br>
+		<p><strong>Upload Avatar below:</strong></p>
+
+		<form enctype="multipart/form-data" action="" method="post">
+  			<input type="hidden" name="MAX_FILE_SIZE" value="30000">
+  				
+			<input name="mkfile" type="file">
+  			<input type="submit" value="Upload">
+		</form>
 -->
 </html>

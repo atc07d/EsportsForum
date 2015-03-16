@@ -19,6 +19,11 @@
 	if ($conn1->query($sql1) === TRUE) 
 		{
 			echo "New record created successfully";
+			echo '
+					<form action=index.php>
+						<input type="submit" value="Go Home">
+					</form>
+				';
 		} 
 	else 
 		{
