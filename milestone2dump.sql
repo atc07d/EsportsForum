@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2015 at 04:53 AM
+-- Generation Time: Mar 16, 2015 at 03:47 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `answer` (
   `a_content` text NOT NULL,
   `a_rating` int(10) NOT NULL,
 `a_order` int(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `answer`
@@ -44,10 +44,11 @@ CREATE TABLE IF NOT EXISTS `answer` (
 INSERT INTO `answer` (`a_id`, `a_asker`, `a_topic`, `a_content`, `a_rating`, `a_order`) VALUES
 (11, 'thewoz', 0, 'This is the first answer with the new form.', 1, 84),
 (11, 'thewoz', 0, 'One more time.', 0, 85),
-(10, 'wgates', 0, 'This is B Gates reporting in', 6, 86),
+(10, 'wgates', 0, 'This is B Gates reporting in', 5, 86),
 (8, 'wgates', 0, 'Because they are...duh', 0, 87),
 (8, 'thewoz', 0, 'Nah uh. You are biased and you stink.', 0, 88),
-(8, 'wgates', 0, 'Can we please stay on topic.', 7, 89);
+(8, 'wgates', 0, 'Can we please stay on topic.', 7, 89),
+(12, 'wgates', 0, 'Your critique is absolutely correct. Purple is a girly color and not a color for royalty...', 1, 90);
 
 -- --------------------------------------------------------
 
@@ -62,23 +63,24 @@ CREATE TABLE IF NOT EXISTS `question` (
   `q_content` text NOT NULL,
   `q_type` varchar(255) NOT NULL,
   `q_value` int(10) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `question`
 --
 
 INSERT INTO `question` (`q_id`, `q_asker`, `q_title`, `q_content`, `q_type`, `q_value`) VALUES
-(8, 'thewoz', 'Scissors OP?!?!?', 'I think scissors are OP.\r\n\r\n~Paper', 'D3', 0),
-(9, 'thewoz', 'Why I love my Warrior.', 'They are so strong and handsome.', 'WoW', 0),
-(10, 'pallen', 'BeyondTheSummit Rocks', 'They cast so well cause they use da big words.', 'DoTA2', 0),
-(11, 'tblee', 'Twitch needs competition.', 'It really does. This is getting lame. T', 'D3', 0),
-(12, 'tblee', 'TV sucks', 'Socialism is a social and economic system characterised by social ownership of the means of production and co-operative management of the economy,[1][2] as well as a political theory and movement that aims at the establishment of such a system.[3][4] "Social ownership" may refer to cooperative enterprises, common ownership, state ownership, citizen ownership of equity, or any combination of these.[5] There are many varieties of socialism and there is no single definition encapsulating all of them', 'CSGO', 0),
+(8, 'thewoz', 'Scissors OP?!?!?', 'I think scissors are OP.\r\n\r\n~Paper', 'D3', 5),
+(9, 'thewoz', 'Why I love my Warrior.', 'They are so strong and handsome.', 'WoW', 4),
+(10, 'pallen', 'BeyondTheSummit Rocks', 'They cast so well cause they use da big words.', 'DoTA2', 3),
+(11, 'tblee', 'Twitch needs competition.', 'It really does. This is getting lame. T', 'D3', 2),
+(12, 'tblee', 'TV sucks', 'Socialism is a social and economic system characterised by social ownership of the means of production and co-operative management of the economy,[1][2] as well as a political theory and movement that aims at the establishment of such a system.[3][4] "Social ownership" may refer to cooperative enterprises, common ownership, state ownership, citizen ownership of equity, or any combination of these.[5] There are many varieties of socialism and there is no single definition encapsulating all of them', 'CSGO', 1),
 (14, 'dknuth', 'Twitch throttling', 'This aint no fun. Thanks Verizon?!?!?', 'D3', 0),
 (15, 'dknuth', 'Alternate streaming sites', 'Check it\r\nhttp://www.reddit.com/r/speedrun/comments/1r4qds/what_are_some_good_alternatives_to_twitch_for/', 'D3', 0),
 (16, 'atanen', 'DreamHack Winter', 'Anyone watching this year?!??!', 'CSGO', 0),
 (17, 'atanen', 'Blizzcon Arena Predictions', 'Cdew all the way.', 'WoW', 0),
-(18, 'wgates', 'Spring LCS has started!', 'Yeah ok cool\r\ndsada\r\ndasdas\r\ndasdas\r\ndasda', 'LoL', 0);
+(18, 'wgates', 'Spring LCS has started!', 'Yeah ok cool\r\ndsada\r\ndasdas\r\ndasdas\r\ndasda', 'LoL', 0),
+(19, 'wgates', 'New Patch?', 'What do you guys think? Anyone up for Baal runs?\r\n\r\n~The Gates', 'D3', 0);
 
 -- --------------------------------------------------------
 
@@ -174,12 +176,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `answer`
 --
 ALTER TABLE `answer`
-MODIFY `a_order` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=90;
+MODIFY `a_order` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=91;
 --
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-MODIFY `q_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+MODIFY `q_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
