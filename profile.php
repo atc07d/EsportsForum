@@ -6,12 +6,17 @@
 
 	//echo $_SERVER['SERVER_NAME'] . '<br></>';
 	//echo __FILE__ . '<br></>';
+	//echo $_SERVER['SERVER_PORT'] .'<br></>';
+
+	$serverAdd = $_SERVER['SERVER_NAME'] .':'. $_SERVER['SERVER_PORT'] ;
+
+	echo $serverAdd;
 
 	if (isset($_SESSION['username']))
 	{
 		// Print name of user currently logged in by accessing SESSIOn vars
 		// STRONG HAS BEEN DEPRECATED
-		echo  '<strong>Logged in as: </strong>' . $_SESSION['username'] . '<br></br>' ;
+		echo  '<br></><strong>Logged in as: </strong>' . $_SESSION['username'] . '<br></br>' ;
 		$UN = $_SESSION['username'];
 		
 		// Query DB for user with SESSION var user name to obtain all related question data
@@ -35,7 +40,7 @@
 
 		echo '<strong>Avatar: </strong>
 				<br></br>
-				<img src="/home/acoffman/public_html/cs418/uploads/images.jpg" />
+				<img src="' . $serverAdd . '/uploads/images.jpg" />
 				<br></br>
 				<br></br>
 			';
