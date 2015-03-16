@@ -40,7 +40,7 @@
 
 		echo '<strong>Avatar: </strong>
 				<br></br>
-				<img src="' . $serverAdd . '/uploads/images.jpg" />
+				<img src="' . $serverAdd . '/uploads/%20images.jpg" />
 				<br></br>
 				<br></br>
 			';
