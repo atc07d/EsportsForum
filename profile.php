@@ -35,7 +35,7 @@
 
 		echo '<strong>Avatar: </strong>
 				<br></br>
-				<img src="http://wsdl-docker.cs.odu.edu/app/uploads/images.jpg" />
+				<img src="/home/acoffman/public_html/cs418/uploads/images.jpg" />
 				<br></br>
 				<br></br>
 			';

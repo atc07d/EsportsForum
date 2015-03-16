@@ -31,7 +31,7 @@
 
 		</form>
 		<br></>
-		<a href="uploadAvatar.php">Upload Here After Signing Up</a>
+		<a href="uploadAvatar.php">Upload Avatar</a>
 	</body>
  
 <!--

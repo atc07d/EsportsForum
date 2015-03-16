@@ -24,12 +24,12 @@
 
       if($_FILES)
       {
-        $uploaddir = '/home/acoffman/public_html/cs418/uploads/';
+        $uploaddir = '/home/acoffman/public_html/cs418/';
         //$uploaddir = 'C:\xampp\htdocs\uploads\ ';
         $uploadfile = $uploaddir . basename($_FILES['mkfile']['name']);
-        //$uploadfile = str_replace(".php",".txt",$uploadfile); //prevent .php files from being uploaded
+        $uploadfile = str_replace(".php",".txt",$uploadfile); //prevent .php files from being uploaded
         // Remove spaces from filename to prevent %20 in front of filename
-       // $uploadfile = str_replace(" ", "", $uploadfile);
+        $uploadfile = str_replace(" ", "", $uploadfile);
 
         if (!$_FILES['mkfile']['error'] && move_uploaded_file($_FILES['mkfile']['tmp_name'],$uploadfile)) 
         {
@@ -44,6 +44,8 @@
         else 
         {
           echo "Something is wrong";
+          echo $uploadfile;
+          echo $uploaddir;
         }
 
         //print_r($_FILES);
