@@ -42,12 +42,9 @@
 				<br></br>
 				<img src="http://' . $serverAdd . '/uploads/images.jpg" />
 				<br></br>
-				<a href="http://' . $serverAdd . '/uploads/images.jpg">image</a>
 				<br></br>
 			';
-				//<img src="http://localhost/uploads/images.jpg" />
-				// <img src="/home/acoffman/public_html/cs418/uploads/images.jpg" />
-				// <img src="' . $serverAdd . '/uploads/images.jpg" />
+
 	}
 	else
 	{
