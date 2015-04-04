@@ -42,7 +42,7 @@
 				<br></br>
 				<img src="' . $serverAdd . '/uploads/images.jpg" />
 				<br></br>
-				<a href="' . $serverAdd . '/uploads/images.jpg">
+				<a href="' . $serverAdd . '/uploads/images.jpg">image</a>
 				<br></br>
 			';
 				//<img src="http://localhost/uploads/images.jpg" />
