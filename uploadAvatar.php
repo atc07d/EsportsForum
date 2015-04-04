@@ -32,7 +32,7 @@
         $uploadfile = str_replace(".php",".txt",$uploadfile); //prevent .php files from being uploaded
         // Remove spaces from filename to prevent %20 in front of filename
         $uploadfile = str_replace(" ", "", $uploadfile);
-        $uploadfile = (string)$_SESSION['username'] . $uploadfile;
+        $uploadfile = (string)$_SESSION['username'] . (string)$uploadfile;
 
         if (!$_FILES['mkfile']['error'] && move_uploaded_file($_FILES['mkfile']['tmp_name'],$uploadfile)) 
         {

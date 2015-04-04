@@ -38,12 +38,27 @@
 
 		}
 
-		echo '<strong>Avatar: </strong>
+		//scan upload folder for img with employee name appended to front
+		$ufname = (string)$_SESSION['username'];
+		$dir = 'http://' . (string)$serverAdd . '/uploads/';
+		$results = scandir($dir);
+		for($x in $results)
+		{
+			if(strpos($ufname,$x)!== FALSE)
+			{
+
+				$x = (string)$x
+				echo '<strong>Avatar: </strong>
 				<br></br>
-				<img src="http://' . $serverAdd . '/uploads/images.jpg" />
+				<img src="http://' . $serverAdd . '/uploads/' . $x .'" />
 				<br></br>
 				<br></br>
 			';
+			}
+
+		}
+
+
 
 	}
 	else
@@ -97,6 +112,25 @@
                 </div>';
             }
            }
+
+
+
+
+
+
+
+echo '<strong>Avatar: </strong>
+				<br></br>
+				<img src="http://' . $serverAdd . '/uploads/images.jpg" />
+				<br></br>
+				<br></br>
+			';
+
+
+
+
+
+
 
 
 	*/
