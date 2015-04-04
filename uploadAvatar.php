@@ -22,14 +22,17 @@
       // Check for existence of equivallently named file before uploading?
       session_start();
 
+      $serverAdd = $_SERVER['SERVER_NAME'] .':'. $_SERVER['SERVER_PORT'] ;
+
       if($_FILES)
       {
-        $uploaddir = '/home/acoffman/public_html/cs418/';
-        //$uploaddir = 'C:\xampp\htdocs\uploads\ ';
+        //$uploaddir = '/home/acoffman/public_html/cs418/uploads';
+        $uploaddir = 'http://' . $serverAdd . '/uploads/ ';
         $uploadfile = $uploaddir . basename($_FILES['mkfile']['name']);
         $uploadfile = str_replace(".php",".txt",$uploadfile); //prevent .php files from being uploaded
         // Remove spaces from filename to prevent %20 in front of filename
         $uploadfile = str_replace(" ", "", $uploadfile);
+        $uploadfile = (string)$_SESSION['username'] . $uploadfile;
 
         if (!$_FILES['mkfile']['error'] && move_uploaded_file($_FILES['mkfile']['tmp_name'],$uploadfile)) 
         {
