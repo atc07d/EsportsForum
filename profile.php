@@ -46,6 +46,7 @@
 			';
 				//<img src="http://localhost/uploads/images.jpg" />
 				// <img src="/home/acoffman/public_html/cs418/uploads/images.jpg" />
+				// <img src="' . $serverAdd . '/uploads/images.jpg" />
 	}
 	else
 	{
