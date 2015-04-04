@@ -28,12 +28,13 @@
       {
         //$uploaddir = '/home/acoffman/public_html/cs418/uploads';
         $uploaddir = 'http://' . $serverAdd . '/uploads/ ';
-        echo $uploaddir;
+
+        $uploadfile =  (string)$_SESSION['username'] . $uploadfile ;
         $uploadfile = $uploaddir . basename($_FILES['mkfile']['name']);
         $uploadfile = str_replace(".php",".txt",$uploadfile); //prevent .php files from being uploaded
         // Remove spaces from filename to prevent %20 in front of filename
         $uploadfile = str_replace(" ", "", $uploadfile);
-        $uploadfile = $_SESSION['username'] . $uploadfile;
+        $uploadfile =  $uploadfile . (string)$_SESSION['username'];
     
 
         if (!$_FILES['mkfile']['error'] && move_uploaded_file($_FILES['mkfile']['tmp_name'],$uploadfile)) 
@@ -50,6 +51,7 @@
         {
           echo "Something is wrong";
           echo $uploadfile;
+          echo '<br></br>';
           echo $uploaddir;
         }
 
