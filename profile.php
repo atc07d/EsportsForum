@@ -40,9 +40,9 @@
 
 		echo '<strong>Avatar: </strong>
 				<br></br>
-				<img src="' . $serverAdd . '/uploads/images.jpg" />
+				<img src="http://' . $serverAdd . '/uploads/images.jpg" />
 				<br></br>
-				<a href="' . $serverAdd . '/uploads/images.jpg">image</a>
+				<a href="http://' . $serverAdd . '/uploads/images.jpg">image</a>
 				<br></br>
 			';
 				//<img src="http://localhost/uploads/images.jpg" />
