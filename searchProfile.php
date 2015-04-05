@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>eSports Q&A Site</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+</html>
+
 <?php
 	error_reporting(0);
 	session_start();
@@ -8,9 +31,14 @@
 	if(isset($_GET["searchname"]))
 	{
 		//echo $_GET["searchname"];
-		// Print name of user currently logged in by accessing SESSIOn vars
+		// Print name of user being searched for
 		// STRONG HAS BEEN DEPRECATED
-		echo  '<br></><strong>Profile for: </strong>' . $_GET['searchname'] . '<br></br>' ;
+		echo  '<br></><strong>Profile for: </strong><mark>' . $_GET['searchname'] . '</mark><br></br>' ;
+		// Show avatar
+		echo  '<br></><strong>Avatar: </strong>Placeholder<br></br>' ;
+		// Show score
+		echo  '<br></><strong>Score: </strong>Placeholder<br></br>' ;
+
 		$UN = $_GET['searchname'];
 		
 		// Query DB for user with SESSION var user name to obtain all related question data

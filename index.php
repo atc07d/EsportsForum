@@ -77,8 +77,9 @@ error_reporting(0);
           </div>
 
 
-    <!-- Code for live search box -->  
-
+    <!-- Code for live search box 
+          Resource: http://www.finalwebsites.com/jquery-ajax-live-search/
+    -->  
     <div class="row">
       <div class="col-md-4">
         <form>
@@ -128,9 +129,9 @@ error_reporting(0);
 
             }
             // Else, say no match ? Not working 
-            else 
+            else if (searchKeyword.length > 7 ) 
             {
-              $('ul#searchBar').text("No match");
+              $('ul#searchBar').append('No match');
 
             }
           });

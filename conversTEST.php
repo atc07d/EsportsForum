@@ -78,7 +78,9 @@
 					
 					if ($row['q_id'] === $questionID)
 					{
-						echo '<div class="panel panel-default">
+						echo '<div class="row">
+								<div class="col-md-4">
+								<div class="panel panel-default">
 								  <div class="panel-heading"><strong>Title:  </strong>'.$row['q_title']. '<br><strong>Asker:  </strong>' .$row['q_asker'].
 								  '<br><strong>ID: </strong>' .$row['q_id'].'
 								  	<br><strong>Rating: </strong>' .$row['q_value'].'
@@ -87,6 +89,8 @@
 									'.$row['q_content'].'
 								  </div>
 								</div>
+							</div>
+							</div>
 										';
 						$questionAsker=$row['q_asker'];
 						$questionTitle=$row['q_title'];
@@ -101,14 +105,16 @@
 			?>
 	</div>
 
-	<div>
+	<div class="row">
+  	<div class="col-md-4">
 		<form method="post" action="submitAnswer.php" method="post">
          <br>Answer: <textarea class="form-control" rows="3" name="answer" /></textarea>
         
 		 <br>Q ID: <textarea class="form-control" rows="1" cols="10" name="id" /></textarea>
 		 <input type="submit" name="submit"	value="Submit" />
 		 </form>
-	
+	</div>
+	</div>
 		
 
 	</div>
@@ -140,7 +146,8 @@
 						?>
 						
 						
-						
+						<div class="row">
+  						<div class="col-md-4">
 						<form method="post" action=""
 							<div class="panel panel-default">
 							<div class="panel-heading">
@@ -149,6 +156,10 @@
 							<button name="up" onclick="asynchronouslyUpdate('increment');">+</button>
 							<button name="down" onclick="asynchronouslyUpdate('decrement');">-</button>
 							<br />
+							</div>
+						</div>
+						</div>
+
 							
 							<?php
 							
@@ -159,6 +170,7 @@
 									 </div>
 									</div>
 								</form>
+			
 								';
 						$flag = 1;
 					}
@@ -171,7 +183,7 @@
 				mysqli_free_result($result2);
 			}
 			mysqli_close($conn1);
-			echo '
+			echo '	<br></br>
 					<form action=index.php>
 						<input type="submit" value="Home">
 					</form>
@@ -181,7 +193,7 @@
 
 		?>
 
-	</div>
+
 
 
 </html>

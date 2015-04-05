@@ -46,7 +46,7 @@ else
         {
             //the query failed
 			echo $result;
-            echo 'Error while selecting from database.dasdas Please try again later.';
+            echo 'Error while selecting from database. Please try again later.';
 			echo $result;
         }
         

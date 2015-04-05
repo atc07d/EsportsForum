@@ -6,9 +6,24 @@
     <!-- Custom styles for this template -->
     <link href="offcanvas.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<!-- Resource: http://stackoverflow.com/questions/6418973/how-to-use-ajax-to-update-mysql-db-when-checkbox-condition-is-changed -
+ 
     <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+	    $('input[name = qselect]').live("click",function(){
+	    var id = $(this).attr('id');
+
+	    $.ajax({
+	        type:'GET',
+	        url:'adminEdit.php',
+	        data:'id= ' + id 
+	    });
+
+	</script
+ });
+-->
 </html>
 
 <?php
@@ -75,6 +90,8 @@
 		*/
 
 	}
+
+	 // Code for admin account ONLY
 	elseif (isset($_SESSION['username']) and $_SESSION['username'] == "ADMINISTRATOR")
 	{
 
@@ -92,6 +109,9 @@
 		// STRONG HAS BEEN DEPRECATED!!!
 		echo '<strong>ALL QUESTIONS: <br></>(ASKER|VALUE|TITLE|GAME) </strong><br></br> ';
 
+		// start form for radio button(q id) and action (delete/edit) select
+		// Resource: http://www.formget.com/php-select-option-and-php-radio-button/
+		echo '<form action="adminEdit.php" method="get">';
 		while($row = $result->fetch_assoc()) 
 		{
 			
@@ -103,14 +123,25 @@
 			}
 			else
 			{
-				echo '<input type="radio" name="chosenQ" value="chosenQ">' . ' ' . $row['q_asker'] . ' | ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_type'] . '<br></br>' ;
+				echo '<input type="radio" name="qselect" value="' . $row["q_id"] . '">' . ' ' . $row['q_asker'] . ' | ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_type'] . '<br></br>' ;
 				
 			}
 			
 
 		}
 
-	 echo '<button type="button" class="btn btn-primary btn-lg">Select</button><br></br></div></div>';
+	 echo ' <button name="edit" type="submit" value="edit" class="btn btn-default btn-lg">Edit</button><br></br></div></div>
+	  		<button name="freeze" type="submit" value="freeze" class="btn btn-info btn-lg">Freeze</button>
+	 		<button name="unfreeze" type="submit" value="unfreeze" class="btn btn-success btn-lg">Unfreeze</button><br></br></div></div>
+	  		<button name="delete" type="submit" value="delete" class="btn btn-danger btn-lg">Delete</button><br></br></div></div>
+	  		</form>';
+
+
+	 if (isset($_GET["select"]))
+	 {
+
+
+	 }
 
 	}
 
@@ -198,3 +229,5 @@ echo '<strong>Avatar: </strong>
 
 
 ?>
+
+
