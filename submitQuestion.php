@@ -53,20 +53,29 @@ else
         else
             {
          
-                echo '<form method="post" action="question.php" method="post">
-					<br>Title: <input type="text" name="title" />
-					 Type: '; 
+                echo '<div class="row">
+                        <div class="col-md-10 ">
+                        <form method="post" action="question.php" method="post">
+					   <br>Title: <input type="text" name="title" />
+					   Type: '; 
                  
                 echo '<select name="t_name">';
                    while($row = $result->fetch_assoc())
                     {
                         echo '<option value="' . $row['t_name'] . '">' . $row['t_name'] . '</option>';
                     }
-                echo '</select>'; 
+                echo '  </select>
+                        </div>
+                        </div>'; 
                      
-                echo '<br>Content: <textarea class="form-control" rows="3" name="content" /></textarea>
-                    <input type="submit" name="submit"	value="Submit" />
-					</form>';
+                echo '<br>
+                    <div class="row">
+                        <div class="col-md-2 ">
+                        Content: <textarea class="form-control" rows="3" name="content" /></textarea>
+                        <input type="submit" name="submit"	value="Submit" />
+    					</form>
+                        </div>
+                    </div>';
 				 
 				 
 			}

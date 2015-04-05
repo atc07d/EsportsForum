@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+</html>
+
 <?php
 	error_reporting(0);
 	session_start();
@@ -10,9 +23,10 @@
 
 	$serverAdd = $_SERVER['SERVER_NAME'] .':'. $_SERVER['SERVER_PORT'] ;
 
-	echo $serverAdd;
+	//echo $serverAdd;
 
-	if (isset($_SESSION['username']))
+	//Test for admin status
+	if (isset($_SESSION['username']) and $_SESSION['username'] != "ADMINISTRATOR")
 	{
 		// Print name of user currently logged in by accessing SESSIOn vars
 		// STRONG HAS BEEN DEPRECATED
@@ -39,7 +53,7 @@
 		}
 
 		//scan upload folder for img with employee name appended to front
-		$ufname = (string)$_SESSION['username'];
+		/*$ufname = (string)$_SESSION['username'];
 		$dir = 'http://' . (string)$serverAdd . '/uploads/';
 		$results = scandir($dir);
 		for($x in $results)
@@ -58,9 +72,48 @@
 
 		}
 
-
+		*/
 
 	}
+	elseif (isset($_SESSION['username']) and $_SESSION['username'] == "ADMINISTRATOR")
+	{
+
+		echo '<div class="row">
+			<div class="col-xs-12 col-md-8">
+			<br></br>Welcome, <mark>ADMINISTRATOR</mark><br></br>';
+
+		$sql = "SELECT *
+				FROM users u
+                LEFT JOIN question q
+                ON u.user_name = q.q_asker";
+
+		
+		$result = $conn->query($sql);
+		// STRONG HAS BEEN DEPRECATED!!!
+		echo '<strong>ALL QUESTIONS: <br></>(ASKER|VALUE|TITLE|GAME) </strong><br></br> ';
+
+		while($row = $result->fetch_assoc()) 
+		{
+			
+			if(empty($row["q_id"]))
+			{
+
+				
+				
+			}
+			else
+			{
+				echo '<input type="radio" name="chosenQ" value="chosenQ">' . ' ' . $row['q_asker'] . ' | ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_type'] . '<br></br>' ;
+				
+			}
+			
+
+		}
+
+	 echo '<button type="button" class="btn btn-primary btn-lg">Select</button><br></br></div></div>';
+
+	}
+
 	else
 	{
 		echo '
@@ -74,9 +127,15 @@
 	
 	
 
+
+
+
+
+
+
 	echo '
 		<form action=index.php>
-			<input type="submit" value="Go Home">  
+			<input type="submit" value="Home">  
 		</form>
 				
 	
@@ -127,9 +186,11 @@ echo '<strong>Avatar: </strong>
 			';
 
 
+	FOR AVATAR ENCLOSURE
 
-
-
+	<img src="..." alt="..." class="img-rounded">
+	<img src="..." alt="..." class="img-circle">
+	<img src="..." alt="..." class="img-thumbnail">
 
 
 

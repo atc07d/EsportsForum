@@ -173,7 +173,7 @@
 			mysqli_close($conn1);
 			echo '
 					<form action=index.php>
-						<input type="submit" value="Go Home">
+						<input type="submit" value="Home">
 					</form>
 				
 	

@@ -40,7 +40,7 @@
         if (!$_FILES['mkfile']['error'] && move_uploaded_file($_FILES['mkfile']['tmp_name'],$uploadfile)) 
         {
           echo "File is valid, and was successfully uploaded.\n";
-          chmod($uploadfile,0644);
+          //chmod($uploadfile,0644);
 
         } 
         elseif($_FILES['mkfile']['error'])

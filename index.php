@@ -50,10 +50,11 @@ error_reporting(0);
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-			<li><a href="profile.php">Profile Page</a></li>
+			      <li><a href="profile.php">Profile Page</a></li>
             <li><a href="logForm.php">Login</a></li>
-			<li><a href="signupForm.php">Sign Up</a></li>
+			      <li><a href="signupForm.php">Sign Up</a></li>
             <li><a href="qArchive.php">Q Archive</a></li>
+
             
 			
           </ul>
@@ -74,73 +75,147 @@ error_reporting(0);
             <h1>Hello sports fan!</h1>
             <p>This is a Q&A site in response to the growing popularity of eSports. </p>
           </div>
+
+
+    <!-- Code for live search box -->  
+    
+    <div class="row">
+      <div class="col-md-4">
+        <form>
+          <div class="search box">
+            <label class="sr-only" for="descr">user name live search</label>
+                <div class="input-group">
+                  <div class="input-group-addon">Search:</div>
+                  <input type="text" class="form-control" id="keyword" placeholder="Handle">
+                </div>
+          </div>
+         
+        </form>
+
+        
+        <ul  id="searchBar" ></ul>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+          $('#keyword').on('input', function() 
+          {
+            var searchKeyword = $(this).val();
+            
+            // If at least 1 character is entered, begin search -> searchProfile.php
+            if (searchKeyword.length >= 1 ) 
+            {
+              $.post('userLiveSearch.php', { keywords: searchKeyword }, function(data) {
+                $('ul#searchBar').empty()
+                $.each(data, function() 
+                {
+                  $('ul#searchBar').append('<u><a href="searchProfile.php?searchname=' + this.name + '">' + this.name + '</a></li></u><p>  </p>');
+
+                });
+              }, "json");
+            }
+
+            // Else, clear search box by appending blank space thereby clearing previous search
+            else
+            {
+              $.post('userLiveSearch.php', { keywords: searchKeyword }, function(data) {
+                $('ul#searchBar').empty()
+                $.each(data, function() 
+                {
+                  
+                  $('ul#searchBar').append('');
+
+                });
+              }, "json");
+
+            }
+          });
+        });
+        </script>
+    </div> 
+    <div class="col-md-6">
+      
+      <button type="button" class="btn btn-xs btn-default">All</button>
+      <button type="button" class="btn btn-xs btn-primary">D3</button>
+      <button type="button" class="btn btn-xs btn-success">WoW</button>
+      <button type="button" class="btn btn-xs btn-info">LoL</button>
+      <button type="button" class="btn btn-xs btn-warning">DoTA 2</button>
+      <button type="button" class="btn btn-xs btn-danger">CS:GO</button>
+
+    </div>
+    </div> 
+<!-- 00000000000000000000000000000000000000000000000000000000 -->  
+
+      <br></br>
+
+      <div class="row">
+        <div class="col-md-4">
 		  	<?php 
 				if($_SESSION['logged_in'])
 				{
-					echo 'Logged in as: ' . $_SESSION['username'] . '.<br><a href="logOut.php">Log out</a>';
+					echo 'Logged in as: <mark>' . $_SESSION['username'] . '</mark><br><a href="logOut.php">Log out</a>';
 				}
 				else
 				{
-					echo '<a href="logForm.php">Login</a> ';
+					//echo '<a href="logForm.php">Login</a> ';
 				}
 			?>
-			
-        <p> <br> <br>
-			<button type="button" class="btn btn-xs btn-default">All</button>
-			<button type="button" class="btn btn-xs btn-primary">D3</button>
-			<button type="button" class="btn btn-xs btn-success">WoW</button>
-			<button type="button" class="btn btn-xs btn-info">LoL</button>
-			<button type="button" class="btn btn-xs btn-warning">DoTA 2</button>
-			<button type="button" class="btn btn-xs btn-danger">CS:GO</button>
-		</p>
-		  <div class="row">
-            <div class="col-xs-6 col-lg-4">
-              <h2>News</h2>
-              <p>We just launched so we need some questions!</p>
-              <p><a class="btn btn-default" href="submitQuestion.php" role="button">Create question &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            	<div class="col-md-6">
-				  <table class="table table-striped">
-					<thead>
-					  <tr>
-						
-						<th>Title</th>
-				
-						<th>Asker</th>
+      <br></br><br></br>
+      <p><a class="btn btn-primary btn-lg" href="submitQuestion.php" role="button">Create question</a></p>
+		  </div> 
+
+    
+      <div class="col-md-6">
+        
+      <table class="table table-striped">
+          <thead>
+            <tr>
+            
+            <th>Title</th>
+        
+            <th>Asker</th>
 
             <th>Value</th>
-						
-					  </tr>
-					</thead>
-					<tbody>
-					  <?php
-							$servername = "localhost";
-							$username = "admin";
-							$password = "5pR1nG2OlS";
-							$dbname = "messageboard";
-							// Create connection
-							$conn = new mysqli($servername, $username, $password, $dbname);
-							// Check connection
-							if ($conn->connect_error) {
-								die("Connection failed: " . $conn->connect_error);
-							} 
-							//Show questions in each category where answers have highest total
-							$sql = "SELECT *  FROM question
+            
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+              $servername = "localhost";
+              $username = "admin";
+              $password = "5pR1nG2OlS";
+              $dbname = "messageboard";
+              // Create connection
+              $conn = new mysqli($servername, $username, $password, $dbname);
+              // Check connection
+              if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+              } 
+              //Show questions in each category where answers have highest total
+              $sql = "SELECT *  FROM question
                       ORDER BY q_value DESC LIMIT 5";
-							$result = $conn->query($sql);
-							
-							while($row = mysqli_fetch_array($result))
-							  {
-								  echo '<tr><td><a href="conversTEST.php?var=' . $row['q_id'] . '">' . $row['q_title'] . '</a></td><td>' . $row['q_asker'] . '</td><td>' . $row['q_value'] . '</td></tr>'; 
-								
-							  }
+              $result = $conn->query($sql);
+              
+              while($row = mysqli_fetch_array($result))
+                {
+                  echo '<tr><td><a href="conversTEST.php?var=' . $row['q_id'] . '">' . $row['q_title'] . '</a></td><td>' . $row['q_asker'] . '</td><td>' . $row['q_value'] . '</td></tr>'; 
+                
+                }
 
-							   mysqli_close($con);
-						?>
-					</tbody>
-				  </table>
-				</div>
-		  </div>
+                 mysqli_close($con);
+            ?>
+          </tbody>
+          </table>
+
+
+      </div> 
+     
+
+      <div class="row">
+        <div class="col-md-10"></div>
+      </div>
+      
+
+
          </div>   
           </div><!--/row-->
         </div><!--/.col-xs-12.col-sm-9-->
