@@ -78,7 +78,7 @@ error_reporting(0);
 
 
     <!-- Code for live search box -->  
-    
+
     <div class="row">
       <div class="col-md-4">
         <form>
@@ -89,7 +89,6 @@ error_reporting(0);
                   <input type="text" class="form-control" id="keyword" placeholder="Handle">
                 </div>
           </div>
-         
         </form>
 
         
@@ -114,8 +113,8 @@ error_reporting(0);
               }, "json");
             }
 
-            // Else, clear search box by appending blank space thereby clearing previous search
-            else
+            // Else if, clear search box by appending blank space thereby clearing previous search
+            else if (searchKeyword.length == 0 ) 
             {
               $.post('userLiveSearch.php', { keywords: searchKeyword }, function(data) {
                 $('ul#searchBar').empty()
@@ -126,6 +125,12 @@ error_reporting(0);
 
                 });
               }, "json");
+
+            }
+            // Else, say no match ? Not working 
+            else 
+            {
+              $('ul#searchBar').text("No match");
 
             }
           });
@@ -160,7 +165,7 @@ error_reporting(0);
 				}
 			?>
       <br></br><br></br>
-      <p><a class="btn btn-primary btn-lg" href="submitQuestion.php" role="button">Create question</a></p>
+      <p><a class="btn btn-primary btn-lg" href="submitQuestion.php" role="button">Create Question</a></p>
 		  </div> 
 
     
@@ -175,6 +180,8 @@ error_reporting(0);
             <th>Asker</th>
 
             <th>Value</th>
+
+            <th>Tags</th>
             
             </tr>
           </thead>
@@ -197,7 +204,8 @@ error_reporting(0);
               
               while($row = mysqli_fetch_array($result))
                 {
-                  echo '<tr><td><a href="conversTEST.php?var=' . $row['q_id'] . '">' . $row['q_title'] . '</a></td><td>' . $row['q_asker'] . '</td><td>' . $row['q_value'] . '</td></tr>'; 
+                  echo '<tr><td><a href="conversTEST.php?var=' . $row['q_id'] . '">' . $row['q_title'] . 
+                  '</a></td><td>' . $row['q_asker'] . '</td><td>' . $row['q_value'] . '</td></tr>'; 
                 
                 }
 
