@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2015 at 04:59 PM
+-- Generation Time: Apr 06, 2015 at 05:59 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -47,7 +47,7 @@ INSERT INTO `answer` (`a_id`, `a_asker`, `a_topic`, `a_content`, `a_rating`, `a_
 (10, 'wgates', 0, 'This is B Gates reporting in', 5, 86),
 (8, 'wgates', 0, 'Because they are...duh', 0, 87),
 (8, 'thewoz', 0, 'Nah uh. You are biased and you stink.', 0, 88),
-(8, 'wgates', 0, 'Can we please stay on topic.', 5, 89),
+(8, 'wgates', 0, 'Can we please stay on topic.', 4, 89),
 (12, 'wgates', 0, 'Your critique is absolutely correct. Purple is a girly color and not a color for royalty...', 1, 90);
 
 -- --------------------------------------------------------
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `question` (
 --
 
 INSERT INTO `question` (`q_id`, `q_asker`, `q_title`, `q_content`, `q_type`, `q_value`, `q_tags`) VALUES
-(8, 'thewoz', 'Scissors OP?!?!?', 'THIS IS NOT A TEST', 'D3', 5, 'barbarian blizzard '),
+(8, 'thewoz', 'Scissors OP?!?!?', 'THIS IS NOT A TEST OR IS IT', 'D3', 5, 'barbarian blizzard '),
 (9, 'thewoz', 'Why I love my Warrior.', 'WHY THAT LOL TEST', 'WoW', 4, 'blizzard arena pvp'),
 (10, 'pallen', 'BeyondTheSummit Rocks', 'They cast so well cause they use da big words.!!!!', 'DoTA2', 3, 'valve '),
 (11, 'tblee', 'Twitch needs competition.', 'It really does. This is getting lame. T', 'D3', 2, 'meta '),

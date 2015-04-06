@@ -139,8 +139,13 @@
 					JOIN answer
 					ON question.q_id = answer.a_id";
 			
-			
-				
+			/*$sql2 = "SELECT *
+				FROM users u
+                LEFT JOIN question q
+                ON u.user_name = q.q_asker
+                LEFT JOIN answer a
+				ON q.q_id = a.a_id";
+			*/		
 
 			
 			if ($result2 = mysqli_query($conn1,$sql2))
@@ -171,7 +176,7 @@
 
 							
 							<?php
-							
+							//<img src="data:image/jpeg;base64,'.base64_encode( $row['user_avatar'] ).'" width="42" height="42"/>
 							echo ' <strong>Rating: </strong>'.$row['a_rating']. '<br><strong>Responder:  </strong>' .$row['a_asker'].'
 									 </div>
 									 <div class="panel-body">

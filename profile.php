@@ -31,6 +31,7 @@
 	session_start();
 	include_once 'connect.php';
 	$conn = new mysqli($servername, $username, $password, $dbname);
+	$conn9 = new mysqli($servername, $username, $password, $dbname);
 
 	//echo $_SERVER['SERVER_NAME'] . '<br></>';
 	//echo __FILE__ . '<br></>';
@@ -45,7 +46,7 @@
 	{
 		// Print name of user currently logged in by accessing SESSIOn vars
 		// STRONG HAS BEEN DEPRECATED
-		echo  '<br></><strong>Logged in as: </strong>' . $_SESSION['username'] . '<br></br>' ;
+		echo  '<br></><strong>Logged in as: </strong><mark>' . $_SESSION['username'] . '</mark><br></br>' ;
 		$UN = $_SESSION['username'];
 		
 		// Query DB for user with SESSION var user name to obtain all related question data
@@ -118,10 +119,31 @@
                 LEFT JOIN question q
                 ON u.user_name = q.q_asker";
 
+        $sql9 = "SELECT user_name, user_score, COUNT(q_id) qcount
+				FROM users u
+                LEFT JOIN question q
+                ON u.user_name = q.q_asker
+                GROUP BY user_name, user_score";
 	
 
 				
 		$result = $conn->query($sql);
+		$result9 = $conn9->query($sql9);
+		echo '<strong>USER DATA: <br></>(A|SCORE|Q#) </strong><br></br> ';
+		while($row9 = $result9->fetch_assoc()) 
+		{
+			if ($row9['user_name'] == "ADMINISTRATOR")
+			{
+				echo '';
+			}
+			else
+			{
+				echo $row9['user_name'] . ' | ' . $row9['user_score'] . ' | ' . $row9['qcount'] . '<br></br>' ;
+			}
+			
+
+		}
+
 		// STRONG HAS BEEN DEPRECATED!!!
 		echo '<strong>ALL QUESTIONS: <br></>(ASKER|VALUE|TITLE|GAME|TOTAL SCORE) </strong><br></br> ';
 

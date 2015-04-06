@@ -33,23 +33,31 @@
 	if(isset($_GET["searchname"]))
 	{
 		$UN = $_GET['searchname'];
-		//echo $_GET["searchname"];
+		
 		// Print name of user being searched for
 		// STRONG HAS BEEN DEPRECATED
-		$sql2 = "SELECT user_score
-				FROM users u
-				WHERE WHERE u.user_name = '$UN' ";
+		$sql2 = "SELECT *
+				FROM users 
+				WHERE user_name = '$UN' ";
 
 		$result2 = $conn2->query($sql2);
 
-		$row2 = mysqli_fetch_array($result2,MYSQLI_NUM);
-		echo $row2[0];
+		if ($result2 === FALSE)
+		{
+			echo $conn2->error;
+		}
+
+		$row2 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
+		//echo empty($row2);
+		//echo is_array($row2);
+		//echo count(array_filter($row2));
 
 		echo  '<br></><strong>Profile for: </strong><mark>' . $_GET['searchname'] . '</mark><br></br>' ;
 		// Show avatar
-		echo  '<br></><strong>Avatar: </strong>Placeholder<br></br>' ;
+		echo  '<br></><strong>Avatar: </strong>' ;
+		echo '<img src="data:image/jpeg;base64,'.base64_encode( $row2['user_avatar'] ).'" width="42" height="42"/>';
 		// Show score
-		echo  '<br></><strong>Score: </strong>' . $row2[0] . '<br></br>' ;
+		echo  '<br></><strong>Score: </strong>' . $row2['user_score'] . '<br></br>' ;
 
 		
 		

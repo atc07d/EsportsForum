@@ -40,7 +40,7 @@ session_start();
         <label for="inputUname" class="sr-only">Username</label>
         <input type="text" name="uname" class="form-control" placeholder="Username" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="text" name="pword" class="form-control" placeholder="Password" required>
+        <input type="password" name="pword" class="form-control" placeholder="Password" required>
   
         <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
       </form>
