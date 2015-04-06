@@ -40,6 +40,7 @@
 	<body>
 	<div>
 			<?php
+				session_start();
 				//Retrieve and display question from DB
 				include_once "connect.php";
 				$questionID = $_GET['var'];
@@ -49,13 +50,19 @@
 				$questionType='';
 				// Create connection
 				$conn = new mysqli($servername, $username, $password, $dbname);
+			
 				// Check connection
-				if ($conn->connect_error) {
+				if ($conn->connect_error ) {
 					die("Connection failed: " . $conn->connect_error);
 				} 
 
-				//Grab selected question. Var is sent via url
-				$sql = "SELECT *  FROM question";
+
+				//$sql = "SELECT *  FROM question";
+				$sql = "SELECT *
+				FROM users u
+                LEFT JOIN question q
+                ON u.user_name = q.q_asker";
+				
 				
 				//Grab related answers
 				//$sql = "SELECT a_id,a_asker,a_title, a_content,a_type  FROM answer";
@@ -71,7 +78,8 @@
 				<br />
 				-->
 			<?php
-				//Find question in DB to post content
+
+				//echo '<img src="data:image/jpeg;base64,'.base64_encode( $row05['user_avatar'] ).'" width="42" height="42"/>';
 				while($row = $result->fetch_assoc())
 				{
 					
@@ -83,6 +91,7 @@
 								<div class="panel panel-primary">
 								  <div class="panel-heading"><strong>Title:  </strong>'.$row['q_title']. '<strong>Tags:  </strong>'.$row['q_tags']. '<br>
 								  <strong>Asker:  </strong>' .$row['q_asker'].
+								  '<br><img src="data:image/jpeg;base64,'.base64_encode( $row['user_avatar'] ).'" width="42" height="42"/>' .
 								  '<br><strong>ID: </strong>' .$row['q_id'].'
 								  	<br><strong>Rating: </strong>' .$row['q_value'].'
 								  </div>
@@ -122,7 +131,7 @@
 
 	<div>
 		<?php
-			session_start();
+			
 			$conn1 = new mysqli($servername, $username, $password, $dbname);
 			//$sql1 = "SELECT * FROM answer";
 			$sql2 = "SELECT * 

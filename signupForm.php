@@ -31,7 +31,7 @@
 
 		</form>
 		<br></>
-		<a href="uploadAvatar.php">Upload Avatar</a>
+		<a href="uploadBlob.php">Upload Avatar</a>
 	</body>
  
 <!--

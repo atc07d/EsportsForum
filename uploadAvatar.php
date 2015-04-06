@@ -2,7 +2,7 @@
 <html>
   <p><strong>Upload Avatar below:</strong></p>
 
-    <form enctype="multipart/form-data" action="" method="post">
+    <form enctype="multipart/form-data"  method="post">
         <input type="hidden" name="MAX_FILE_SIZE" value="30000">
           
       <input name="mkfile" type="file">

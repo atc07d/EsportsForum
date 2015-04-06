@@ -57,8 +57,16 @@
 
 		
 		$result = $conn->query($sql);
+		$result2 = mysqli_query($conn, $sql);		
+		echo '<strong><br>Avatar </strong><br> ';
+		$row01 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
+		//echo $row01["user_avatar"];
+		echo '<img src="data:image/jpeg;base64,'.base64_encode( $row01['user_avatar'] ).'" width="42" height="42"/>';
+		//echo '<img src="data:image/jpeg;base64,'.base64_encode($row1['user_avatar']->load()) .'" />';
+	
+
 		// STRONG HAS BEEN DEPRECATED!!!
-		echo '<strong>Question Data: <br></>(VALUE|TITLE|GAME) </strong><br></br> ';
+		echo '<br><strong>Question Data: <br></>(VALUE|TITLE|GAME) </strong><br></br> ';
 
 		while($row = $result->fetch_assoc()) 
 		{
@@ -66,6 +74,12 @@
 			echo ' ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_type'] . '<br></br>' ;
 
 		}
+
+		
+
+
+
+
 
 		//scan upload folder for img with employee name appended to front
 		/*$ufname = (string)$_SESSION['username'];

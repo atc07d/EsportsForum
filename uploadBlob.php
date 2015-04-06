@@ -2,7 +2,7 @@
 <html>
   <p><strong>Upload blob below:</strong></p>
 
-    <form enctype="multipart/form-data" action="" method="post">
+    <form enctype="multipart/form-data"  method="post">
         <input type="hidden" name="MAX_FILE_SIZE" value="30000">
           
       <input name="mkfile" type="file">
@@ -26,11 +26,64 @@
 	} 
 
 	
+if(count($_FILES) > 0) 
+{
+	if(is_uploaded_file($_FILES['mkfile']['tmp_name'])) 
+	{
+
+		$UNF = $_SESSION['username'];
+		echo $_SESSION['username'];
+		$imgData = addslashes(file_get_contents($_FILES['mkfile']['tmp_name']));
+		$imageProperties = getimageSize($_FILES['mkfile']['tmp_name']);
+		//$sql = "INSERT INTO users(user_avatar)
+		//		VALUES('$imgData')
+		//		WHERE user_name = '$UNF'";
+		//$result = $conn->query($sql) 
+
+		$sql = "UPDATE users
+				SET user_avatar = '$imgData'
+				WHERE user_name = '$UNF'";
+		if($conn->query($sql) === TRUE) 
+		{
+			//echo 'success';
+			header("Location: index.php");
+		}
+		else
+		{
+			echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+	}
+}
+
+
+
+
+
+
+
+echo '	<br></br>
+		<form action=index.php>
+		<input type="submit" value="Home">
+		</form>
+		';
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 		
 			
-			echo 'jere';
+		/*	echo 'jere';
 			$img = file_get_contents($_POST['mkfile']);
 
 
@@ -53,8 +106,8 @@
 			}			
 					 
 					 
-
-  
+	
+	*/  
     
 
 

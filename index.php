@@ -173,8 +173,8 @@ error_reporting(0);
 		  </div> 
 
     
+    
       <div class="col-md-6">
-        
       <table class="table table-striped">
           <thead>
             <tr>
