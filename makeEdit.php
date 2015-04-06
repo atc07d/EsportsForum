@@ -28,7 +28,7 @@
 			//echo "Question edited successfully?";
 			
 		//} 
-
+		unset($_SESSION['userID']);
 
 	}
 
@@ -51,4 +51,5 @@
 	
 		';
 
+		$conn->close();
 ?>

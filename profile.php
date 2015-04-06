@@ -227,7 +227,7 @@ echo '<strong>Avatar: </strong>
 
 	*/
 
-
+$conn->close();
 ?>
 
 

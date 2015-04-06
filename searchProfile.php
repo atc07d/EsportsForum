@@ -26,20 +26,32 @@
 	session_start();
 	include_once 'connect.php';
 	$conn = new mysqli($servername, $username, $password, $dbname);
+	$conn2 = new mysqli($servername, $username, $password, $dbname);
+	
 
 	
 	if(isset($_GET["searchname"]))
 	{
+		$UN = $_GET['searchname'];
 		//echo $_GET["searchname"];
 		// Print name of user being searched for
 		// STRONG HAS BEEN DEPRECATED
+		$sql2 = "SELECT user_score
+				FROM users u
+				WHERE WHERE u.user_name = '$UN' ";
+
+		$result2 = $conn2->query($sql2);
+
+		$row2 = mysqli_fetch_array($result2,MYSQLI_NUM);
+		echo $row2[0];
+
 		echo  '<br></><strong>Profile for: </strong><mark>' . $_GET['searchname'] . '</mark><br></br>' ;
 		// Show avatar
 		echo  '<br></><strong>Avatar: </strong>Placeholder<br></br>' ;
 		// Show score
-		echo  '<br></><strong>Score: </strong>Placeholder<br></br>' ;
+		echo  '<br></><strong>Score: </strong>' . $row2[0] . '<br></br>' ;
 
-		$UN = $_GET['searchname'];
+		
 		
 		// Query DB for user with SESSION var user name to obtain all related question data
 		$sql = "SELECT *
@@ -115,6 +127,6 @@
 		';
 
 	
-
+$conn->close();
 
 ?>
