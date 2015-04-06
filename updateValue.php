@@ -64,6 +64,6 @@
    //unset($_SESSION['answer_ID']);
   die();
   
-
+  mysqli_close($conn1);
 ?>
 

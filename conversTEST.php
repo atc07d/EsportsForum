@@ -80,8 +80,9 @@
 					{
 						echo '<div class="row">
 								<div class="col-md-4">
-								<div class="panel panel-default">
-								  <div class="panel-heading"><strong>Title:  </strong>'.$row['q_title']. '<br><strong>Asker:  </strong>' .$row['q_asker'].
+								<div class="panel panel-primary">
+								  <div class="panel-heading"><strong>Title:  </strong>'.$row['q_title']. '<strong>Tags:  </strong>'.$row['q_tags']. '<br>
+								  <strong>Asker:  </strong>' .$row['q_asker'].
 								  '<br><strong>ID: </strong>' .$row['q_id'].'
 								  	<br><strong>Rating: </strong>' .$row['q_value'].'
 								  </div>
@@ -149,16 +150,15 @@
 						<div class="row">
   						<div class="col-md-4">
 						<form method="post" action=""
-							<div class="panel panel-default">
+							<div class="panel panel-warning">
 							<div class="panel-heading">
-							<h6><b>Rate Answer: </b></h6>
+							
 							<p id="myText"></p>
 							<button name="up" onclick="asynchronouslyUpdate('increment');">+</button>
 							<button name="down" onclick="asynchronouslyUpdate('decrement');">-</button>
 							<br />
-							</div>
-						</div>
-						</div>
+							
+					
 
 							
 							<?php
@@ -167,10 +167,10 @@
 									 </div>
 									 <div class="panel-body">
 										'.$row['a_content'].'
-									 </div>
 									</div>
 								</form>
-			
+								</div>
+							</div>
 								';
 						$flag = 1;
 					}
@@ -190,6 +190,7 @@
 				
 	
 					';
+
 
 		?>
 

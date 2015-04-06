@@ -1,3 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>eSports Q&A Site</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+</html>
 <?php 
 
 	echo '<link href="/css/bootstrap.min.css" rel="stylesheet">';
@@ -23,7 +52,7 @@
 if($_SESSION['logged_in'] == 0)
 {
     //the user is not signed in
-    echo 'Sorry, you have to be <a href="logIn.php">Logged in</a> to submit a question.';
+    echo 'Sorry, you have to be <a href="index.php">Logged in</a> to submit a question.';
 }
 else
 {
@@ -72,6 +101,7 @@ else
                     <div class="row">
                         <div class="col-md-2 ">
                         Content: <textarea class="form-control" rows="3" name="content" /></textarea>
+                        Tags: <textarea class="form-control" rows="3" name="tagcontent" /></textarea>
                         <input type="submit" name="submit"	value="Submit" />
     					</form>
                         </div>
@@ -80,6 +110,6 @@ else
 				 
 			}
 }   
-    
+   
 
 ?>

@@ -140,12 +140,12 @@ error_reporting(0);
     </div> 
     <div class="col-md-6">
       
-      <button type="button" class="btn btn-xs btn-default">All</button>
-      <button type="button" class="btn btn-xs btn-primary">D3</button>
-      <button type="button" class="btn btn-xs btn-success">WoW</button>
-      <button type="button" class="btn btn-xs btn-info">LoL</button>
-      <button type="button" class="btn btn-xs btn-warning">DoTA 2</button>
-      <button type="button" class="btn btn-xs btn-danger">CS:GO</button>
+      <button type="button" class="btn btn-xs btn-default"><a href="tagDisplay.php?type=all" style="color: #000000; text-decoration: none;">All</a></button>
+      <button type="button" class="btn btn-xs btn-primary"><a href="tagDisplay.php?type=d3" style="color: #FFFFFF; text-decoration: none;">D3</a></button>
+      <button type="button" class="btn btn-xs btn-success"><a href="tagDisplay.php?type=wow"style="color: #FFFFFF; text-decoration: none;">WoW</a></button>
+      <button type="button" class="btn btn-xs btn-info"><a href="tagDisplay.php?type=lol"style="color: #FFFFFF; text-decoration: none;">LoL</a></button>
+      <button type="button" class="btn btn-xs btn-warning"><a href="tagDisplay.php?type=dota2"style="color: #FFFFFF; text-decoration: none;">DoTA 2</a></button>
+      <button type="button" class="btn btn-xs btn-danger"><a href="tagDisplay.php?type=csgo"style="color: #FFFFFF; text-decoration: none;">CS:GO</a></button>
 
     </div>
     </div> 
@@ -206,7 +206,7 @@ error_reporting(0);
               while($row = mysqli_fetch_array($result))
                 {
                   echo '<tr><td><a href="conversTEST.php?var=' . $row['q_id'] . '">' . $row['q_title'] . 
-                  '</a></td><td>' . $row['q_asker'] . '</td><td>' . $row['q_value'] . '</td></tr>'; 
+                  '</a></td><td>' . $row['q_asker'] . '</td><td>' . $row['q_value'] . '</td><td>' . $row['q_tags'] . '</td</tr>'; 
                 
                 }
 
