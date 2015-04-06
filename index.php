@@ -53,7 +53,7 @@ error_reporting(0);
 			      <li><a href="profile.php">Profile Page</a></li>
             <li><a href="logForm.php">Login</a></li>
 			      <li><a href="signupForm.php">Sign Up</a></li>
-            <li><a href="qArchive.php">Q Archive</a></li>
+         
 
             
 			
@@ -80,6 +80,9 @@ error_reporting(0);
     <!-- Code for live search box 
           Resource: http://www.finalwebsites.com/jquery-ajax-live-search/
     -->  
+    
+<div class="panel panel-default">
+  <div class="panel-body">
     <div class="row">
       <div class="col-md-4">
         <form>
@@ -266,5 +269,7 @@ error_reporting(0);
     <script src="/js/ie10-viewport-bug-workaround.js"></script>
 
     <script src="offcanvas.js"></script>
+    </div>
+    </div>
   </body>
 </html>
