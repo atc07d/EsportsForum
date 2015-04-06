@@ -10,7 +10,7 @@
 </html>
 <?php
 	// Takes input from radio button on admin profile
-	// Presents correspondong question for admin to edit
+	// Edit/delete logic for admin profile
 	session_start();
 	include_once 'connect.php';
 
@@ -22,48 +22,62 @@
 		die("Connection failed: " . $conn->connect_error);
 	} 
 
+	
 	$gotID = $_GET['qselect'];
-	$sql = "SELECT q_id, q_content
+	$_SESSION['qselect'] = $_GET['qselect'];
+	//echo $_SESSION['qselect'];
+
+	$sql = "SELECT q_id, q_content, q_title
 			FROM question
 			WHERE q_id = '$gotID'";
+	
+	$sql2 = "DELETE FROM question
+			 WHERE q_id = '$gotID'"; 
+	
+	
 
 	if (isset($_GET['edit'])) 
 	{
 		
-		if(isset($_GET['qselect']))
+		if (isset($_GET['qselect']))
 		{
+			//echo $_GET['qselect'];
 			$result = $conn->query($sql);
 			$row = mysqli_fetch_array($result,MYSQLI_NUM);
 	
 			echo '<div class="row">
 				  <div class="col-md-4">
-				  <form method="post" action="#" method="get">
-				  <h3><u>Make Changes:</u></h3>
-				  <textarea class="form-control" rows="3">';
-			printf ("%s (%s)\n",$row[0],$row[1]); 
+				  <form  action="makeEdit.php" method="get" >
+				  <h3><u>Edit</u>:<mark> ' . $row[2] . '</mark></h3>
+				  <textarea class="form-control" rows="3" name="edcontent">';
+			//printf ("%s (%s)\n",$row[0],$row[1]); 
+			echo $row[1];
 			echo '</textarea>
-				  <input type="submit" name="submit"	value="Submit" />
+				  <input type="submit" name="subedit"	value="Submit" />
 				  </form>
 				  </div>
 				  </div>';
-
 		}
+
+
+			
+
 	}
 	else if (isset($_GET['delete'])) 
 	{
 		
-		if(isset($_GET['qselect']))
+		if (isset($_GET['qselect']))
 		{
-		echo "<span>You have selected :<b> ".$_POST['qselect']."</b></span>";
-		}
-		else
-		{ 
-			echo "<span>Please choose any radio button.</span>";	
-		}
+			// delete question
+			$result = $conn->query($sql2);
+			echo "Deleted sucessfully!";
+
+		}	
+		
 	}
 	else
 	{
-
+		echo 'Make a selection before choosing an action!';
 	}
 
 

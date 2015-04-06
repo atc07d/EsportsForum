@@ -104,16 +104,19 @@
                 LEFT JOIN question q
                 ON u.user_name = q.q_asker";
 
-		
+	
+
+				
 		$result = $conn->query($sql);
 		// STRONG HAS BEEN DEPRECATED!!!
-		echo '<strong>ALL QUESTIONS: <br></>(ASKER|VALUE|TITLE|GAME) </strong><br></br> ';
+		echo '<strong>ALL QUESTIONS: <br></>(ASKER|VALUE|TITLE|GAME|TOTAL SCORE) </strong><br></br> ';
 
 		// start form for radio button(q id) and action (delete/edit) select
 		// Resource: http://www.formget.com/php-select-option-and-php-radio-button/
 		echo '<form action="adminEdit.php" method="get">';
 		while($row = $result->fetch_assoc()) 
 		{
+			
 			
 			if(empty($row["q_id"]))
 			{
@@ -123,7 +126,8 @@
 			}
 			else
 			{
-				echo '<input type="radio" name="qselect" value="' . $row["q_id"] . '">' . ' ' . $row['q_asker'] . ' | ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_type'] . '<br></br>' ;
+				
+				echo '<input type="radio" name="qselect" value="' . $row["q_id"] . '">' . ' ' . $row['q_asker'] . ' | ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_type'] . ' | ' . $row['user_score'] . '<br></br>' ;
 				
 			}
 			
@@ -137,11 +141,7 @@
 	  		</form>';
 
 
-	 if (isset($_GET["select"]))
-	 {
-
-
-	 }
+	 
 
 	}
 
