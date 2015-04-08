@@ -106,7 +106,7 @@ error_reporting(0);
 
         <form>
           <div class="search box">
-            <label class="sr-only" for="descr">user name live search</label>
+            <label class="sr-only" >user name live search</label>
                 <div class="input-group">
                   <div class="input-group-addon">Search:</div>
                   <input type="text" class="form-control" id="keyword" placeholder="Handle">
@@ -193,7 +193,7 @@ error_reporting(0);
               while($row = mysqli_fetch_array($result))
                 {
                   echo '<tr><td><a href="conversTEST.php?var=' . $row['q_id'] . '">' . $row['q_title'] . 
-                  '</a></td><td>' . $row['q_asker'] . '</td><td>' . $row['q_value'] . '</td><td>' . $row['q_tags'] . '</</>'; 
+                  '</a></td><td>' . $row['q_asker'] . '</td><td>' . $row['q_value'] . '</td><td>' . $row['q_tags'] . '</td></tr>'; 
                 
                 }
 
