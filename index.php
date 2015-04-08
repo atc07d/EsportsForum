@@ -16,7 +16,7 @@ error_reporting(0);
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>eSports Q&A Site</title>
+    <title>eSports Q&amp;A Site</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -73,8 +73,10 @@ error_reporting(0);
           </p>
           <div class="jumbotron">
             <h1>Hello sports fan!</h1>
-            <p>This is a Q&A site in response to the growing popularity of eSports. </p>
+            <p>This is a Q&amp;A site in response to the growing popularity of eSports. </p>
           </div>
+        
+      
 
 
     <!-- Code for live search box 
@@ -84,7 +86,23 @@ error_reporting(0);
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-3">
+
+       <?php 
+        if($_SESSION['logged_in'])
+        {
+          echo 'Logged in as: <mark>' . $_SESSION['username'] . '</mark><br><a href="logOut.php">Log out</a>';
+        }
+        else
+        {
+          //echo '<a href="logForm.php">Login</a> ';
+        }
+      ?>
+      <br>
+      <br>
+
+      <p><a class="btn btn-primary btn-lg" href="submitQuestion.php" role="button">Create Question</a></p>
+
         <form>
           <div class="search box">
             <label class="sr-only" for="descr">user name live search</label>
@@ -95,7 +113,6 @@ error_reporting(0);
           </div>
         </form>
 
-        
         <ul  id="searchBar" ></ul>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script type="text/javascript">
@@ -140,41 +157,10 @@ error_reporting(0);
           });
         });
         </script>
-    </div> 
-    <div class="col-md-6">
-      
-      <button type="button" class="btn btn-xs btn-default"><a href="tagDisplay.php?type=all" style="color: #000000; text-decoration: none;">All</a></button>
-      <button type="button" class="btn btn-xs btn-primary"><a href="tagDisplay.php?type=d3" style="color: #FFFFFF; text-decoration: none;">D3</a></button>
-      <button type="button" class="btn btn-xs btn-success"><a href="tagDisplay.php?type=wow"style="color: #FFFFFF; text-decoration: none;">WoW</a></button>
-      <button type="button" class="btn btn-xs btn-info"><a href="tagDisplay.php?type=lol"style="color: #FFFFFF; text-decoration: none;">LoL</a></button>
-      <button type="button" class="btn btn-xs btn-warning"><a href="tagDisplay.php?type=dota2"style="color: #FFFFFF; text-decoration: none;">DoTA 2</a></button>
-      <button type="button" class="btn btn-xs btn-danger"><a href="tagDisplay.php?type=csgo"style="color: #FFFFFF; text-decoration: none;">CS:GO</a></button>
 
-    </div>
-    </div> 
-<!-- 00000000000000000000000000000000000000000000000000000000 -->  
+      </div> 
+      <div class="col-md-4">
 
-      <br></br>
-
-      <div class="row">
-        <div class="col-md-4">
-		  	<?php 
-				if($_SESSION['logged_in'])
-				{
-					echo 'Logged in as: <mark>' . $_SESSION['username'] . '</mark><br><a href="logOut.php">Log out</a>';
-				}
-				else
-				{
-					//echo '<a href="logForm.php">Login</a> ';
-				}
-			?>
-      <br></br><br></br>
-      <p><a class="btn btn-primary btn-lg" href="submitQuestion.php" role="button">Create Question</a></p>
-		  </div> 
-
-    
-    
-      <div class="col-md-6">
       <table class="table table-striped">
           <thead>
             <tr>
@@ -191,10 +177,7 @@ error_reporting(0);
           </thead>
           <tbody>
             <?php
-              $servername = "localhost";
-              $username = "admin";
-              $password = "5pR1nG2OlS";
-              $dbname = "messageboard";
+              include_once 'connect.php';
               // Create connection
               $conn = new mysqli($servername, $username, $password, $dbname);
               // Check connection
@@ -217,9 +200,54 @@ error_reporting(0);
             ?>
           </tbody>
           </table>
+      </div>
+
+      <div class="col-md-2 col-md-offset-2">
+
+      <form method="get" action="tagDisplay.php">
+      <input type="hidden" name="type" value="all" />
+      <input type="submit" value="All" />
+      </form> 
+      <br>
+     <form method="get" action="tagDisplay.php">
+      <input type="hidden" name="type" value="lol" />
+      <input type="submit" value="LoL" />
+      </form> 
+      <br>
+      <form method="get" action="tagDisplay.php">
+      <input type="hidden" name="type" value="d3" />
+      <input type="submit" value="D3" />
+      </form> 
+      <br>
+      <form method="get" action="tagDisplay.php">
+      <input type="hidden" name="type" value="wow" />
+      <input type="submit" value="WoW" />
+      </form> 
+      <br>
+      <form method="get" action="tagDisplay.php">
+      <input type="hidden" name="type" value="dota2" />
+      <input type="submit" value="DoTA2" />
+      </form>
+      <br>
+      <form method="get" action="tagDisplay.php">
+      <input type="hidden" name="type" value="csgo" />
+      <input type="submit" value="CS:GO" />
+      </form> 
 
 
       </div> 
+    
+    </div>
+    </div> 
+<!-- 00000000000000000000000000000000000000000000000000000000 -->  
+
+      <br>
+
+     
+
+      
+    
+     
      
 
       <div class="row">

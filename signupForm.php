@@ -22,7 +22,7 @@
 			</div>
 			<div>
 				<label for="Password"><strong>Choose Password: </strong></label>
-				<input type="text" id="Password" name="User_PW" />
+				<input type="password" id="Password" name="User_PW" />
 			</div>
 
 			<div class="button">
