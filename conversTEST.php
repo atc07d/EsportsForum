@@ -169,8 +169,8 @@
 								<div class="panel-heading">
 								
 								<p id="myText"></p>
-								<button name="up" onclick="asynchronouslyUpdate('increment');">+</button>
-								<button name="down" onclick="asynchronouslyUpdate('decrement');">-</button>
+								<button class="btn btn-primary" name="up" onclick="asynchronouslyUpdate('increment');">+</button>
+								<button class="btn btn-primary" name="down" onclick="asynchronouslyUpdate('decrement');">-</button>
 								<br />
 								
 						

@@ -2,10 +2,7 @@
 	
 	//Checks logIn name/pw with user database
 	session_start();
-	$servername = "localhost";
-	$username = "admin";
-	$password = "5pR1nG2OlS";
-	$dbname = "messageboard";
+	include_once 'connect.php';
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);

@@ -31,6 +31,7 @@
 
 	echo '<link href="/css/bootstrap.min.css" rel="stylesheet">';
 	session_start();
+    error_reporting(0);
 
 	$servername = "localhost";
 	$username = "admin";
@@ -86,13 +87,9 @@ else
                         <div class="col-md-10 ">
                         <form method="post" action="question.php" method="post">
 					   <br>Title: <input type="text" name="title" />
-					   Type: '; 
+					   '; 
                  
-                echo '<select name="t_name">';
-                   while($row = $result->fetch_assoc())
-                    {
-                        echo '<option value="' . $row['t_name'] . '">' . $row['t_name'] . '</option>';
-                    }
+               
                 echo '  </select>
                         </div>
                         </div>'; 
@@ -111,5 +108,11 @@ else
 			}
 }   
    
-
+/*
+ echo '<select name="t_name">';
+                   while($row = $result->fetch_assoc())
+                    {
+                        echo '<option value="' . $row['t_name'] . '">' . $row['t_name'] . '</option>';
+                    }
+*/
 ?>

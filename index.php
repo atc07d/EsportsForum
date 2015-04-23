@@ -16,7 +16,7 @@ error_reporting(0);
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>eSports Q&amp;A Site</title>
+    <title>eSports Q and A Site</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -52,11 +52,8 @@ error_reporting(0);
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
 			      <li><a href="profile.php">Profile Page</a></li>
-            <li><a href="logForm.php">Login</a></li>
-			      <li><a href="signupForm.php">Sign Up</a></li>
-         
-
-            
+            <li><a href="LogForm.php">Login/Register</a></li>  
+            <li><a href="uploadAvatar.php">Avatar</a></li>          
 			
           </ul>
         </div>
@@ -84,7 +81,7 @@ error_reporting(0);
           Resource: http://www.finalwebsites.com/jquery-ajax-live-search/
     -->  
     
-<div class="panel panel-default">
+<div class="panel panel-primary">
   <div class="panel-body">
     <div class="row">
       <div class="col-md-3">
@@ -160,9 +157,10 @@ error_reporting(0);
         </script>
 
       </div> 
-      <div class="col-md-4">
+      <div class="col-md-6">
 
-      <table class="table table-striped">
+      <!--<table class="table table-striped">-->
+      <table class="table table-striped table-hover">
           <thead>
             <tr>
             
@@ -207,7 +205,7 @@ error_reporting(0);
           </table>
       </div>
 
-      <div class="col-md-2 col-md-offset-2">
+      <div class="col-md-1 col-md-offset-1">
 
       <form method="get" action="tagDisplay.php">
       <input type="hidden" name="type" value="all" />
@@ -288,7 +286,7 @@ error_reporting(0);
       <hr>
 
       <footer>
-        <p>&copy; Coffman 2015</p>
+        <p> Coffman 2015</p>
       </footer>
 
     </div><!--/.container-->

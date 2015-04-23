@@ -3,6 +3,7 @@
 	// If unique, add to user table
 
 	session_start();
+	error_reporting(0);
 	include_once "connect.php";
 
 	// Create connection
@@ -42,7 +43,7 @@
 		while($row = $result->fetch_assoc()) 
 		{
 			
-			if (strcmp($_POST["User_Name"],$row["user_name"]) == 0)
+			if (strcmp($_POST["username"],$row["user_name"]) == 0)
 			{
 
 				//echo "Username in use. Try again ";
@@ -72,8 +73,8 @@
 
 		static $UserID = 16;
 		$UserID++;
-		$sql2 = "INSERT INTO users (user_id,user_name,user_pw)
-			 VALUES ('$UserID','$_POST[User_Name]','$_POST[User_PW]')";
+		$sql2 = "INSERT INTO users (user_id,user_name,user_pw,user_email)
+			 VALUES ('$UserID','$_POST[username]','$_POST[password]','$_POST[email]')";
 		if ($conn->query($sql2) === TRUE) 
 		{
 			echo '<p>New record created successfully</p>
@@ -83,7 +84,7 @@
 				';
 			
 
-			//header ("Location: index.php");
+			
 
 		} 
 		else 
