@@ -34,6 +34,14 @@
 	
 	$sql2 = "DELETE FROM question
 			 WHERE q_id = '$gotID'"; 
+
+ 	$sql3 = "UPDATE question
+ 			 SET q_state = 1
+ 			 WHERE q_id = '$gotID'";
+
+ 	$sql4 = "UPDATE question
+			 SET q_state = 0
+			 WHERE q_id = '$gotID'";
 	
 	
 
@@ -58,12 +66,11 @@
 				  </form>
 				  </div>
 				  </div>';
-		}
-
-
-			
+		}	
 
 	}
+
+
 	else if (isset($_GET['delete'])) 
 	{
 		
@@ -76,6 +83,35 @@
 		}	
 		
 	}
+
+	// q_state column in DB.
+	// default value is 0 for unfrozen, update to 1 if frozen
+	else if (isset($_GET['freeze'])) 
+	{
+		
+		if (isset($_GET['qselect']))
+		{
+			// freeze question
+			$result = $conn->query($sql3);
+			echo "Frozen sucessfully!";
+
+		}
+	}
+
+	else if (isset($_GET['unfreeze'])) 
+	{
+		
+		if (isset($_GET['qselect']))
+		{
+			// unfreeze question
+			$result = $conn->query($sql4);
+			echo "Unfrozen sucessfully!";
+
+		}		
+		
+	}
+
+
 	else
 	{
 		echo 'Make a selection before choosing an action!';

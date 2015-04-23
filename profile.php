@@ -152,7 +152,7 @@
 		}
 
 		// STRONG HAS BEEN DEPRECATED!!!
-		echo '<strong>ALL QUESTIONS: <br></>(ASKER|VALUE|TITLE|GAME|TOTAL SCORE) </strong><br>';
+		echo '<strong>ALL QUESTIONS: <br></>(ASKER|VALUE|TITLE|GAME|TOTAL SCORE|STATE) </strong><br>';
 
 		// start form for radio button(q id) and action (delete/edit) select
 		// Resource: http://www.formget.com/php-select-option-and-php-radio-button/
@@ -170,8 +170,10 @@
 			else
 			{
 				
-				echo '<input type="radio" name="qselect" value="' . $row["q_id"] . '">' . ' ' . $row['q_asker'] . ' | ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_type'] . ' | ' . $row['user_score'] . '<br></br>' ;
-				
+				echo '<input type="radio" name="qselect" value="' . $row["q_id"] . '">' . ' ' . $row['q_asker'] . 
+					 ' | ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_type'] . 
+					 ' | ' . $row['user_score'] .  ' | ' . $row['q_state'] . '<br></br>' ;
+					
 			}
 			
 

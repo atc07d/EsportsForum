@@ -178,6 +178,9 @@ error_reporting(0);
           </thead>
           <tbody>
             <?php
+
+              // Show questions in each category where answers have highest total
+
               include_once 'connect.php';
               // Create connection
               $conn = new mysqli($servername, $username, $password, $dbname);
@@ -185,7 +188,7 @@ error_reporting(0);
               if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
               } 
-              //Show questions in each category where answers have highest total
+        
               $sql = "SELECT *  FROM question
                       ORDER BY q_value DESC LIMIT 5";
               $result = $conn->query($sql);
@@ -193,7 +196,8 @@ error_reporting(0);
               while($row = mysqli_fetch_array($result))
                 {
                   echo '<tr><td><a href="conversTEST.php?var=' . $row['q_id'] . '">' . $row['q_title'] . 
-                  '</a></td><td>' . $row['q_asker'] . '</td><td>' . $row['q_value'] . '</td><td>' . $row['q_tags'] . '</td></tr>'; 
+                  '</a></td><td>' . $row['q_asker'] . '</td><td>' . $row['q_value'] . '</td><td>' . 
+                  '<a href="tagCollection.php?var='. $row['q_tags'] . '">' . $row['q_tags'] . '</a></td></tr>'; 
                 
                 }
 
@@ -210,6 +214,7 @@ error_reporting(0);
       <input type="submit" value="All" />
       </form> 
       <br>
+     <!--
      <form method="get" action="tagDisplay.php">
       <input type="hidden" name="type" value="lol" />
       <input type="submit" value="LoL" />
@@ -234,6 +239,7 @@ error_reporting(0);
       <input type="hidden" name="type" value="csgo" />
       <input type="submit" value="CS:GO" />
       </form> 
+      -->
 
 
       </div> 

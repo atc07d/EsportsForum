@@ -40,6 +40,7 @@
 	<body>
 	<div>
 			<?php
+				// Show question
 				session_start();
 				//Retrieve and display question from DB
 				include_once "connect.php";
@@ -106,7 +107,26 @@
 						$questionTitle=$row['q_title'];
 						$questionType=$row['q_type'];
 						
-						
+						if ($row['q_state'] == '1')
+						{
+							echo '<h1>FROZEN</h1>';
+						}
+
+						else if ($row['q_state'] == '0')
+						{
+							echo '  <div class="row">
+								  	<div class="col-md-4">
+										<form method="post" action="submitAnswer.php" method="post">
+								         <br>Answer: <textarea class="form-control" rows="3" name="answer" /></textarea>
+								        
+										 <br>Q ID: <textarea class="form-control" rows="1" cols="10" name="id" /></textarea>
+										 <input type="submit" name="submit"	value="Submit" />
+										 </form>
+									</div>
+									</div>';
+
+						}
+
 					}
 						
 					
@@ -115,37 +135,18 @@
 			?>
 	</div>
 
-	<div class="row">
-  	<div class="col-md-4">
-		<form method="post" action="submitAnswer.php" method="post">
-         <br>Answer: <textarea class="form-control" rows="3" name="answer" /></textarea>
-        
-		 <br>Q ID: <textarea class="form-control" rows="1" cols="10" name="id" /></textarea>
-		 <input type="submit" name="submit"	value="Submit" />
-		 </form>
-	</div>
-	</div>
-		
-
-	</div>
+	
 
 	<div>
 		<?php
+			// Show answers
 			
 			$conn1 = new mysqli($servername, $username, $password, $dbname);
 			//$sql1 = "SELECT * FROM answer";
 			$sql2 = "SELECT * 
 					FROM question
 					JOIN answer
-					ON question.q_id = answer.a_id";
-			
-			/*$sql2 = "SELECT *
-				FROM users u
-                LEFT JOIN question q
-                ON u.user_name = q.q_asker
-                LEFT JOIN answer a
-				ON q.q_id = a.a_id";
-			*/		
+					ON question.q_id = answer.a_id";	
 
 			
 			if ($result2 = mysqli_query($conn1,$sql2))
@@ -156,37 +157,39 @@
 					if ($questionID == $row['q_id'] )
 					{
 						
-						$_SESSION['answer_ID'] = $row['a_order'];
-						//echo $_SESSION['answer_ID'];
-						?>
-						
-						
-						<div class="row">
-  						<div class="col-md-4">
-						<form method="post" action=""
-							<div class="panel panel-warning">
-							<div class="panel-heading">
+							$_SESSION['answer_ID'] = $row['a_order'];
+							//echo $_SESSION['answer_ID'];
+							//?>
 							
-							<p id="myText"></p>
-							<button name="up" onclick="asynchronouslyUpdate('increment');">+</button>
-							<button name="down" onclick="asynchronouslyUpdate('decrement');">-</button>
-							<br />
 							
-					
+							<div class="row">
+	  						<div class="col-md-4">
+							<form method="post" action=""
+								<div class="panel panel-warning">
+								<div class="panel-heading">
+								
+								<p id="myText"></p>
+								<button name="up" onclick="asynchronouslyUpdate('increment');">+</button>
+								<button name="down" onclick="asynchronouslyUpdate('decrement');">-</button>
+								<br />
+								
+						
 
-							
-							<?php
-							//<img src="data:image/jpeg;base64,'.base64_encode( $row['user_avatar'] ).'" width="42" height="42"/>
-							echo ' <strong>Rating: </strong>'.$row['a_rating']. '<br><strong>Responder:  </strong>' .$row['a_asker'].'
-									 </div>
-									 <div class="panel-body">
-										'.$row['a_content'].'
+								
+								<?php
+								//<img src="data:image/jpeg;base64,'.base64_encode( $row['user_avatar'] ).'" width="42" height="42"/>
+								echo ' <strong>Rating: </strong>'.$row['a_rating']. 
+										'<br><strong>Responder:  </strong>' .$row['a_asker'].'
+										 </div>
+										 <div class="panel-body">
+											'.$row['a_content'].'
+										</div>
+									</form>
 									</div>
-								</form>
 								</div>
-							</div>
-								';
-						$flag = 1;
+									';
+							$flag = 1;
+
 					}
 					//elseif ($flag == 0)
 					//{

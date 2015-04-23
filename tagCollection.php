@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>eSports Type Display</title>
+    <title>eSports Tag Display</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -38,22 +38,83 @@
 		die("Connection failed: " . $conn->connect_error);
 	} 
 
-	$typevar = $_GET['type'];
-	if ($typevar == "all")
-	{
-		$sql = "SELECT *
-			FROM question";
-	}
-	else
-	{
-		$sql = "SELECT *
-			FROM question
-			WHERE q_type = '$typevar'";
+	$tagvar = $_GET['var'];
+	//echo $tagvar;
+	$explodetags = explode(" ", $tagvar);
+	$arcount = count($explodetags);
 
+	//echo $explodetags;
+
+	// Build like part of sql query
+	// $x becomes each tag delimited by space 
+	$buildq = "";
+	$endexplode = end($explodetags);
+	// Building for SQL LIKE, not as efficent as below ?????
+	foreach ($explodetags as $x)
+	{
+		if ($arcount == "1")
+		{
+			$buildq = $buildq . "'%" . $x . "%'";
+		}
+		
+		else
+		{
+			if ($x == $explodetags[0])
+			{
+			$buildq = $buildq . "'%" . $x . "%'";
+			}
+			
+			else 
+			{
+				$buildq = $buildq . " OR q_tags LIKE '%" . $x . "%'";
+			}
+		}
+		
 	}
 	
 
-	echo '<h3><b>Showing:</b><mark>' . strtoupper($typevar) . '</mark></h3>
+	/* easier to just use SQL IN
+	foreach ($explodetags as $x)
+	{
+		if ($arcount == "1")
+		{
+			$buildq = "('" . $tagvar . "', '" . $x . "')";
+		}
+		
+		else
+		{
+			if ($x == $explodetags[0])
+			{
+				$buildq = "('" . $tagvar . "', '" . $x . "', '";
+			}
+			else if ($x == $endexplode)
+			{
+				$buildq = $buildq . $x . "')";
+			}
+			else 
+			{
+				$buildq = $buildq . $x . "', '";
+			}
+		}
+		
+	}
+	*/
+
+	//echo $buildq;
+
+	// easier to just use in?
+	//$explodetags2 = explode(" ", string)
+
+
+	$sql = "SELECT * 
+			FROM question
+			WHERE q_tags IN $buildq";
+
+	$sql2 = "SELECT * 
+		FROM question
+		WHERE q_tags LIKE $buildq";
+	
+	echo '<h3><b>Showing:</b><mark>' . strtoupper($tagvar) . '</mark></h3>
 		  <div class="col-md-6">
           <table class="table table-striped">
           <thead>
@@ -72,13 +133,11 @@
           <tbody>';
 
 
-	if ($result = mysqli_query($conn,$sql))
+	if ($result = mysqli_query($conn,$sql2))
 	{
 		while($row = mysqli_fetch_assoc($result))
 		{
-			 echo '<tr><td><a href="conversTEST.php?var=' . $row['q_id'] . '">' . $row['q_title'] . '</a></td><td>' . $row['q_asker'] . 
-			 '</td><td>' . $row['q_value'] . '</td><td>' . 
-			 '<a href="tagCollection.php?var='. $row['q_tags'] . '">' . $row['q_tags'] . '</a></td></tr>'; 
+			 echo '<tr><td><a href="conversTEST.php?var=' . $row['q_id'] . '">' . $row['q_title'] . '</a></td><td>' . $row['q_asker'] . '</td><td>' . $row['q_value'] . '</td><td>' . $row['q_tags'] . '</td</tr>'; 
 
 		}
 	}
