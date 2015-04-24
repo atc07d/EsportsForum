@@ -48,7 +48,8 @@
             <li class="active"><a href="index.php">Home</a></li>
 			<li><a href="profile.php">Profile Page</a></li>
             <li><a href="LogForm.php">Login/Register</a></li>  
-            <li><a href="uploadAvatar.php">Avatar</a></li>         
+                        <li><a href="uploadAvatar.php">Avatar</a></li>
+            <li><a href="tagDisplay.php">Archive</a></li>            
 			
           </ul>
         </div>
@@ -79,7 +80,10 @@
 	{
 		// Print name of user currently logged in by accessing SESSIOn vars
 		// STRONG HAS BEEN DEPRECATED
-		echo  '<br><strong>Logged in as: </strong><mark>' . $_SESSION['username'] . '</mark><br>' ;
+		echo  '	<br>
+				<div class="row">
+				<div class="col-md-offset-3"
+				<br><h3>Welcome: <mark>' . $_SESSION['username'] . '</mark></h3><br>' ;
 		$UN = $_SESSION['username'];
 		
 		// Query DB for user with SESSION var user name to obtain all related question data
@@ -111,7 +115,8 @@
 
 		
 
-
+		echo '</div>
+			  </div>';
 
 
 
@@ -144,8 +149,8 @@
 	{
 
 		echo '<div class="row">
-			<div class="col-xs-12 col-md-8">
-			<br>Welcome, <mark>ADMINISTRATOR</mark><br>';
+			<div class="col-md-3 col-md-offset-2">
+			<br><h3>Welcome, <mark>ADMINISTRATOR</mark></h3><br>';
 
 		$sql = "SELECT *
 				FROM users u
@@ -162,7 +167,16 @@
 				
 		$result = $conn->query($sql);
 		$result9 = $conn9->query($sql9);
-		echo '<strong>USER DATA: <br>(A|SCORE|Q#) </strong><br><';
+		echo '<table class="table table-striped">
+			  <br>
+		      <thead>
+		      <tr class="info">
+		      	<th>User</th>
+		      	<th>Score</th>
+		      	<th># of Qs</th>
+	      	  </tr>
+	      	  </thead>
+	      	  <tbody>';
 		while($row9 = $result9->fetch_assoc()) 
 		{
 			if ($row9['user_name'] == "ADMINISTRATOR")
@@ -171,14 +185,34 @@
 			}
 			else
 			{
-				echo $row9['user_name'] . ' | ' . $row9['user_score'] . ' | ' . $row9['qcount'] . '<br>' ;
+				echo '<tr class="active"><td>' . $row9['user_name'] . '</td><td> ' . $row9['user_score'] . '</td><td>' . $row9['qcount'] . '</td></tr>' ;
 			}
 			
 
 		}
 
 		// STRONG HAS BEEN DEPRECATED!!!
-		echo '<strong>ALL QUESTIONS: <br></>(ASKER|VALUE|TITLE|GAME|TOTAL SCORE|STATE) </strong><br>';
+		echo '</tbody>
+			  </table>
+			  </div>
+			  <br>
+			  <div class="col-md-3">
+			  <br><br><br><br><br>
+			 
+			  <table class="table table-striped">
+			  <thead>
+			  <tr class="info">
+			  	<th>Asker</th>
+			  	<th>Value</th>
+			  	<th>Title</th>
+			  	<th>Game</th>
+			  	<th>Score</th>
+			  	<th>State</th>
+			  </tr>
+		  	  </thead>
+		  	  </table>
+
+			  <br>';
 
 		// start form for radio button(q id) and action (delete/edit) select
 		// Resource: http://www.formget.com/php-select-option-and-php-radio-button/
@@ -205,11 +239,27 @@
 
 		}
 
-	 echo ' <button name="edit" type="submit" value="edit" class="btn btn-default btn-lg">Edit</button><br></div></div>
+	 echo ' 
+	 		</div>
+	 		</div>
+
+	 		<div class="row">
+	 		<div class="col-md-5 col-md-offset-5">
+	 		
+	 		<div class="btn-group ">
+	 		<button name="edit" type="submit" value="edit" class="btn btn-primary btn-lg">Edit</button>
+	 		<button name="delete" type="submit" value="delete" class="btn btn-danger btn-lg">Delete</button>
+	 		</div>
+	 		<br>
+	 		<div class="btn-group ">
 	  		<button name="freeze" type="submit" value="freeze" class="btn btn-info btn-lg">Freeze</button>
-	 		<button name="unfreeze" type="submit" value="unfreeze" class="btn btn-success btn-lg">Unfreeze</button><br></div></div>
-	  		<button name="delete" type="submit" value="delete" class="btn btn-danger btn-lg">Delete</button><br></div></div>
-	  		</form>';
+	 		<button name="unfreeze" type="submit" value="unfreeze" class="btn btn-success btn-lg">Unfreeze</button>
+	 		<div>
+	  		
+	  		</form>
+	  		</div>
+	  		</div>
+	  		';
 
 
 	 
@@ -220,7 +270,12 @@
 	{
 		echo '
 				<br>
+				<br>
+				<div class="row">
+				<div class="col-md-2 col-md-offset-3">
 				<a href="logForm.php">Please log in</a>
+				</div>
+				</div>
 				<br>	
 				<br>
 		';

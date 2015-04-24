@@ -41,7 +41,9 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.php">Home</a></li>
 			      <li><a href="profile.php">Profile Page</a></li>
-            <li><a href="LogForm.php">Login/Register</a></li>           
+            <li><a href="LogForm.php">Login/Register</a></li> 
+                        <li><a href="uploadAvatar.php">Avatar</a></li>
+            <li><a href="tagDisplay.php">Archive</a></li>              
 			
           </ul>
         </div>
@@ -140,8 +142,9 @@
 		FROM question
 		WHERE q_tags LIKE $buildq";
 	
-	echo '<h3><b>Showing:</b><mark>' . strtoupper($tagvar) . '</mark></h3>
-		  <div class="col-md-6">
+	echo '<br>
+		  <div class="col-md-4 col-md-offset-2">
+		  <h3><b>Tags:</b><p class="text-info">' . strtoupper($tagvar) . '</p></h3>
           <table class="table table-striped">
           <thead>
             <tr>

@@ -53,7 +53,8 @@ error_reporting(0);
             <li class="active"><a href="#">Home</a></li>
 			      <li><a href="profile.php">Profile Page</a></li>
             <li><a href="LogForm.php">Login/Register</a></li>  
-            <li><a href="uploadAvatar.php">Avatar</a></li>          
+            <li><a href="uploadAvatar.php">Avatar</a></li>
+            <li><a href="tagDisplay.php">Archive</a></li>            
 			
           </ul>
         </div>
@@ -205,52 +206,15 @@ error_reporting(0);
           </table>
       </div>
 
-      <div class="col-md-1 col-md-offset-1">
-
-      <form method="get" action="tagDisplay.php">
-      <input type="hidden" name="type" value="all" />
-      <input type="submit" value="All" />
-      </form> 
-      <br>
-     <!--
-     <form method="get" action="tagDisplay.php">
-      <input type="hidden" name="type" value="lol" />
-      <input type="submit" value="LoL" />
-      </form> 
-      <br>
-      <form method="get" action="tagDisplay.php">
-      <input type="hidden" name="type" value="d3" />
-      <input type="submit" value="D3" />
-      </form> 
-      <br>
-      <form method="get" action="tagDisplay.php">
-      <input type="hidden" name="type" value="wow" />
-      <input type="submit" value="WoW" />
-      </form> 
-      <br>
-      <form method="get" action="tagDisplay.php">
-      <input type="hidden" name="type" value="dota2" />
-      <input type="submit" value="DoTA2" />
-      </form>
-      <br>
-      <form method="get" action="tagDisplay.php">
-      <input type="hidden" name="type" value="csgo" />
-      <input type="submit" value="CS:GO" />
-      </form> 
-      -->
-
-
-      </div> 
+      
     
     </div>
     </div> 
-<!-- 00000000000000000000000000000000000000000000000000000000 -->  
+
 
       <br>
 
-     
 
-      
     
      
      

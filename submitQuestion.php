@@ -26,17 +26,44 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+  <body>
+  <nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
+        </div>
+        
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+                  <li><a href="profile.php">Profile Page</a></li>
+            <li><a href="LogForm.php">Login/Register</a></li>  
+                        <li><a href="uploadAvatar.php">Avatar</a></li>
+            <li><a href="tagDisplay.php">Archive</a></li>             
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <br>
+    <br>
+      <br>
+    <br>
+    </body>
 </html>
 <?php 
 
-	echo '<link href="/css/bootstrap.min.css" rel="stylesheet">';
+	
 	session_start();
     error_reporting(0);
 
-	$servername = "localhost";
-	$username = "admin";
-	$password = "5pR1nG2OlS";
-	$dbname = "messageboard";
+    include_once "connect.php";
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
@@ -83,24 +110,27 @@ else
         else
             {
          
-                echo '<div class="row">
-                        <div class="col-md-10 ">
-                        <form method="post" action="question.php" method="post">
-					   <br>Title: <input type="text" name="title" />
+                echo ' <div class="row">
+                       <div class="col-md-3 col-md-offset-3">
+                       <form class="form-horizontal" method="post" action="question.php" method="post">
+                       <legend>Create Question</legend>
+					   <br>Title: 
+                       <br><input type="text" name="title" />
 					   '; 
                  
                
-                echo '  </select>
+                echo '  
                         </div>
                         </div>'; 
                      
                 echo '<br>
                     <div class="row">
-                        <div class="col-md-2 ">
+                        <div class="col-md-3 col-md-offset-3 ">
                         Content: <textarea class="form-control" rows="3" name="content" /></textarea>
                         Tags: <textarea class="form-control" rows="3" name="tagcontent" /></textarea>
-                        <input type="submit" name="submit"	value="Submit" />
-    					</form>
+                        <input type="submit" name="submit"	value="Submit" class="btn btn-primary"/>
+    					</fieldset>
+                        </form>
                         </div>
                     </div>';
 				 

@@ -38,6 +38,33 @@
 
 
 	<body>
+	<nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
+        </div>
+        
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.php">Home</a></li>
+			<li><a href="profile.php">Profile Page</a></li>
+            <li><a href="LogForm.php">Login/Register</a></li>  
+                        <li><a href="uploadAvatar.php">Avatar</a></li>
+            <li><a href="tagDisplay.php">Archive</a></li>            
+			
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <br>
+    <br>
+    <br>
 	<div>
 			<?php
 				// Show question
@@ -88,9 +115,9 @@
 					if ($row['q_id'] === $questionID)
 					{
 						echo '<div class="row">
-								<div class="col-md-4">
-								<div class="panel panel-primary">
-								  <div class="panel-heading"><strong>Title:  </strong>'.$row['q_title']. '<strong>Tags:  </strong>'.$row['q_tags']. '<br>
+								<div class="col-md-4 col-md-offset-2">
+								<div class="panel panel-warning">
+								  <div class="panel-heading"><strong>Title:  </strong>'.$row['q_title']. '<strong><br>Tags:  </strong>'.$row['q_tags']. '<br>
 								  <strong>Asker:  </strong>' .$row['q_asker'].
 								  '<br><img src="data:image/jpeg;base64,'.base64_encode( $row['user_avatar'] ).'" width="42" height="42"/>' .
 								  '<br><strong>ID: </strong>' .$row['q_id'].'
@@ -115,7 +142,7 @@
 						else if ($row['q_state'] == '0')
 						{
 							echo '  <div class="row">
-								  	<div class="col-md-4">
+								  	<div class="col-md-4 col-md-offset-2">
 										<form method="post" action="submitAnswer.php" method="post">
 								         <br>Answer: <textarea class="form-control" rows="3" name="answer" /></textarea>
 								        
@@ -163,9 +190,9 @@
 							
 							
 							<div class="row">
-	  						<div class="col-md-4">
+	  						<div class="col-md-4 col-md-offset-2">
 							<form method="post" action=""
-								<div class="panel panel-warning">
+								<div class="panel panel-success">
 								<div class="panel-heading">
 								
 								<p id="myText"></p>
@@ -200,13 +227,7 @@
 				mysqli_free_result($result2);
 			}
 			mysqli_close($conn1);
-			echo '	<br></br>
-					<form action=index.php>
-						<input type="submit" value="Home">
-					</form>
-				
-	
-					';
+			
 
 
 		?>

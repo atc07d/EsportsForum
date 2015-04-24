@@ -41,7 +41,9 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.php">Home</a></li>
 			      <li><a href="profile.php">Profile Page</a></li>
-            <li><a href="LogForm.php">Login/Register</a></li>           
+            <li><a href="LogForm.php">Login/Register</a></li>
+            <li><a href="uploadAvatar.php">Avatar</a></li>
+            <li><a href="tagDisplay.php">Archive</a></li>               
 			
           </ul>
         </div>
@@ -65,23 +67,14 @@
 		die("Connection failed: " . $conn->connect_error);
 	} 
 
-	$typevar = $_GET['type'];
-	if ($typevar == "all")
-	{
+	
 		$sql = "SELECT *
 			FROM question";
-	}
-	else
-	{
-		$sql = "SELECT *
-			FROM question
-			WHERE q_type = '$typevar'";
-
-	}
+	
 	
 
-	echo '<h3><b>Showing:</b><mark>' . strtoupper($typevar) . '</mark></h3>
-		  <div class="col-md-6">
+	echo '<br>
+		  <div class="col-md-4 col-md-offset-2" >
           <table class="table table-striped">
           <thead>
             <tr>
