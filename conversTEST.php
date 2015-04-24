@@ -54,7 +54,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.php">Home</a></li>
 			<li><a href="profile.php">Profile Page</a></li>
-            <li><a href="LogForm.php">Login/Register</a></li>  
+            <li><a href="logForm.php">Login/Register</a></li>  
              <li><a href="uploadBlob.php">Avatar</a></li>
             <li><a href="tagDisplay.php">Archive</a></li>            
 			
