@@ -48,7 +48,7 @@
             <li class="active"><a href="index.php">Home</a></li>
 			<li><a href="profile.php">Profile Page</a></li>
             <li><a href="LogForm.php">Login/Register</a></li>  
-                        <li><a href="uploadAvatar.php">Avatar</a></li>
+             <li><a href="uploadBlob.php">Avatar</a></li>
             <li><a href="tagDisplay.php">Archive</a></li>            
 			
           </ul>
@@ -57,8 +57,7 @@
     </nav>
     <br>
     <br>
-    </body>
-</html>
+
 
 <?php
 	error_reporting(0);
@@ -80,10 +79,11 @@
 	{
 		// Print name of user currently logged in by accessing SESSIOn vars
 		// STRONG HAS BEEN DEPRECATED
-		echo  '	<br>
+		echo  '	
+				<br><br>
 				<div class="row">
-				<div class="col-md-offset-3"
-				<br><h3>Welcome: <mark>' . $_SESSION['username'] . '</mark></h3><br>' ;
+				<div class="col-md-4 col-md-offset-2">
+			';
 		$UN = $_SESSION['username'];
 		
 		// Query DB for user with SESSION var user name to obtain all related question data
@@ -96,7 +96,13 @@
 		
 		$result = $conn->query($sql);
 		$result2 = mysqli_query($conn, $sql);		
-		echo '<strong><br>Avatar </strong><br> ';
+		
+		echo "<div class='panel panel-info'>
+  			  <div class='panel-heading'>
+  			  	<br><h3>" . $_SESSION['username'] . "'s Profile</h3>
+			  	<strong>Avatar: </strong>
+		  	  
+		  	  ";
 		$row01 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
 		//echo $row01["user_avatar"];
 		echo '<img src="data:image/jpeg;base64,'.base64_encode( $row01['user_avatar'] ).'" width="42" height="42"/>';
@@ -104,7 +110,9 @@
 	
 
 		// STRONG HAS BEEN DEPRECATED!!!
-		echo '<br><strong>Question Data: <br>(VALUE|TITLE|GAME) </strong><br> ';
+		echo '</div>
+			  <div class="panel-body">
+				<br><strong>Question Data: <br>(VALUE|TITLE|GAME) </strong><br> ';
 
 		while($row = $result->fetch_assoc()) 
 		{
@@ -116,6 +124,8 @@
 		
 
 		echo '</div>
+			  
+			  </div>
 			  </div>';
 
 
@@ -347,6 +357,10 @@ echo '<strong>Avatar: </strong>
 	*/
 
 $conn->close();
+
+echo ' </body>
+
+	</html>';
 ?>
 
 

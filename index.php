@@ -28,11 +28,7 @@ error_reporting(0);
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="/js/ie-emulation-modes-warning.js"></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
   </head>
 
   <body>
@@ -53,7 +49,7 @@ error_reporting(0);
             <li class="active"><a href="#">Home</a></li>
 			      <li><a href="profile.php">Profile Page</a></li>
             <li><a href="LogForm.php">Login/Register</a></li>  
-            <li><a href="uploadAvatar.php">Avatar</a></li>
+            <li><a href="uploadBlob.php">Avatar</a></li>
             <li><a href="tagDisplay.php">Archive</a></li>            
 			
           </ul>
@@ -88,14 +84,16 @@ error_reporting(0);
       <div class="col-md-3">
 
        <?php 
-        if($_SESSION['logged_in'])
+        if($_SESSION['logged_in'] and $_SESSION['username'] == "ADMINISTRATOR")
         {
           echo 'Logged in as: <mark>' . $_SESSION['username'] . '</mark><br><a href="logOut.php">Log out</a>';
         }
-        else
+        else if ($_SESSION['logged_in'])
         {
-          //echo '<a href="logForm.php">Login</a> ';
+           echo 'Logged in as: <p class="text-info">' . $_SESSION['username'] . '</p><a href="logOut.php">Log out</a>';
         }
+        else
+        {}
       ?>
       <br>
       <br>
@@ -208,52 +206,7 @@ error_reporting(0);
 
       
     
-    </div>
-    </div> 
 
-
-      <br>
-
-
-    
-     
-     
-
-      <div class="row">
-        <div class="col-md-10"></div>
-      </div>
-      
-
-
-         </div>   
-          </div><!--/row-->
-        </div><!--/.col-xs-12.col-sm-9-->
-
-		<?php include 'mainTable.php'; ?>
-		
-        <!-- <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-          <div class="list-group">
-            <a href="#" class="list-group-item active">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-          </div> -->
-        </div><!--/.sidebar-offcanvas-->
-      </div><!--/row-->
-
-      <hr>
-
-      <footer>
-        <p> Coffman 2015</p>
-      </footer>
-
-    </div><!--/.container-->
 
 
     <!-- Bootstrap core JavaScript

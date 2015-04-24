@@ -1,15 +1,60 @@
 <!DOCTYPE html>
 <html>
-  <p><strong>Upload Avatar below:</strong></p>
+  <head>
+  <title>Upload Avatar</title>
 
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+  <nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
+        </div>
+        
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.php">Home</a></li>
+            <li><a href="profile.php">Profile Page</a></li>
+            <li><a href="LogForm.php">Login/Register</a></li>  
+            <li><a href="uploadAvatar.php">Avatar</a></li>
+            <li><a href="tagDisplay.php">Archive</a></li>            
+      
+          </ul>
+        </div>
+      </div>
+    </nav>
+    </head>
+
+    <body>
+    <br><br><br><br>
+
+    <div class="row">
+    <div class="col-md-4 col-md-offset-3">
+    <p><strong>Upload Avatar below:</strong></p>
+    
     <form enctype="multipart/form-data"  method="post">
         <input type="hidden" name="MAX_FILE_SIZE" value="30000">
           
       <input name="mkfile" type="file">
         <input type="submit" value="Upload">
     </form>
+    </div>
+    </div>
 
-
+    </body>
 </html>
 
 
@@ -62,12 +107,5 @@
 
       }
 
-      echo '<br></br>
-            <form action=index.php>
-              <input type="submit" value="Go Home">
-            </form>
-        
-  
-          ';
-
+      
 ?>

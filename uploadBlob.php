@@ -1,14 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <p><strong>Upload blob below:</strong></p>
+<head>
+  <title>Upload Avatar</title>
 
-    <form enctype="multipart/form-data"  method="post">
-        <input type="hidden" name="MAX_FILE_SIZE" value="30000">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+  <nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
           
-      <input name="mkfile" type="file">
-        <input type="submit" value="Upload">
-    </form>
+        </div>
+        
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.php">Home</a></li>
+            <li><a href="profile.php">Profile Page</a></li>
+            <li><a href="LogForm.php">Login/Register</a></li>  
+            <li><a href="uploadBlob.php">Avatar</a></li>
+            <li><a href="tagDisplay.php">Archive</a></li>            
+      
+          </ul>
+        </div>
+      </div>
+    </nav>
+    </head>
 
+    <body>
+    <br><br><br><br>
+
+    <div class="row">
+    <div class="col-md-4 col-md-offset-2">
+    <div class="panel panel-primary">
+    	<div class="panel-heading">
+     		<h3 class="panel-title">Upload Avatar below:</h3>
+ 		</div>
+ 		 <div class="panel-body panel-primary">	
+		    <form enctype="multipart/form-data"  method="post">
+		    <input type="hidden" name="MAX_FILE_SIZE" value="30000">
+		     
+		    <input name="mkfile" type="file">
+		    <input type="submit" value="Upload">
+		    
+	    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </body>
 
 </html>
 
@@ -50,65 +101,12 @@ if(count($_FILES) > 0)
 		}
 		else
 		{
-			echo "Error: " . $sql . "<br>" . $conn->error;
+			echo "<p>Error: " . $sql . $conn->error . "</p>";
 		}
 	}
 }
 
 
-
-
-
-
-
-echo '	<br></br>
-		<form action=index.php>
-		<input type="submit" value="Home">
-		</form>
-		';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
-			
-		/*	echo 'jere';
-			$img = file_get_contents($_POST['mkfile']);
-
-
-			$sql = "INSERT into users (user_avatar)
-			SET user_avatar = '$img'
-			WHERE user_name = " . $_SESSION['username'];
-		
-
-		
-		if ($conn->query($sql) === TRUE) 
-			{
-				
-				echo "New avatar uploaded successfully";
-				//header("Location: index.php");
-				
-			} 
-		else 
-			{
-				echo "Error: " . $sql . "<br>" . $conn1->error;
-			}			
-					 
-					 
-	
-	*/  
-    
 
 
 

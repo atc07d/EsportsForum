@@ -42,9 +42,9 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-                  <li><a href="profile.php">Profile Page</a></li>
+            <li><a href="profile.php">Profile Page</a></li>
             <li><a href="LogForm.php">Login/Register</a></li>  
-                        <li><a href="uploadAvatar.php">Avatar</a></li>
+            <li><a href="uploadBlob.php">Avatar</a></li>
             <li><a href="tagDisplay.php">Archive</a></li>             
             
           </ul>
@@ -80,7 +80,11 @@
 if($_SESSION['logged_in'] == 0)
 {
     //the user is not signed in
-    echo 'Sorry, you have to be <a href="index.php">Logged in</a> to submit a question.';
+    echo '<div class="row">
+          <div class="col-md-3 col-md-offset-3">
+            <p>Sorry, you have to be <a href="index.php">Logged in</a> to submit a question.</p>
+          </div>
+          </div>';
 }
 else
 {
