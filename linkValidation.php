@@ -105,7 +105,7 @@
 if (isset($_GET["inputEmail"]) and $_GET['emadrs'] == $gotEmail)
   {
 
-    echo "Sucessfully validated!"
+    echo "Sucessfully validated!";
     $result = $conn->query($sql);
 
 
