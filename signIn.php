@@ -96,17 +96,19 @@
 		</head>
 		<body>
 			<h3>Greetings, ' . $users_name . '!</h3>
-			<p>In order to fully use our website, please conform your existence
-				as a non-robot and validate via the link below</p>
-			<br>
+			<p>In order to fully use our website, please validate via the link below</p>
+			
 			<p>link here</p>
+			<br>
+			<p>Sincerely,</p>
+			<p>Staff</p>
 		</body>
 		</html>
 		';
 
 		$postQueryParameters =
 			http_build_query(array(	
-				"from" => 'Mailgun Sandbox <postmaster@sandboxb7356edd503a4f7889b10b55c6980167.mailgun.org>',	// Get and use your own
+				"from" => 'Mailgun Sandbox <postmaster@sandboxb7356edd503a4f7889b10b55c6980167.mailgun.org>',	
 				"to"  => $users_addr,
 				"subject" => "CS418 - eSports WebSite",
 				"text" => "Your mail do not support HTML",
@@ -114,10 +116,10 @@
 			));
 
 		$username = "api";
-		$password = "key-0870ae65b68c2e4f30ea910f2fba542d"; // Get and use your own
+		$password = "key-0870ae65b68c2e4f30ea910f2fba542d"; 
 		$ch = curl_init(); 
 
-		curl_setopt($ch, CURLOPT_URL, "https://api.mailgun.net/v3/sandboxb7356edd503a4f7889b10b55c6980167.mailgun.org/messages");  // Get and use your own
+		curl_setopt($ch, CURLOPT_URL, "https://api.mailgun.net/v3/sandboxb7356edd503a4f7889b10b55c6980167.mailgun.org/messages"); 
 		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_USERPWD, $username.":".$password);
 		curl_setopt($ch, CURLOPT_POSTFIELDS,$postQueryParameters);
