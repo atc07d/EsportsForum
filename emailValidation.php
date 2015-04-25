@@ -76,17 +76,23 @@
 
 
 
-      $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+      //$response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+
+      $response = "https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR'];
 
      $curl_init = curl_init();
      curl_setopt($curl_init, CURLOPT_URL, $response);
-     curl_setopt($curl_init, CURLOPT_RETURNTRANSFER, 1);
-     curl_setopt($curl_init, CURLOPT_TIMEOUT, 10);
+     curl_setopt($curl_init, CURLOPT_RETURNTRANSFER, TRUE);
+     curl_setopt($curl_init, CURLOPT_TIMEOUT, 15);
+     curl_setopt($curl_init, CURLOPT_SSL_VERIFYPEER, FALSE);
+     curl_setopt($curl_init, CURLOPT_SSL_VERIFYHOST, FALSE); 
+
      $results = curl_exec($curl_init);
      curl_close($curl_init);
      
-     $results= json_decode($results, true);
-     if($results['success'])
+     $newresults= json_decode($results, TRUE);
+     echo $newresults;
+     if($newresults['success'] == 'true')
      {
       echo "Valid reCAPTCHA code. You are human.";
      }
