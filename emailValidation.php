@@ -66,8 +66,17 @@
 <?php 
   
   echo $_SERVER['REMOTE_ADDR'];
-  // Borrowed from http://codeforgeek.com/2014/12/google-recaptcha-tutorial/
-  // http://www.stepblogging.com/how-to-integrate-google-new-recaptcha-using-php/
+  /* Borrowed from http://codeforgeek.com/2014/12/google-recaptcha-tutorial/
+    http://www.stepblogging.com/how-to-integrate-google-new-recaptcha-using-php/
+    http://www.codediesel.com/security/integrating-googles-new-nocaptcha-recaptcha-in-php/
+    {
+      "success": false,
+      "error-codes": [
+        "missing-input-response",
+        "missing-input-secret"
+    }
+  */
+
   
   if(isset($_POST['submit']))
   {
@@ -76,23 +85,34 @@
 
 
 
-      //$response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+      $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
 
-      $response = "https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR'];
 
      $curl_init = curl_init();
      curl_setopt($curl_init, CURLOPT_URL, $response);
-     curl_setopt($curl_init, CURLOPT_RETURNTRANSFER, TRUE);
+     curl_setopt($curl_init, CURLOPT_RETURNTRANSFER, true);
      curl_setopt($curl_init, CURLOPT_TIMEOUT, 15);
-     curl_setopt($curl_init, CURLOPT_SSL_VERIFYPEER, FALSE);
-     curl_setopt($curl_init, CURLOPT_SSL_VERIFYHOST, FALSE); 
+     curl_setopt($curl_init, CURLOPT_SSL_VERIFYPEER, true);
+     curl_setopt($curl_init, CURLOPT_SSL_VERIFYHOST, true); 
 
      $results = curl_exec($curl_init);
-     curl_close($curl_init);
      
-     $newresults= json_decode($results, TRUE);
-     echo $newresults;
-     if($newresults['success'] == 'true')
+     
+     if ($results != false)
+     {
+        echo 'hi';
+        echo $results;
+     }
+     else
+     {
+        echo "There was an error";
+        echo $results;
+        echo curl_error($curl_init);
+     }
+     
+     $newresults= json_decode($results, true);
+
+     if($newresults['success'])
      {
       echo "Valid reCAPTCHA code. You are human.";
      }
@@ -101,7 +121,7 @@
      {
      echo "Invalid reCAPTCHA code.";
      }
-
+     curl_close($curl_init);
   }
 
   else
