@@ -50,7 +50,7 @@
 
   <div class="row">
   <div class="col-md-3 col-md-offset-2">
-    <form action="?" method="post" role="form" >
+    <form action="?" method="get" role="form" >
   <fieldset>
     <legend>Email Validation Link</legend>
     <div class="form-group">
@@ -62,7 +62,7 @@
     
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-        <input type="submit" name="submit" value="Submit" class="btn btn-primary">
+        <button name="submit" type="submit"  class="btn btn-primary">Submit</button>
       </div>
     </div>
   </div>
@@ -84,7 +84,7 @@
   //ini_set('display_errors', 'On');
   include_once "connect.php";
 
-  $gotEmail = $_POST['inputEmail'];
+  $gotEmail = $_GET['inputEmail'];
   echo $gotEmail;
 
   $sql = "UPDATE users
@@ -100,6 +100,19 @@
   } 
 
 
+
+
+if (isset($_GET["inputEmail"]) and $_GET['emadrs'] == $gotEmail)
+  {
+
+    echo "Sucessfully validated!"
+    $result = $conn->query($sql);
+
+
+  }
+
+
+  /*
   if (isset($_POST["submit"]) and $_GET['emadrs'] == $_POST['inputEmail'])
   {
 
@@ -119,7 +132,7 @@
 
   }
 
-
+*/
 
 
 ?>

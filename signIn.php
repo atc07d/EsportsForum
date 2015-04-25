@@ -98,7 +98,7 @@
 			<h3>Greetings, ' . $users_name . '!</h3>
 			<p>In order to fully use our website, please validate via the link below</p>
 			
-			<p><a href="http://wsdl-docker.cs.odu.edu:60283/linkValidation.php?emadrs="' . $users_addr . '">LINK</a<</p>
+			<p><a href="http://wsdl-docker.cs.odu.edu:60283/linkValidation.php?emadrs="' . $users_addr . '">LINK</a></p>
 			<br>
 			<p>Sincerely,</p>
 			<p>Staff</p>
