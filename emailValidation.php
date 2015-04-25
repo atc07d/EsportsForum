@@ -69,6 +69,7 @@
   /* Borrowed from http://codeforgeek.com/2014/12/google-recaptcha-tutorial/
     http://www.stepblogging.com/how-to-integrate-google-new-recaptcha-using-php/
     http://www.codediesel.com/security/integrating-googles-new-nocaptcha-recaptcha-in-php/
+    https://developers.google.com/recaptcha/docs/verify
     {
       "success": false,
       "error-codes": [
@@ -85,8 +86,8 @@
 
 
 
-      $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
-
+      //$response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+      $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=http://wsdl-docker.cs.odu.edu:60283");
 
      $curl_init = curl_init();
      curl_setopt($curl_init, CURLOPT_URL, $response);
