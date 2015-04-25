@@ -36,7 +36,7 @@
         
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="index.php">Home</a></li>
 			      <li><a href="profile.php">Profile Page</a></li>
             <li><a href="logForm.php">Login/Register</a></li>  
             <li><a href="uploadBlob.php">Avatar</a></li>
@@ -78,8 +78,8 @@
   //ini_set('display_errors', 'On');
   include_once "connect.php";
 
-  //$gotEmail = $_POST['inputEmail'];
-  $gotEmail = $_POST['emadrs'];
+  $gotEmail = $_POST['inputEmail'];
+  //$gotEmail = $_GET['emadrs'];
   
 
   $sql = "UPDATE users
@@ -94,24 +94,23 @@
     die("Connection failed: " . $conn->connect_error);
   } 
 
-echo "got email";
-echo $gotEmail;
 
-echo "post input email";
-echo $_POST['inputEmail'];
 
 if (isset($_POST["submit"]) && (!empty($_POST['inputEmail'])) )
   {
 
-    if (strcmp($_POST["inputEmail"],$gotEmail) == 0)
-    {
-      echo "Validation success!";
-      $result = $conn->query($sql);
-    }
-    else
-    {
-      echo "Try again please";
-    }
+
+      if($result = $conn->query($sql))
+      {
+         echo '<br>
+            <div class="row">
+            <div class="col-md-3 col-md-offset-3">
+              <p class="text-success">Validation success!</p>
+            </div>
+            </div>';
+
+      }
+    
 
   }
 
