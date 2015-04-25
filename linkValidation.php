@@ -94,8 +94,10 @@
     die("Connection failed: " . $conn->connect_error);
   } 
 
-
+echo "got email";
 echo $gotEmail;
+
+echo "post input email";
 echo $_POST['inputEmail'];
 
 if (isset($_POST["submit"]) && (!empty($_POST['inputEmail'])) )
