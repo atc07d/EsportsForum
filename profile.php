@@ -167,7 +167,7 @@
                 LEFT JOIN question q
                 ON u.user_name = q.q_asker";
 
-        $sql9 = "SELECT user_name, user_score, COUNT(q_id) qcount
+        $sql9 = "SELECT user_name, user_score,user_valid, COUNT(q_id) qcount
 				FROM users u
                 LEFT JOIN question q
                 ON u.user_name = q.q_asker
@@ -184,6 +184,7 @@
 		      	<th>User</th>
 		      	<th>Score</th>
 		      	<th># of Qs</th>
+		      	<th>Status</th>
 	      	  </tr>
 	      	  </thead>
 	      	  <tbody>';
@@ -195,7 +196,7 @@
 			}
 			else
 			{
-				echo '<tr class="active"><td>' . $row9['user_name'] . '</td><td> ' . $row9['user_score'] . '</td><td>' . $row9['qcount'] . '</td></tr>' ;
+				echo '<tr class="active"><td>' . $row9['user_name'] . '</td><td> ' . $row9['user_score'] . '</td><td>' . $row9['qcount'] . '</td><td>' . $row9['user_valid'] . '</td></tr>' ;
 			}
 			
 
@@ -218,6 +219,7 @@
 			  	<th>Game</th>
 			  	<th>Score</th>
 			  	<th>State</th>
+			  	<th>Valid</th>
 			  </tr>
 		  	  </thead>
 		  	  </table>
@@ -357,6 +359,7 @@ echo '<strong>Avatar: </strong>
 	*/
 
 $conn->close();
+$conn9->close();
 
 echo ' </body>
 
