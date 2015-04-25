@@ -100,7 +100,7 @@
   } 
 
 
-
+echo $_GET['emadrs'];
 
 if (isset($_GET["inputEmail"]) and $_GET['emadrs'] == $gotEmail)
   {
