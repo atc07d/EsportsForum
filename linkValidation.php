@@ -95,15 +95,20 @@
   } 
 
 
+echo $gotEmail;
+echo $_POST['inputEmail'];
 
-
-if (isset($_POST["submit"]) )
+if (isset($_POST["submit"]) && (!empty($_POST['inputEmail'])) )
   {
 
-    if ($gotEmail == $_POST['inputEmail'])
+    if (strcmp($_POST["inputEmail"],$gotEmail) == 0)
     {
-      echo "Validation sucessfull!";
+      echo "Validation success!";
       $result = $conn->query($sql);
+    }
+    else
+    {
+      echo "Try again please";
     }
 
   }
