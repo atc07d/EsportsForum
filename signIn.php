@@ -67,8 +67,8 @@
 
 		// Additional headers
 		$headers .= 'To:'. $users_name .  ' <' . $users_addr . '>' . "\r\n";
-		$headers .= 'From: CS418 eSports WebSite Validation <acoffman@cs.odu.edu>' . "\r\n";
-		$headers .= 'Reply-To: acoffman@cs.odu.edu' . "\r\n";
+		$headers .= 'From: CS418 eSports WebSite Validation atc07d@gmail.com>' . "\r\n";
+		$headers .= 'Reply-To: atc07d@gmail.com' . "\r\n";
 		
 
 
@@ -82,6 +82,46 @@
 		{
 			echo '<br>Mail failed';
 		}
+
+	}
+
+	// Professor Kelly's code from Notes
+	function sendFromMG()
+	{
+
+		$postQueryParameters =
+			http_build_query(array(	
+				"from" => 'Mailgun Sandbox <postmaster@sandboxb7356edd503a4f7889b10b55c6980167.mailgun.org>',	// Get and use your own
+				"to"  => "153swh+1vo04dcpf397re@sharklasers.com",
+				"subject" => "CS418 - Milestone 4 Requirements",
+				"text" => "Test body"
+			));
+
+		$username = "api";
+		$password = "key-0870ae65b68c2e4f30ea910f2fba542d"; // Get and use your own
+		$ch = curl_init(); 
+
+		curl_setopt($ch, CURLOPT_URL, "https://api.mailgun.net/v3/sandboxb7356edd503a4f7889b10b55c6980167.mailgun.org/messages");  // Get and use your own
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_USERPWD, $username.":".$password);
+		curl_setopt($ch, CURLOPT_POSTFIELDS,$postQueryParameters);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$output = curl_exec ($ch);
+
+		if($output != false)
+		{
+			echo $output;
+			echo "done";
+		}
+
+		else 
+		{
+			echo "There was an error";
+			echo $output;
+			echo curl_error($ch);
+		}
+
+		curl_close ($ch);
 
 	}
 
@@ -130,7 +170,8 @@
 		if ($conn->query($sql2) === TRUE) 
 		{
 			
-			sendMail($_POST['email'], $_POST['username']);
+			//sendMail($_POST["email"], $_POST["username"]);
+			sendFromMG();
 
 			echo '<p>New record created successfully</p>
 					<form action=index.php>
