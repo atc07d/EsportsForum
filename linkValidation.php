@@ -50,21 +50,15 @@
 
   <div class="row">
   <div class="col-md-3 col-md-offset-2">
-    <form action="?" method="get" role="form" >
-  <fieldset>
-    <legend>Email Validation Link</legend>
-    <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+    <form action="?" method="post" > 
+     <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Verify Email:</label>
       <div class="col-lg-10">
         <input type="text" class="form-control" name="inputEmail" placeholder="Email">
+        <button name="submit" type="submit" value="edit" class="btn btn-primary">Verify</button>
       </div>
     </div>
-    
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button name="submit" type="submit"  class="btn btn-primary">Submit</button>
-      </div>
-    </div>
+    </form>
   </div>
   </div>
    
@@ -84,8 +78,9 @@
   //ini_set('display_errors', 'On');
   include_once "connect.php";
 
-  $gotEmail = $_GET['inputEmail'];
-  echo $gotEmail;
+  //$gotEmail = $_POST['inputEmail'];
+  $gotEmail = $_POST['emadrs'];
+  
 
   $sql = "UPDATE users
           SET user_valid = 1
@@ -100,19 +95,22 @@
   } 
 
 
-echo $_GET['emadrs'];
 
-if (isset($_GET["inputEmail"]) and $_GET['emadrs'] == $gotEmail)
+
+if (isset($_POST["submit"]) )
   {
 
-    echo "Sucessfully validated!";
-    $result = $conn->query($sql);
-
+    if ($gotEmail == $_POST['inputEmail'])
+    {
+      echo "Validation sucessfull!";
+      $result = $conn->query($sql);
+    }
 
   }
 
 
   /*
+  and $_GET['emadrs'] == $gotEmail
   if (isset($_POST["submit"]) and $_GET['emadrs'] == $_POST['inputEmail'])
   {
 
