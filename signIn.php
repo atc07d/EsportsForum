@@ -86,15 +86,31 @@
 	}
 
 	// Professor Kelly's code from Notes
-	function sendFromMG()
+	function sendFromMG($users_addr, $users_name)
 	{
+
+		$message = '
+		<html>
+		<head>
+			<title>Validation Email</title>
+		</head>
+		<body>
+			<h3>Greetings, ' . $users_name . '!</h3>
+			<p>In order to fully use our website, please conform your existence
+				as a non-robot and validate via the link below</p>
+			<br>
+			<p>link here</p>
+		</body>
+		</html>
+		';
 
 		$postQueryParameters =
 			http_build_query(array(	
 				"from" => 'Mailgun Sandbox <postmaster@sandboxb7356edd503a4f7889b10b55c6980167.mailgun.org>',	// Get and use your own
-				"to"  => "153swh+1vo04dcpf397re@sharklasers.com",
-				"subject" => "CS418 - Milestone 4 Requirements",
-				"text" => "Test body"
+				"to"  => $users_addr,
+				"subject" => "CS418 - eSports WebSite",
+				"text" => "Your mail do not support HTML",
+				"html" => $message
 			));
 
 		$username = "api";
@@ -171,7 +187,7 @@
 		{
 			
 			//sendMail($_POST["email"], $_POST["username"]);
-			sendFromMG();
+			sendFromMG($_POST["email"], $_POST["username"]);
 
 			echo '<p>New record created successfully</p>
 					<form action=index.php>
