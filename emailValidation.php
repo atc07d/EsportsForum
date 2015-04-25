@@ -65,10 +65,11 @@
 
 <?php 
   
+  echo $_SERVER['REMOTE_ADDR'];
   // Borrowed from http://codeforgeek.com/2014/12/google-recaptcha-tutorial/
   // http://www.stepblogging.com/how-to-integrate-google-new-recaptcha-using-php/
   
-  if(isset($_POST['g-recaptcha-response']))
+  if(isset($_POST['submit']))
   {
     
       $captcha=$_POST['g-recaptcha-response'];
@@ -87,19 +88,19 @@
      $results= json_decode($results, true);
      if($results['success'])
      {
-      $errMsg="Valid reCAPTCHA code. You are human.";
+      echo "Valid reCAPTCHA code. You are human.";
      }
 
      else
      {
-      $errMsg="Invalid reCAPTCHA code.";
+     echo "Invalid reCAPTCHA code.";
      }
 
   }
 
   else
   {
-    $errMsg="Please re-enter your reCAPTCHA.";
+    echo "Please re-enter your reCAPTCHA.";
   }
 
  
