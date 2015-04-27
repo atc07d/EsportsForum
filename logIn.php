@@ -19,7 +19,8 @@
 	//$referer = $_SERVER['HTTP_REFERER'];
 	if($_POST["login-submit"])  
 	{
-		if ($result->num_rows > 0) {
+		if ($result->num_rows > 0) 
+		{
 			// output data of each row
 			while($row = $result->fetch_assoc()) 
 			{
@@ -47,6 +48,7 @@
 				}
 			}
 		} 
+
 		else 
 		{
 			echo "0 results";
@@ -117,7 +119,7 @@
 		curl_close ($ch);
 		$json = json_decode($server_output,true);
 		//$accessToken = json_decode($server_output,true)["access_token"];
-		echo $json['access_token';
+		echo $json['access_token'];
 		foreach($json as $key => $val)
 		{
   			echo "Key:" . $key . ", Value:" . $val . "<br/>";
@@ -133,5 +135,18 @@
 	        
 	        echo $gitUser->name;
 		}
+	}
+
+	else
+	{
+
+		echo '<br></br><p>Login failed</p>
+			<form action=index.php>
+				<input type="submit" value="Home">  
+			</form>
+					
+		
+			';
+
 	}
 ?>
