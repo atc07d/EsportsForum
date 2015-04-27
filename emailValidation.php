@@ -84,8 +84,8 @@
   if(isset($_POST['submit']))
   {
     
-      echo 'in post submit';
-      //$captcha=$_POST['g-recaptcha-response'];
+      
+      $captcha=$_POST['g-recaptcha-response'];
       //echo $captcha;
 
       $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
