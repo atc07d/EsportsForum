@@ -54,7 +54,7 @@
     <h3>Please complete the validation process:</h3>
     <form action="/" method="POST">
       <div class="g-recaptcha" data-theme="dark" data-sitekey="6LfK5wUTAAAAAN7CE-vB3ddApfbi3Fc--ptvF-r4"></div>
-      <br/>
+      <br>
       <input type="submit" name="submit" value="Submit">
 
     </form>
@@ -66,7 +66,7 @@
 <?php 
   
   echo $_SERVER['REMOTE_ADDR'];
-  /* Borrowed from http://codeforgeek.com/2014/12/google-recaptcha-tutorial/
+  /* Resources: http://codeforgeek.com/2014/12/google-recaptcha-tutorial/
     http://www.stepblogging.com/how-to-integrate-google-new-recaptcha-using-php/
     http://www.codediesel.com/security/integrating-googles-new-nocaptcha-recaptcha-in-php/
     https://developers.google.com/recaptcha/docs/verify
@@ -77,14 +77,17 @@
         "missing-input-secret"
     }
   */
+  
+   $captcha=$_POST['g-recaptcha-response'];
 
+      echo $captcha;
   
   if(isset($_POST['submit']))
   {
     
-      $captcha=$_POST['g-recaptcha-response'];
-
-      echo $captcha;
+      echo 'in post submit';
+      //$captcha=$_POST['g-recaptcha-response'];
+      //echo $captcha;
 
       $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
       //$response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=http://wsdl-docker.cs.odu.edu:60283");
