@@ -55,7 +55,7 @@
     <form action="" method="POST">
       <div class="g-recaptcha" data-theme="dark" data-sitekey="6LfK5wUTAAAAAN7CE-vB3ddApfbi3Fc--ptvF-r4"></div>
       <br/>
-      <input type="submit" value="Submit">
+      <input type="submit" name="submit" value="Submit">
 
     </form>
     </div>
