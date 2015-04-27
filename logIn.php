@@ -117,8 +117,9 @@
 		curl_close ($ch);
 		$json = json_decode($server_output,true);
 		//$accessToken = json_decode($server_output,true)["access_token"];
-		foreach ($json as $x) {
-			echo $x;
+		foreach($json as $key => $val)
+		{
+  			echo "Key:" . $key . ", Value:" . $val . "<br/>";
 		}
 		
 		if ($json->access_token)
