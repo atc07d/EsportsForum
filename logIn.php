@@ -139,8 +139,6 @@
                       'method' => 'POST');
         
         	
-        	var_dump($gitUser);
-
             
             $ch1 = curl_init();
 
