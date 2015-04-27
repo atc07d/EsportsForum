@@ -110,7 +110,7 @@
      }
      else
      {
-        echo "There was an error";
+        echo "<br>There was an error<br>";
         echo $results;
         echo curl_error($curl_init);
      }
