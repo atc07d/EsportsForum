@@ -136,7 +136,7 @@
             $ch1 = curl_init();
 
 			//Hardcoded access_token for me, atc07d
-			curl_setopt($ch1, CURLOPT_URL,"https://api.github.com/user?access_token=c8bc88a7e0cc2bdabd9161458f8b4bc3161fdc12");
+			curl_setopt($ch1, CURLOPT_URL,"https://api.github.com/user?access_token=$accessToken");
 			curl_setopt($ch1, CURLOPT_HTTPHEADER,array("Accept: application/json","User-Agent: CS418M4"));
 			curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
 			$server_output1 = curl_exec ($ch1);
@@ -150,7 +150,7 @@
 			echo '<br>';
 			echo $json1['avatar_url'];
 			echo '<br>';
-			echo '<img src="'. $json1['avatar_url'] .'" width="200px" height="200px"/><br>';
+			echo '<img src="'. $json1['avatar_url'] .'" width="100px" height="100px"/><br>';
 		    echo $json1['location'];
 		    echo '<br>';
 	        echo $json1['updated_at'];
