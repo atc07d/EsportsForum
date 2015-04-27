@@ -121,7 +121,7 @@
 		$json = json_decode($server_output,true);
 		var_dump($json);
 		$accessToken = json_decode($server_output,true)["access_token"];
-		
+		echo "<br>" . $accessToken;
 
 		if(	!$json || !isset($json['access_token']) || strpos($json['access_token'],' ') !== FALSE)
 		{
@@ -134,17 +134,11 @@
 		{
 			echo 'in here at least <br>';
 
-			$data = array('url' => 'https://api.github.com/user?access_token='. $accessToken,
-                      'header' => array("Content-Type: application/x-www-form-urlencoded","User-Agent: CS418M4","Accept: application/json"),
-                      'method' => 'POST');
-        
-        	
             
             $ch1 = curl_init();
 
-			//curl_setopt($ch1, CURLOPT_URL,"https://github.com/login/user?access_token=" . $accessToken);
+			curl_setopt($ch1, CURLOPT_URL,"https://api.github.com/user?access_token=" . $accessToken);
 			curl_setopt($ch1, CURLOPT_POST, 1);
-			curl_setopt($ch1, CURLOPT_POSTFIELDS,http_build_query($data));
 			curl_setopt($ch1, CURLOPT_HTTPHEADER,array("Accept: application/json"));
 			curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
 			$server_output1 = curl_exec ($ch1);
