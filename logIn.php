@@ -93,7 +93,7 @@
 
 	if(isset($_GET['code']))
 	{
-     	echo "code got";
+     	echo $_GET['code'];
      	// Code from course website:https://raw.githubusercontent.com/machawk1/ODUCS418/spring2015/docker_cs418/deployUI.php
      	$client_id = '29fbbf34ee6862f70fa3';
 		$clientSecret = '5d20cfd3d5450ce970609674a1f5731835437222';
