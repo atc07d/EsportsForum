@@ -68,7 +68,7 @@
 		// My application info
 		$client_id = '29fbbf34ee6862f70fa3';
 		$clientSecret = '5d20cfd3d5450ce970609674a1f5731835437222';
-    	$redirect_url = 'http://wsdl-docker.cs.odu.edu:60283/logIn.php';
+    	$redirect_url = 'http://wsdl-docker.cs.odu.edu:60283/index.php';
      
 	    //login request
 	    if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -76,7 +76,7 @@
 	        $url = "https://github.com/login/oauth/authorize?client_id=$client_id&redirect_uri=$redirect_url&scope=user";
 	        header("Location: $url");
 
-	         // Code from course website
+	         // Code from course website:https://raw.githubusercontent.com/machawk1/ODUCS418/spring2015/docker_cs418/deployUI.php
 	         $ch = curl_init();
 
 			curl_setopt($ch, CURLOPT_URL,"https://github.com/login/oauth/access_token");
@@ -94,7 +94,7 @@
 			$server_output = curl_exec ($ch);
 			curl_close ($ch);
 			$json = json_decode($server_output,true);
-			echo $json;
+			$accessToken = json_decode($server_output,true)["access_token"];
 
 	    }	
 
