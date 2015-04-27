@@ -139,14 +139,7 @@
 
 	else
 	{
-
-		echo '<br></br><p>Login failed</p>
-			<form action=index.php>
-				<input type="submit" value="Home">  
-			</form>
-					
-		
-			';
+		echo "Failed";
 
 	}
 ?>
