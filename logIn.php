@@ -143,12 +143,16 @@
 			$json1 = json_decode($server_output1,true);
 
 			//var_dump($json1);
-			echo '<br><br>';
 			
 			echo $json1['login'];
+			echo '<br>';
 			echo $json1['email'];
+			echo '<br>';
 			echo $json1['avatar_url'];
+			echo '<br>';
+			echo '<img src="'. $json1['avatar_url'] .'" width="200px" height="200px"/><br>';
 		    echo $json1['location'];
+		    echo '<br>';
 	        echo $json1['updated_at'];
 	        
 		}
