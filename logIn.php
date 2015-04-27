@@ -67,7 +67,8 @@
 	if($_POST["github-submit"] && !isset($_GET['code'])) 
 	{
 
-		// Rescources: http://www.binarytides.com/php-add-login-with-github-to-your-website/
+		// Rescources: https://developer.github.com/v3/oauth/#directing-users-to-review-their-access-for-an-application
+		// 				http://www.binarytides.com/php-add-login-with-github-to-your-website/
 		//				http://www.phpgang.com/how-to-add-github-oauth-login-on-your-website-using-php_740.html
 		// My application info
 		$client_id = '29fbbf34ee6862f70fa3';
@@ -119,6 +120,13 @@
 		curl_close ($ch);
 		$json = json_decode($server_output,true);
 		//$accessToken = json_decode($server_output,true)["access_token"];
+
+		if(	!$json || !isset($json['access_token']) || strpos($json['access_token'],' ') !== FALSE)
+		{
+			echo "Bad access token. <a href='http://wsdl-docker.cs.odu.edu:60283/index.php'>Reload the page.</a> Try again.";
+			die();
+		}
+
 		echo $json['access_token'];
 		foreach($json as $key => $val)
 		{
