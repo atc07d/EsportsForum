@@ -66,7 +66,7 @@
 
 <?php 
   
-  echo $_SERVER['REMOTE_ADDR'];
+  echo $_SERVER['REMOTE_ADDR'] . '<br>';
   /* Resources: http://codeforgeek.com/2014/12/google-recaptcha-tutorial/
     http://www.stepblogging.com/how-to-integrate-google-new-recaptcha-using-php/
     http://www.codediesel.com/security/integrating-googles-new-nocaptcha-recaptcha-in-php/
@@ -79,9 +79,7 @@
     }
   */
   
-   $captcha=$_POST['g-recaptcha-response'];
-
-      echo $captcha;
+   
   
   if(isset($_POST['submit']))
   {
