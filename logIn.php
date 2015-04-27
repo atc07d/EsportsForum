@@ -135,7 +135,7 @@
 
             $ch1 = curl_init();
 
-			//Hardcoded access_token for me, atc07d
+			// Defining user agent is important 
 			curl_setopt($ch1, CURLOPT_URL,"https://api.github.com/user?access_token=$accessToken");
 			curl_setopt($ch1, CURLOPT_HTTPHEADER,array("Accept: application/json","User-Agent: CS418M4"));
 			curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
@@ -143,7 +143,9 @@
 			$json1 = json_decode($server_output1,true);
 
 			//var_dump($json1);
-			
+
+			// Set as session variables and or insert into DB
+			// Why is email showing as null?
 			echo $json1['login'];
 			echo '<br>';
 			echo $json1['email'];
