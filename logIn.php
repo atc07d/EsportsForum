@@ -97,7 +97,7 @@
 	if(isset($_GET['code']))
 	{
      	echo $_GET['code'] . '<br>';
-     	// Code from course website:https://raw.githubusercontent.com/machawk1/ODUCS418/spring2015/docker_cs418/deployUI.php
+     	// Code from course website:https://raw.githubusercontent.com/machawk1/ODUCS418/spring2015/docker_cs418/deployUI.php  
      	$client_id = '29fbbf34ee6862f70fa3';
 		$clientSecret = '5d20cfd3d5450ce970609674a1f5731835437222';
     	$redirect_url = 'http://wsdl-docker.cs.odu.edu:60283/logIn.php';
@@ -109,7 +109,7 @@
 		curl_setopt($ch, CURLOPT_POSTFIELDS,
 					http_build_query(array(
 						'code' => $_GET['code'],
-						'client_id' => $clientId,
+						'client_id' => $client_id,
 						'client_secret' => $clientSecret
 
 					))
@@ -119,6 +119,7 @@
 		$server_output = curl_exec ($ch);
 		curl_close ($ch);
 		$json = json_decode($server_output,true);
+		var_dump($json);
 		//$accessToken = json_decode($server_output,true)["access_token"];
 
 		if(	!$json || !isset($json['access_token']) || strpos($json['access_token'],' ') !== FALSE)
