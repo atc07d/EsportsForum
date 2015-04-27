@@ -119,9 +119,9 @@
 		$server_output = curl_exec ($ch);
 		curl_close ($ch);
 		$json = json_decode($server_output,true);
-		var_dump($json);
+		//var_dump($json);
 		$accessToken = json_decode($server_output,true)["access_token"];
-		echo "<br>" . $accessToken;
+		
 
 		if(	!$json || !isset($json['access_token']) || strpos($json['access_token'],' ') !== FALSE)
 		{
@@ -132,8 +132,8 @@
 		
 		if (isset($json['access_token']))
 		{
-			echo 'in here at least <br>';
-
+			echo '<br>in here at least <br>';
+			echo $accessToken. "<br>" ;
             
             $ch1 = curl_init();
 
