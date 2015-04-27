@@ -68,7 +68,7 @@
 		// My application info
 		$client_id = '29fbbf34ee6862f70fa3';
 		$clientSecret = '5d20cfd3d5450ce970609674a1f5731835437222';
-    	$redirect_url = 'http://wsdl-docker.cs.odu.edu:60283/index.php';
+    	$redirect_url = 'http://wsdl-docker.cs.odu.edu:60283/logIn.php';
      
 	    //login request
 	    if($_SERVER['REQUEST_METHOD'] == 'POST')
