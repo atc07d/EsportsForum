@@ -128,11 +128,6 @@
 			die();
 		}
 
-		echo $json['access_token'];
-		foreach($json as $key => $val)
-		{
-  			echo "Key:" . $key . ", Value:" . $val . "<br/>";
-		}
 		
 		if ($json->access_token)
 		{
@@ -142,7 +137,7 @@
     
 	        $gitUser = json_decode(curlRequest($data));
 	        
-	        echo $gitUser->name;
+	        echo 'username' . $gitUser->name;
 		}
 	}
 
