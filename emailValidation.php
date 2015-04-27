@@ -86,8 +86,8 @@
 
 
 
-      //$response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
-      $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=http://wsdl-docker.cs.odu.edu:60283");
+      $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+      //$response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfK5wUTAAAAAKPVK45_9y3wqBim7Fx4LL4mpubm&response=".$captcha."&remoteip=http://wsdl-docker.cs.odu.edu:60283");
 
      $curl_init = curl_init();
      curl_setopt($curl_init, CURLOPT_URL, $response);
@@ -98,6 +98,7 @@
 
      $results = curl_exec($curl_init);
      
+     print_r($results);
      
      if ($results != false)
      {
