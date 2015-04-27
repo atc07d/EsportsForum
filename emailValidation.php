@@ -52,7 +52,7 @@
     <div class="row">
     <div class="col-md-3 col-md-offset-2">
     <h3>Please complete the validation process:</h3>
-    <form action="" method="POST">
+    <form action="/" method="POST">
       <div class="g-recaptcha" data-theme="dark" data-sitekey="6LfK5wUTAAAAAN7CE-vB3ddApfbi3Fc--ptvF-r4"></div>
       <br/>
       <input type="submit" name="submit" value="Submit">
