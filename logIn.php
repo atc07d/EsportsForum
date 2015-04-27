@@ -140,14 +140,14 @@
 
 			curl_setopt($ch1, CURLOPT_URL,"https://api.github.com/user?access_token=c8bc88a7e0cc2bdabd9161458f8b4bc3161fdc12");
 			//curl_setopt($ch1, CURLOPT_POST, 1);
-			//curl_setopt($ch1, CURLOPT_HTTPHEADER,array("Accept: application/json"));
+			curl_setopt($ch1, CURLOPT_HTTPHEADER,array("Accept: application/json","User-Agent: CS418M4"));
 			curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
 			$server_output1 = curl_exec ($ch1);
-			//$json1 = json_decode($server_output1,true);
+			$json1 = json_decode($server_output1,true);
 
-			//var_dump($json1);
+			var_dump($json1);
 
-			echo $server_output1 ;
+			//echo $server_output1 ;
 			
 			
 		
