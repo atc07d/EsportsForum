@@ -132,13 +132,11 @@
 		
 		if (isset($json['access_token']))
 		{
-			$data = array('url' => 'https://api.github.com/user?access_token='. $accessToken,
-                  'header' => array("Content-Type: application/x-www-form-urlencoded","User-Agent: CS418M4","Accept: application/json"),
-                  'method' => 'GET');
-    
-	        $gitUser = json_decode(curlRequest($data));
+			$userinfo =  file_get_contents("https://api.github.com/user?access_token=$accessToken");
+            $userinfo = json_decode($userinfo , true);
 	        
-	        echo 'username' . $gitUser->name;
+	        var_dump($userinfo);
+	        //echo 'username' . $gitUser->name;
 		}
 	}
 
