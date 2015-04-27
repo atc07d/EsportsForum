@@ -150,7 +150,7 @@
 			
 			$uinfo =  file_get_contents("https://api.github.com/user?access_token=c8bc88a7e0cc2bdabd9161458f8b4bc3161fdc12");
             $uinfo = json_decode($uinfo , true);
-            echo $uinfo;
+            var_dump($uinfo);
 
 	        
 	       
