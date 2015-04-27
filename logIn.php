@@ -2,7 +2,7 @@
 	
 	//Checks logIn name/pw with user database
 	session_start();
-	error_reporting(0);
+	error_reporting(-1);
 	include_once 'connect.php';
 
 	// Create connection
@@ -120,7 +120,7 @@
 		curl_close ($ch);
 		$json = json_decode($server_output,true);
 		//var_dump($json);
-		//$accessToken = json_decode($server_output,true)["access_token"];
+		$accessToken = json_decode($server_output,true)["access_token"];
 
 		if(	!$json || !isset($json['access_token']) || strpos($json['access_token'],' ') !== FALSE)
 		{
@@ -131,7 +131,7 @@
 		
 		if (isset($json['access_token']))
 		{
-			$data = array('url' => 'https://api.github.com/user?access_token='. $json['access_token'],
+			$data = array('url' => 'https://api.github.com/user?access_token='. $accessToken,
                   'header' => array("Content-Type: application/x-www-form-urlencoded","User-Agent: CS418M4","Accept: application/json"),
                   'method' => 'GET');
     
