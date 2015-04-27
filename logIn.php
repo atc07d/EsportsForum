@@ -119,7 +119,7 @@
 		$server_output = curl_exec ($ch);
 		curl_close ($ch);
 		$json = json_decode($server_output,true);
-		//var_dump($json);
+		var_dump($json);
 		$accessToken = json_decode($server_output,true)["access_token"];
 
 		if(	!$json || !isset($json['access_token']) || strpos($json['access_token'],' ') !== FALSE)
