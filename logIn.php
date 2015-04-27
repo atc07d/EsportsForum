@@ -131,7 +131,7 @@
 		
 		if (isset($json['access_token']))
 		{
-			$data = array('url' => 'https://api.github.com/user?access_token='. $json['access_token']),
+			$data = array('url' => 'https://api.github.com/user?access_token='. $json['access_token'],
                   'header' => array("Content-Type: application/x-www-form-urlencoded","User-Agent: CS418M4","Accept: application/json"),
                   'method' => 'GET');
     
