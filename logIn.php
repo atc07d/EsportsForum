@@ -137,7 +137,7 @@
             
             $ch1 = curl_init();
 
-			curl_setopt($ch1, CURLOPT_URL,"https://api.github.com/user?access_token=" . $accessToken);
+			curl_setopt($ch1, CURLOPT_URL,"https://api.github.com/user?access_token=$accessToken");
 			curl_setopt($ch1, CURLOPT_POST, 1);
 			curl_setopt($ch1, CURLOPT_HTTPHEADER,array("Accept: application/json"));
 			curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
