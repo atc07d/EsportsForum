@@ -99,8 +99,9 @@
      curl_setopt($curl_init, CURLOPT_SSL_VERIFYHOST, true); 
 
      $results = curl_exec($curl_init);
+     $newresults= json_decode($results, true);
      
-     print_r($results);
+     print_r($newresults);
      
      if ($results != false)
      {
@@ -114,7 +115,6 @@
         echo curl_error($curl_init);
      }
      
-     $newresults= json_decode($results, true);
 
      if($newresults['success'])
      {
