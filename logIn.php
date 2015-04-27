@@ -121,6 +121,7 @@
 		$json = json_decode($server_output,true);
 		var_dump($json);
 		$accessToken = json_decode($server_output,true)["access_token"];
+		echo $accessToken;
 
 		if(	!$json || !isset($json['access_token']) || strpos($json['access_token'],' ') !== FALSE)
 		{
