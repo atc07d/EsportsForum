@@ -121,7 +121,7 @@
 		$json = json_decode($server_output,true);
 		var_dump($json);
 		$accessToken = json_decode($server_output,true)["access_token"];
-		echo $accessToken;
+		
 
 		if(	!$json || !isset($json['access_token']) || strpos($json['access_token'],' ') !== FALSE)
 		{
@@ -132,11 +132,36 @@
 		
 		if (isset($json['access_token']))
 		{
-			$userinfo =  file_get_contents("https://api.github.com/user?access_token=$accessToken");
-            $userinfo = json_decode($userinfo , true);
+			echo 'in here at least <br>';
+			$data = array('url' => 'https://api.github.com/user?access_token='. $accessToken,
+                      'header' => array("Content-Type: application/x-www-form-urlencoded","User-Agent: CS418M4","Accept: application/json"),
+                      'method' => 'GET');
+        
+        	$gitUser = json_decode(curlRequest($data));
+        	var_dump($gitUser);
+
+            /*
+            $ch1 = curl_init();
+
+			curl_setopt($ch1, CURLOPT_URL,"https://github.com/login/user?access_token=$accessToken");
+			curl_setopt($ch1, CURLOPT_POST, 1);
+			curl_setopt($ch1, CURLOPT_POSTFIELDS,
+						http_build_query(array(
+							'code' => $_GET['code'],
+							'client_id' => $client_id,
+							'client_secret' => $clientSecret
+
+						))
+					);
+			curl_setopt($ch1, CURLOPT_HTTPHEADER,array("Accept: application/json"));
+			curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
+			$server_output1 = curl_exec ($ch1);
+			$json1 = json_decode($server_output1,true);
+
+			var_dump($json1);
+	        */
+	       
 	        
-	        var_dump($userinfo);
-	        //echo 'username' . $gitUser->name;
 		}
 	}
 
