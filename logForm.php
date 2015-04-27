@@ -3,6 +3,7 @@
 <head>
     <link href="/css/logForm.css" rel="stylesheet">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+       <link href="/css/newlogForm.css" rel="stylesheet">
     <title>New login form from bootsnipp
         http://bootsnipp.com/snippets/featured/login-and-register-tabbed-form
     </title>
@@ -60,7 +61,6 @@
                     <input type="password" name="pword" id="password" tabindex="2" class="form-control" placeholder="Password">
                   </div>
                   <div class="form-group text-center">
-                   
                   </div>
                   <div class="form-group">
                     <div class="row">
@@ -69,11 +69,19 @@
                       </div>
                     </div>
                   </div>
+
+                   <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-6 col-sm-offset-3">
+                        <input type="submit" name="github-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="GitHub">
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="form-group">
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="text-center">
-                          
                         </div>
                       </div>
                     </div>
