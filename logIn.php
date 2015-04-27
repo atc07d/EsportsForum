@@ -93,7 +93,7 @@
 
 	if(isset($_GET['code']))
 	{
-     	echo $_GET['code'];
+     	echo $_GET['code'] . '<br>';
      	// Code from course website:https://raw.githubusercontent.com/machawk1/ODUCS418/spring2015/docker_cs418/deployUI.php
      	$client_id = '29fbbf34ee6862f70fa3';
 		$clientSecret = '5d20cfd3d5450ce970609674a1f5731835437222';
@@ -117,6 +117,7 @@
 		curl_close ($ch);
 		$json = json_decode($server_output,true);
 		//$accessToken = json_decode($server_output,true)["access_token"];
+		echo $json;
 		
 		if ($json->access_token)
 		{
