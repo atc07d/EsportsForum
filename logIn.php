@@ -165,17 +165,18 @@
 
 	        $tempUser = currentUserID();
 
-	        $sql1 = "INSERT INTO users (user_id,user_name,user_email,user_valid,user_avatar_url,user_location,user_last_login)
-			 VALUES ('$tempUser','$json1['login']','$json1['email']]', '1','$json1['avatar_url']', '$json1['location']', '$json1['updated_at']')";
+	       $sql1 = "INSERT INTO users (user_id,user_name,user_email,user_valid,user_avatar_url,user_location,user_last_login)
+			 VALUES ('$tempUser','$json1['login']','$json1['email']', '1','$json1['avatar_url']', '$json1['location']', '$json1['updated_at']')";
 
-	        $result1 = $conn1->query($sql);
+	        $result1 = $conn1->query($sql1);
 
 	        mysqli_close($conn1);
 
-    		$_SESSION['username'] = $json1['login'];;
+    		$_SESSION['username'] = $json1['login'];
 			$_SESSION['userID'] = $tempUser;
 			$_SESSION['logged_in'] = 1;
 			//$_SESSION['avatar_url'] = 
+			$_SESSION['github'] = 1;
 
 			echo '
 					<form action=index.php>
