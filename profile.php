@@ -278,7 +278,7 @@
 
 	}
 
-	elseif (isset($_SESSION['github']))
+	elseif ($_SESSION['github'])
 	{
 		echo  '	
 				<br><br>
