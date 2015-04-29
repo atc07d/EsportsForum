@@ -166,7 +166,7 @@
 	        $tempUser = currentUserID();
 
 	       $sql1 = "INSERT INTO users (user_id,user_name,user_email,user_valid,user_avatar_url,user_location,user_last_login)
-			 VALUES ('$tempUser','$json1['login']','$json1['email']', '1','$json1['avatar_url']', '$json1['location']', '$json1['updated_at']')";
+			 VALUES ('$tempUser','$json1[login]','$json1[email]', '1','$json1[avatar_url]', '$json1[location]', '$json1[updated_at]')";
 
 	        $result1 = $conn1->query($sql1);
 
