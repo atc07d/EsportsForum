@@ -7,12 +7,18 @@
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
+	$conn1 = new mysqli($servername, $username, $password, $dbname);
+	$conn2 = new mysqli($servername, $username, $password, $dbname);
+
 	// Check connection
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	} 
 
 	$sql = "SELECT user_id,user_name,user_pw FROM users";
+	$sql2 = "SELECT MAX(user_id) max
+			 FROM users";
+
 	$result = $conn->query($sql);
 
 	//echo " - username and password: " . $_POST["uname"]. " " . $_POST["pword"]. "<br></br>"; 
@@ -156,6 +162,8 @@
 		    echo $json1['location'];
 		    echo '<br>';
 	        echo $json1['updated_at'];
+
+	        $sql3 = "INSERT INTO users (user_id,"
 	        
 		}
 	}

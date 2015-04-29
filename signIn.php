@@ -6,34 +6,29 @@
 	error_reporting(-1);
 	ini_set('display_errors', 'On');
 	include_once "connect.php";
+	include_once "currentUserID.php";
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
-	$conn3 = new mysqli($servername, $username, $password, $dbname);
+	//$conn3 = new mysqli($servername, $username, $password, $dbname);
 	// Check connection
-	if ($conn->connect_error || $conn3->connect_error ) {
+	if ($conn->connect_error  ) {
 		die("Connection failed: " . $conn->connect_error);
 	} 
 
-	// Current last User ID, incremenet each time when inserted?
-	// global $UserID = 14;
+
 
 	// SQL queries
 	// First query enables user name check against DB
 	$sql = "SELECT * FROM users";
 
-	// Second query inserts new user into DB once name uniqueness is established
-	
-			 
-	// Find max id from table because id is not auto incremented in table, Im an idiot
-	// Might be able to hard code at first the increment by 1 each new user since I can read table
-	//$sql3 = "SELECT MAX(user_id) max 
-			 //FROM users"; 
+
 	
 	// Get result of query from DB, need multiple connections for multiple queries?
 	$result = $conn->query($sql);
 	//$result2 = $conn->query($sql2);
 	//$result3 = $conn->query($sql3);
+
 
 	
 	// Send mail function
@@ -182,7 +177,7 @@
 		// Need a way to save state of $UserID, other than that it works!
 		//===============================================================
 
-		//static $UserID = 16;
+		/*static $UserID = 16;
 		$UserID;
 
 		$sql3 = "SELECT MAX(user_id) max
@@ -193,9 +188,12 @@
 		$UserID = $row3[0];
 
 		$UserID++;
+		*/
+		$tempUser = currentUserID();
+		echo $tempUser;
 
 		$sql2 = "INSERT INTO users (user_id,user_name,user_pw,user_email)
-			 VALUES ('$UserID','$_POST[username]','$_POST[password]','$_POST[email]')";
+			 VALUES ('$tempUser','$_POST[username]','$_POST[password]','$_POST[email]')";
 		if ($conn->query($sql2) === TRUE) 
 		{
 			
@@ -209,7 +207,7 @@
 				';
 			
 				
-			
+			mysqli_close($conn);
 
 		} 
 		else 
@@ -237,6 +235,6 @@
 	}
 
 
-	$conn->close();
+	
 
 ?>

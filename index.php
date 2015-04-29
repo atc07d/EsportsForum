@@ -201,7 +201,7 @@ error_reporting(0);
                 
                 }
 
-                 mysqli_close($con);
+                 mysqli_close($conn);
             ?>
           </tbody>
           </table>
