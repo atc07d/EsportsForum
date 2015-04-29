@@ -173,24 +173,9 @@
 	{
 		echo "Username is unique<br>";
 		
-		//============================================================
-		// Need a way to save state of $UserID, other than that it works!
-		//===============================================================
 
-		/*static $UserID = 16;
-		$UserID;
-
-		$sql3 = "SELECT MAX(user_id) max
-				 FROM users";
-
-		$result3 = $conn3->query($sql3);
-		$row3 = mysqli_fetch_array($result3);
-		$UserID = $row3[0];
-
-		$UserID++;
-		*/
 		$tempUser = currentUserID();
-		echo $tempUser;
+		//echo $tempUser;
 
 		$sql2 = "INSERT INTO users (user_id,user_name,user_pw,user_email)
 			 VALUES ('$tempUser','$_POST[username]','$_POST[password]','$_POST[email]')";
