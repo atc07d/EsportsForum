@@ -278,85 +278,62 @@
 
 	}
 
-	else
+	elseif (isset($_SESSION['github']))
 	{
-		echo '
-				<br>
-				<br>
+		echo  '	
+				<br><br>
 				<div class="row">
-				<div class="col-md-2 col-md-offset-3">
-				<a href="logForm.php">Please log in</a>
-				</div>
-				</div>
-				<br>	
-				<br>
-		';
-	}
-	
-	
-
-
-
-
-
-
-
-
-
-	/*
-		$conn = new mysqli($servername, $username, $password, $dbname);
-		SELECT *
+				<div class="col-md-4 col-md-offset-2">
+			';
+		$UN = $_SESSION['username'];
+		
+		// Query DB for user with SESSION var user name to obtain all related question data
+		$sql = "SELECT *
 				FROM users u
                 LEFT JOIN question q
                 ON u.user_name = q.q_asker
-				WHERE u.user_name = 'thewoz';
-//No need for form, check SESSION variables against DB and display profile.
-//Create a PROFILE PAGE that uses PHP query parameters to build the page's contents. 
-//This query parameter must indicate a value that can be used to uniquely query the user from your database. 
-//On this profile page, display the user's username, avatar, and all questions asked along with the corresponding question's current value.
-// TEST CODE from http://www.startutorial.com/articles/view/php_file_upload_tutorial_part_2 ONLY TEST
-	//scan "uploads" folder and display them accordingly
-           $folder = "/home/acoffman/public_html/cs418/uploads/";
-           $results = scandir('uploads');
-           foreach ($results as $result) {
-            if ($result === '.' or $result === '..') continue;
-            
-            if (is_file($folder . '/' . $result)) {
-                echo '
-                <div class="col-md-3">
-                    <div class="thumbnail">
-                        <img src="'.$folder . '/' . $result.'" alt="...">
-                            <div class="caption">
-                            <p><a href="remove.php?name='.$result.'" class="btn btn-danger btn-xs" role="button">Remove</a></p>
-                        </div>
-                    </div>
-                </div>';
-            }
-           }
+				WHERE u.user_name = '$UN' ";
 
+		
+		$result = $conn->query($sql);
+		$result2 = mysqli_query($conn, $sql);		
+		
+		echo "<div class='panel panel-info'>
+  			  <div class='panel-heading'>
+  			  	<br><h3>" . $_SESSION['username'] . "'s Profile</h3>
+			  	<strong>Avatar: </strong>
+		  	  
+		  	  ";
+		$row01 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
 
+		echo '	<img src="'.$_SESSION['avatar_url'].'" width="42" height="42"/>
+				<strong>Location:</strong>'.$_SESSION['location']'
+				<strong>Last GitHub Update:</strong>'.$_SESSION['updated_at'].'
 
+	
+			  </div>
+			  <div class="panel-body">
+				<br><strong>Question Data: <br>(VALUE|TITLE|GAME) </strong><br> ';
 
+		while($row = $result->fetch_assoc()) 
+		{
+			
+			echo ' ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_type'] . '<br>' ;
 
+		}
 
+		
 
-echo '<strong>Avatar: </strong>
-				<br></br>
-				<img src="http://' . $serverAdd . '/uploads/images.jpg" />
-				<br></br>
-				<br></br>
-			';
+		echo '</div>
+			  
+			  </div>
+			  </div>';
 
+	}
+	else
+	{}
+	
 
-	FOR AVATAR ENCLOSURE
-
-	<img src="..." alt="..." class="img-rounded">
-	<img src="..." alt="..." class="img-circle">
-	<img src="..." alt="..." class="img-thumbnail">
-
-
-
-	*/
 
 $conn->close();
 $conn9->close();
