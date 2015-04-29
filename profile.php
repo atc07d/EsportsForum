@@ -75,7 +75,7 @@
 	//echo $serverAdd;
 
 	//Test for admin status
-	if (isset($_SESSION['username']) and $_SESSION['username'] != "ADMINISTRATOR")
+	if (isset($_SESSION['username']) and $_SESSION['username'] != "ADMINISTRATOR" and $_SESSION['github'] != 1)
 	{
 		// Print name of user currently logged in by accessing SESSIOn vars
 		// STRONG HAS BEEN DEPRECATED
