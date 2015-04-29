@@ -4,20 +4,19 @@
 	session_start();
 	error_reporting(-1);
 	include_once 'connect.php';
+	include_once "currentUserID.php";
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	$conn1 = new mysqli($servername, $username, $password, $dbname);
-	$conn2 = new mysqli($servername, $username, $password, $dbname);
 
 	// Check connection
-	if ($conn->connect_error) {
+	if ($conn->connect_error || $conn1->connect_error) 
+	{
 		die("Connection failed: " . $conn->connect_error);
 	} 
 
 	$sql = "SELECT user_id,user_name,user_pw FROM users";
-	$sql2 = "SELECT MAX(user_id) max
-			 FROM users";
 
 	$result = $conn->query($sql);
 
@@ -148,8 +147,9 @@
 			$server_output1 = curl_exec ($ch1);
 			$json1 = json_decode($server_output1,true);
 
-			var_dump($json1);
-			echo '<br><br>';
+			
+			echo '<h3>Your profile will be reflected with the following:</h3>
+				<br><br>';
 			// Set as session variables and or insert into DB
 			// Why is email showing as null?
 			echo $json1['login'];
@@ -163,7 +163,25 @@
 		    echo '<br>';
 	        echo $json1['updated_at'];
 
-	        $sql3 = "INSERT INTO users (user_id,"
+	        $tempUser = currentUserID();
+
+	        $sql1 = "INSERT INTO users (user_id,user_name,user_email,user_valid,user_avatar_url,user_location,user_last_login)
+			 VALUES ('$tempUser','$json1['login']','$json1['email']]', '1','$json1['avatar_url']', '$json1['location']', '$json1['updated_at']')";
+
+	        $result1 = $conn1->query($sql);
+
+	        mysqli_close($conn1);
+
+    		$_SESSION['username'] = $json1['login'];;
+			$_SESSION['userID'] = $tempUser;
+			$_SESSION['logged_in'] = 1;
+			//$_SESSION['avatar_url'] = 
+
+			echo '
+					<form action=index.php>
+						<input type="submit" value="Home">
+					</form>
+				';
 	        
 		}
 	}
