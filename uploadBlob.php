@@ -50,23 +50,29 @@
 	
 	session_start();
 	include_once 'connect.php';
-
+  include_once 'getGravatar.php';
+  include_once 'getAvatar.php';
+  error_reporting(0);
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
+  $conn1 = new mysqli($servername, $username, $password, $dbname);
 	// Check connection
-	if ($conn->connect_error) {
+	if ($conn->connect_error || $conn1->connect_error ) 
+  {
 		die("Connection failed: " . $conn->connect_error);
 	} 
 
 
-if (isset($_SESSION['username']))
+
+if (isset($_SESSION['username']) and $_SESSION['github'] != 1)
 {
+
   echo '<div class="row">
         <div class="col-md-4 col-md-offset-2">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">Upload Avatar below:</h3>
+            <h3 class="panel-title">Upload avatar:</h3>
           </div>
           <div class="panel-body panel-primary"> 
             <form enctype="multipart/form-data"  method="post">
@@ -80,13 +86,15 @@ if (isset($_SESSION['username']))
     </div>
     </div>';
 
+    $UNF = $_SESSION['username'];
+
   if(count($_FILES) > 0) 
   {
   	if(is_uploaded_file($_FILES['mkfile']['tmp_name'])) 
   	{
 
-  		$UNF = $_SESSION['username'];
-  		echo $_SESSION['username'];
+  		//$UNF = $_SESSION['username'];
+  		//echo $_SESSION['username'];
   		$imgData = addslashes(file_get_contents($_FILES['mkfile']['tmp_name']));
   		$imageProperties = getimageSize($_FILES['mkfile']['tmp_name']);
   		//$sql = "INSERT INTO users(user_avatar)
@@ -109,6 +117,38 @@ if (isset($_SESSION['username']))
   	}
   }
 
+  
+
+
+$tempURLs = get_avatar($UNF, $_SESSION['github']);
+
+
+  echo '<div class="row">
+          <div class="col-md-4 col-md-offset-2">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Select default avatar:</h3>
+            </div>
+            <div class="panel-body panel-primary"> 
+            '. $tempURLs .'
+            </div>
+      </div>
+      </div>
+      </div>';
+
+  //mysqli_close($conn1);
+}
+
+elseif ($_SESSION['github'] == 1) 
+{
+  
+  echo '<div class="row">
+        <div class="col-md-2 col-md-offset-3">
+        <p>Visit GitHub to change avatar</p>
+        </div>
+        </div>
+        <br>  
+        <br>';
 }
 
 else

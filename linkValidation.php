@@ -97,9 +97,10 @@
 
 
 if (isset($_POST["submit"]) && (!empty($_POST['inputEmail'])) )
-  {
+{
 
-
+    if ($_POST['inputEmail'] == $_SESSION['email'])
+    {
       if($result = $conn->query($sql))
       {
          echo '<br>
@@ -110,33 +111,22 @@ if (isset($_POST["submit"]) && (!empty($_POST['inputEmail'])) )
             </div>';
 
       }
-    
 
-  }
-
-
-  /*
-  and $_GET['emadrs'] == $gotEmail
-  if (isset($_POST["submit"]) and $_GET['emadrs'] == $_POST['inputEmail'])
-  {
-
-    echo $_POST['inputEmail'];
-    //$result = $conn->query($sql);
-    if ($conn->query($sql) === TRUE)
-    {
-      echo "Your account has been validated! Welcome";
-
-
+      else
+      {
+        echo "Validation query failed";
+      }
     }
+
     else
     {
-      echo "Email address incorrect. Please try again.";
+      echo "Emails do not match. Try again";
     }
 
+}
 
-  }
 
-*/
+ 
 
 
 ?>
