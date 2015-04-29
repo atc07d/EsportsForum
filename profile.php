@@ -307,7 +307,7 @@
 		$row01 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
 
 		echo '	<img src="'.$_SESSION['avatar_url'].'" width="42" height="42"/>
-				<strong>Location:</strong>'.$_SESSION['location']'
+				<strong>Location:</strong>'.$_SESSION['location'].'
 				<strong>Last GitHub Update:</strong>'.$_SESSION['updated_at'].'
 
 	
@@ -331,7 +331,17 @@
 
 	}
 	else
-	{}
+	{
+		 echo '<br><br>
+        <div class="row">
+        <div class="col-md-2 col-md-offset-3">
+        <a href="logForm.php">Please log in</a>
+        </div>
+        </div>
+        <br>  
+        <br>
+    		';
+	}
 	
 
 
