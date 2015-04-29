@@ -307,8 +307,8 @@
 		$row01 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
 
 		echo '	<img src="'.$_SESSION['avatar_url'].'" width="42" height="42"/>
-				<strong>Location:</strong>'.$_SESSION['location'].'
-				<strong>Last GitHub Update:</strong>'.$_SESSION['updated_at'].'
+				<br><strong>Location:</strong>'.$_SESSION['location'].'
+				<br><strong>Last GitHub Update:</strong>'.$_SESSION['updated_at'].'
 
 	
 			  </div>
