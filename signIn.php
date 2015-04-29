@@ -9,8 +9,9 @@
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
+	$conn3 = new mysqli($servername, $username, $password, $dbname);
 	// Check connection
-	if ($conn->connect_error) {
+	if ($conn->connect_error || $conn3->connect_error ) {
 		die("Connection failed: " . $conn->connect_error);
 	} 
 
@@ -26,8 +27,8 @@
 			 
 	// Find max id from table because id is not auto incremented in table, Im an idiot
 	// Might be able to hard code at first the increment by 1 each new user since I can read table
-	$sql3 = "SELECT MAX(user_id) max 
-			 FROM users"; 
+	//$sql3 = "SELECT MAX(user_id) max 
+			 //FROM users"; 
 	
 	// Get result of query from DB, need multiple connections for multiple queries?
 	$result = $conn->query($sql);
@@ -134,7 +135,7 @@
 
 		else 
 		{
-			echo "There was an error";
+			echo "But there was an error<br>";
 			echo $output;
 			echo curl_error($ch);
 		}
@@ -175,14 +176,24 @@
 	// If flag is tripped then the username is unique and can be inserted into DB
 	if ($flag == 0)
 	{
-		echo "Username is unique";
+		echo "Username is unique<br>";
 		
 		//============================================================
 		// Need a way to save state of $UserID, other than that it works!
 		//===============================================================
 
-		static $UserID = 16;
+		//static $UserID = 16;
+		$UserID;
+
+		$sql3 = "SELECT MAX(user_id) max
+				 FROM users";
+
+		$result3 = $conn3->query($sql3);
+		$row3 = mysqli_fetch_array($result3);
+		$UserID = $row3[0];
+
 		$UserID++;
+
 		$sql2 = "INSERT INTO users (user_id,user_name,user_pw,user_email)
 			 VALUES ('$UserID','$_POST[username]','$_POST[password]','$_POST[email]')";
 		if ($conn->query($sql2) === TRUE) 

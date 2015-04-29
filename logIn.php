@@ -142,8 +142,8 @@
 			$server_output1 = curl_exec ($ch1);
 			$json1 = json_decode($server_output1,true);
 
-			//var_dump($json1);
-
+			var_dump($json1);
+			echo '<br><br>';
 			// Set as session variables and or insert into DB
 			// Why is email showing as null?
 			echo $json1['login'];
