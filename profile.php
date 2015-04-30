@@ -130,29 +130,6 @@
 			  </div>';
 
 
-
-		//scan upload folder for img with employee name appended to front
-		/*$ufname = (string)$_SESSION['username'];
-		$dir = 'http://' . (string)$serverAdd . '/uploads/';
-		$results = scandir($dir);
-		for($x in $results)
-		{
-			if(strpos($ufname,$x)!== FALSE)
-			{
-
-				$x = (string)$x
-				echo '<strong>Avatar: </strong>
-				<br></br>
-				<img src="http://' . $serverAdd . '/uploads/' . $x .'" />
-				<br></br>
-				<br></br>
-			';
-			}
-
-		}
-
-		*/
-
 	}
 
 	 // Code for admin account ONLY
@@ -310,6 +287,7 @@
 		echo '	<img src="'.$_SESSION['avatar_url'].'" width="42" height="42"/>
 				<br><strong>Location:</strong>'.$_SESSION['location'].'
 				<br><strong>Last GitHub Update:</strong>'.$_SESSION['updated_at'].'
+				<br><strong>Email:</strong>'.$_SESSION['email'].'
 
 	
 			  </div>

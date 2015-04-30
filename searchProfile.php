@@ -1,30 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+<<html lang="en">
+    <head>
+    	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding"> 
 
-    <title>eSports Q&A Site</title>
+   		<title>Profile</title>
 
-    <!-- Bootstrap core CSS -->
+    </head>
+<!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="offcanvas.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<!-- Resource: http://stackoverflow.com/questions/6418973/how-to-use-ajax-to-update-mysql-db-when-checkbox-condition-is-changed -
+ 
     <script src="/js/ie-emulation-modes-warning.js"></script>
-</html>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+	    $('input[name = qselect]').live("click",function(){
+	    var id = $(this).attr('id');
+
+	    $.ajax({
+	        type:'GET',
+	        url:'adminEdit.php',
+	        data:'id= ' + id 
+	    });
+
+	</script
+ });
+--><body>
+	<nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
+        </div>
+        
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.php">Home</a></li>
+			<li><a href="profile.php">Profile Page</a></li>
+            <li><a href="logForm.php">Login/Register</a></li>  
+             <li><a href="uploadBlob.php">Avatar</a></li>
+            <li><a href="tagDisplay.php">Archive</a></li>            
+			
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <br>
+    <br>
 
 <?php
 	error_reporting(0);
 	session_start();
 	include_once 'connect.php';
+	include_once 'getAvatar.php';
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	$conn2 = new mysqli($servername, $username, $password, $dbname);
 	
@@ -33,8 +71,14 @@
 	if(isset($_GET["searchname"]))
 	{
 		$UN = $_GET['searchname'];
+		$count = 0;
+		echo  '	
+				<br><br>
+				<div class="row">
+				<div class="col-md-4 col-md-offset-2">
+			';
 		
-		// Print name of user being searched for
+		/* Print name of user being searched for
 		// STRONG HAS BEEN DEPRECATED
 		$sql2 = "SELECT *
 				FROM users 
@@ -96,27 +140,64 @@
 		{
 			echo 'No post history';
 		}
-		/*scan upload folder for img with employee name appended to front
-		$ufname = (string)$_SESSION['username'];
-		$dir = 'http://' . (string)$serverAdd . '/uploads/';
-		$results = scandir($dir);
-		for($x in $results)
+		*/
+		// Query DB for user with SESSION var user name to obtain all related question data
+		$sql = "SELECT *
+				FROM users u
+                LEFT JOIN question q
+                ON u.user_name = q.q_asker
+				WHERE u.user_name = '$UN' ";
+
+		
+		$result = $conn->query($sql);
+		$result2 = mysqli_query($conn, $sql);		
+		
+		echo "<div class='panel panel-info'>
+  			  <div class='panel-heading'>
+  			  	<br><h3>" . $UN . "'s Profile</h3>
+			  	<strong>Avatar: </strong>
+		  	  
+		  	  ";
+		$row01 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
+		//echo $row01["user_avatar"];
+		//echo '<img src="data:image/jpeg;base64,'.base64_encode( $row01['user_avatar'] ).'" width="42" height="42"/>';
+		//echo '<img src="data:image/jpeg;base64,'.base64_encode($row1['user_avatar']->load()) .'" />';
+		echo get_avatar($UN, 0, 0);
+
+		// STRONG HAS BEEN DEPRECATED!!!
+		echo '</div>
+			  <div class="panel-body">
+				<br><strong>Question Data: <br>(VALUE|TITLE|GAME) </strong><br> ';
+
+		while($row = $result->fetch_assoc()) 
 		{
-			if(strpos($ufname,$x)!== FALSE)
+			
+			if(empty($row["q_id"]))
 			{
 
-				$x = (string)$x
-				echo '<strong>Avatar: </strong>
-				<br></br>
-				<img src="http://' . $serverAdd . '/uploads/' . $x .'" />
-				<br></br>
-				<br></br>
-			';
+				$count = $count + 1;
+				
+			}
+
+			else
+			{
+				echo ' ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_type'] . '<br>' ;
 			}
 
 		}
 
-	*/
+
+		if($count != 0)
+		{
+			echo 'No post history';
+		}
+		
+
+		echo '</div>
+			  
+			  </div>
+			  </div>';
+		
 
 	}
 	else 
@@ -126,15 +207,13 @@
 	}
 
 
-	echo '<br></br>
-		<form action=index.php>
-			<input type="submit" value="Home">  
-		</form>
-				
-	
-		';
 
 	
 $conn->close();
+$conn2->close();
+
+echo ' </body>
+
+	</html>';
 
 ?>

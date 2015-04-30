@@ -88,6 +88,7 @@
 				      <legend>Current Avatar:'. get_avatar($_SESSION['username'], $_SESSION['github'], 0) . '</legend>
 				      '. $tempUrl1 .' ' . $tempUrl2 . ' ' . $tempUrl3 .' 
 				      <div class="form-group">
+				      <br><br><br>
 				      <label for="select" class="col-lg-2 control-label">Selects</label>
 					      <div class="col-lg-10">
 					        <select class="form-control" id="select" name="select">
