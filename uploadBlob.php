@@ -36,6 +36,30 @@
         </div>
       </div>
     </nav>
+    <script src="/js/jquery-1.11.2.min.js"></script>
+    <script>
+      function asynchronouslyUpdate(change){
+        $.ajax({
+          url: "updateValue.php",
+          data: {action: change},
+          success: function(response){
+          $("#myText").html(response);
+          },
+          error: function(err) {
+          console.log("Error");
+          console.log(err);
+          }
+        });
+      }
+
+
+
+      $(document).ready(function(){
+        $("#id").ready(function(){asynchronouslyUpdate("get");});
+      
+      
+    });
+    </script>
     </head>
 
     <body>
@@ -93,7 +117,7 @@ if (isset($_SESSION['username']) and $_SESSION['github'] != 1)
   	if(is_uploaded_file($_FILES['mkfile']['tmp_name'])) 
   	{
 
-  		//$UNF = $_SESSION['username'];
+  		$UNF = $_SESSION['username'];
   		//echo $_SESSION['username'];
   		$imgData = addslashes(file_get_contents($_FILES['mkfile']['tmp_name']));
   		$imageProperties = getimageSize($_FILES['mkfile']['tmp_name']);
@@ -120,7 +144,8 @@ if (isset($_SESSION['username']) and $_SESSION['github'] != 1)
   
 
 
-$tempURLs = get_avatar($UNF, $_SESSION['github']);
+$tempURLs = get_avatar($UNF, $_SESSION['github'], 1);
+
 
 
   echo '<div class="row">
@@ -130,13 +155,13 @@ $tempURLs = get_avatar($UNF, $_SESSION['github']);
               <h3 class="panel-title">Select default avatar:</h3>
             </div>
             <div class="panel-body panel-primary"> 
-            '. $tempURLs .'
+              '.$tempURLs.'
             </div>
       </div>
       </div>
       </div>';
 
-  //mysqli_close($conn1);
+  
 }
 
 elseif ($_SESSION['github'] == 1) 

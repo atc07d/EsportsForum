@@ -63,6 +63,7 @@
 	error_reporting(0);
 	session_start();
 	include_once 'connect.php';
+	include_once 'getAvatar.php';
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	$conn9 = new mysqli($servername, $username, $password, $dbname);
 
@@ -105,9 +106,9 @@
 		  	  ";
 		$row01 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
 		//echo $row01["user_avatar"];
-		echo '<img src="data:image/jpeg;base64,'.base64_encode( $row01['user_avatar'] ).'" width="42" height="42"/>';
+		//echo '<img src="data:image/jpeg;base64,'.base64_encode( $row01['user_avatar'] ).'" width="42" height="42"/>';
 		//echo '<img src="data:image/jpeg;base64,'.base64_encode($row1['user_avatar']->load()) .'" />';
-	
+		echo get_avatar($UN, $_SESSION['github'], 0);
 
 		// STRONG HAS BEEN DEPRECATED!!!
 		echo '</div>

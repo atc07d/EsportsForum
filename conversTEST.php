@@ -136,7 +136,11 @@
 						
 						if ($row['q_state'] == '1')
 						{
-							echo '<h1>FROZEN</h1>';
+							echo '<div class="row">
+								 	<div class="col-md-4 col-md-offset-2">
+										<h1>FROZEN</h1>
+									</div>
+								  </div>';
 						}
 
 						else if ($row['q_state'] == '0')
@@ -191,7 +195,7 @@
 							
 							<div class="row">
 	  						<div class="col-md-4 col-md-offset-2">
-							<form method="post" action=""
+							<form method="post" action="">
 								<div class="panel panel-success">
 								<div class="panel-heading">
 								
