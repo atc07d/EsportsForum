@@ -162,7 +162,7 @@
 		      	<th>User</th>
 		      	<th>Score</th>
 		      	<th># of Qs</th>
-		      	<th>Status</th>
+		      	<th>Validated</th>
 	      	  </tr>
 	      	  </thead>
 	      	  <tbody>';
