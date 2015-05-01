@@ -240,6 +240,7 @@
 							                <div class="panel-body">
 							                  <header class="text-right">
 							                     <i class="fa fa-usd"></i> '.$row['a_rating']. '
+							                     <i class="fa fa-trophy"></i> '.$row['a_best']. '
 							                    <br>
 							                    <div>
 							                    <form method="post" action="voteTest.php">
@@ -297,6 +298,7 @@
 							                <div class="panel-body">
 							                  <header class="text-right">
 							                     <i class="fa fa-usd"></i> '.$row['a_rating']. '
+							                     <i class="fa fa-trophy"></i> '.$row['a_best']. '
 							                    <br>
 												<div>
 							                    <form method="post" action="voteTest.php">
@@ -345,6 +347,7 @@
 							                <div class="panel-body">
 							                  <header class="text-right">
 							                     <i class="fa fa-usd"></i> '.$row['a_rating']. '
+							                     <i class="fa fa-trophy"></i> '.$row['a_best']. '
 							                    <br>
 							                    
 							                  </header>
