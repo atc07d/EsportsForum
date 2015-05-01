@@ -219,7 +219,9 @@
 			$sql2 = "SELECT * 
 					FROM question
 					JOIN answer
-					ON question.q_id = answer.a_id";	
+					ON question.q_id = answer.a_id
+					WHERE question.q_id = '$questionID'
+					ORDER BY answer.a_rating DESC";	
 
 			
 			if ($result2 = mysqli_query($conn1,$sql2))
@@ -227,8 +229,9 @@
 				//$_SESSION['answer_ID'] = array();
 				while($row = mysqli_fetch_assoc($result2))
 				{
-					$flag = 0;
-					if ($questionID == $row['q_id'] && isset($_SESSION['logged_in']))
+					//$questionID == $row['q_id'] &&
+
+					if (isset($_SESSION['logged_in']))
 					{
 						
 							//$_SESSION['answer_ID'] = $row['a_order'];
@@ -277,11 +280,12 @@
 							          </article>
 						          	</section>
 									  ';
-							$flag = 1;
+							
 
 
 					}
-					else if ($questionID == $row['q_id'] && !isset($_SESSION['logged_in']))
+					//$questionID == $row['q_id'] &&
+					else if (!isset($_SESSION['logged_in']))
 					{
 						echo '<section class="comment-list">
 									<article class="row">
@@ -313,7 +317,7 @@
 							          </article>
 						          	</section>
 									  ';
-							$flag = 1;
+							
 
 
 					}
