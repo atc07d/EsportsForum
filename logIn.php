@@ -92,13 +92,6 @@
 	    	header("Location: $url");
 			
 			
-			/*
-			if(setcookie("github",$accessToken))
-			{
-				echo "sucessfully authenticated with github!";
-				header("Location:index.php");
-			}
-			*/
 	    }	    
 	}
 
@@ -151,10 +144,9 @@
 			$json1 = json_decode($server_output1,true);
 
 			
-			echo '<h3>Your profile will be reflected with the following:</h3>
+			/*echo '<h3>Your profile will be reflected with the following:</h3>
 				<br><br>';
-			// Set as session variables and or insert into DB
-			// Why is email showing as null?
+	
 			echo $json1['login'];
 			echo '<br>';
 			echo $json1['email'];
@@ -165,6 +157,7 @@
 		    echo $json1['location'];
 		    echo '<br>';
 	        echo $json1['updated_at'];
+	        */
 
 	        $tempUser = currentUserID();
 
@@ -186,11 +179,9 @@
 			$_SESSION['vote'] = array();
 			$_SESSION['Qvote'] = array();
 
-			echo '
-					<form action=index.php>
-						<input type="submit" value="Home">
-					</form>
-				';
+			
+
+			header("Location: index.php");
 	        
 		}
 	}
