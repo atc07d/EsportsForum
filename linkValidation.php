@@ -104,12 +104,14 @@ if (isset($_POST["submit"]) && (!empty($_POST['inputEmail'])) )
       if($result = $conn->query($sql))
       {
          header ("Location: index.php");
+         mysqli_close($conn);
 
       }
 
       else
       {
         echo "Validation query failed";
+        mysqli_close($conn);
       }
     //}
 
@@ -120,7 +122,7 @@ if (isset($_POST["submit"]) && (!empty($_POST['inputEmail'])) )
 
 }
 
-mysqli_close($conn);
+
  
 
 
