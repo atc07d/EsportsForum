@@ -338,7 +338,7 @@
 
 					}
 					//$questionID == $row['q_id'] &&
-					else if ($_SESSION['username'] != $row['q_asker'] && !isset($_SESSION['logged_in']) && $_SESSION['valid'] != 1)
+					else if ($_SESSION['username'] != $row['q_asker'] && (!isset($_SESSION['logged_in']) || $_SESSION['valid'] != 1))
 					{
 						echo '<section class="comment-list">
 									<article class="row">

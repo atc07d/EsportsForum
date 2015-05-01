@@ -140,15 +140,9 @@
 			
 			//sendMail($_POST["email"], $_POST["username"]);
 			sendFromMG($_POST["email"], $_POST["username"]);
-
-			echo '<p>New record created successfully</p>
-					<form action=index.php>
-						<input type="submit" value="Home">
-					</form>
-				';
-			
-				
 			mysqli_close($conn);
+			header ("Location: index.php");
+			
 
 		} 
 		else 
