@@ -37,6 +37,7 @@
 					$_SESSION['username'] = $_POST["uname"];
 					$_SESSION['userID'] = $row["user_id"];
 					$_SESSION['logged_in'] = 1;
+					$_SESSION['valid'] = $row["user_valid"];
 					$_SESSION['github'] = 0;
 					$_SESSION['vote'] = array();
 					$_SESSION['Qvote'] = array();
@@ -204,6 +205,7 @@
 			$_SESSION['logged_in'] = 1;
 			$_SESSION['avatar_url'] = $json1['avatar_url'];
 			$_SESSION['github'] = 1;
+			$_SESSION['valid'] = 1;
 			$_SESSION['location'] = $json1['location'];
 			$_SESSION['updated_at'] = $json1['updated_at'];
 			$_SESSION['email'] = $json1['email'];

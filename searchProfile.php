@@ -108,7 +108,7 @@
 		// STRONG HAS BEEN DEPRECATED!!!
 		echo '</div>
 			  <div class="panel-body">
-				<br><strong>Question Data: <br>(VALUE|TITLE|TAGS) </strong><br> ';
+				<br><strong>Question Data: <br>(SCORE|TITLE|TAGS) </strong><br> ';
 
 		while($row = $result->fetch_assoc()) 
 		{

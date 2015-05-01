@@ -71,7 +71,7 @@
 				{
 					
 					
-					if ($row['q_id'] == $questionID && isset($_SESSION['logged_in']))
+					if ($row['q_id'] == $questionID && isset($_SESSION['logged_in']) &&  $_SESSION['valid'] == 1)
 					{
 						echo '<!-- Question -->
 						 	<h2 class="page-header">'.$row['q_title'].'</h2>
@@ -143,7 +143,7 @@
 
 					}
 
-					elseif ($row['q_id'] == $questionID && !isset($_SESSION['logged_in']))
+					elseif ($row['q_id'] == $questionID &&  ($_SESSION['valid'] != 1 || !isset($_SESSION['logged_in'])))
 					{
 						echo '<!-- Question -->
 						 	<h2 class="page-header">'.$row['q_title'].'</h2>
@@ -185,7 +185,7 @@
 								  </div>';
 						}
 
-						else if ($row['q_state'] == '0' && isset($_SESSION['logged_in']))
+						else if ($row['q_state'] == '0' && isset($_SESSION['logged_in']) &&  $_SESSION['valid'] == 1)
 						{
 							echo '  <article class="row">
 						            <div class="col-md-10 col-sm-10">
@@ -231,7 +231,7 @@
 				{
 					//$questionID == $row['q_id'] &&
 
-					if (isset($_SESSION['logged_in']))
+					if (isset($_SESSION['logged_in'])  && $_SESSION['valid'] == 1)
 					{
 						
 							//$_SESSION['answer_ID'] = $row['a_order'];
@@ -285,7 +285,7 @@
 
 					}
 					//$questionID == $row['q_id'] &&
-					else if (!isset($_SESSION['logged_in']))
+					else if (!isset($_SESSION['logged_in']) || $_SESSION['valid'] != 1)
 					{
 						echo '<section class="comment-list">
 									<article class="row">
