@@ -230,14 +230,8 @@
 				while($row = mysqli_fetch_assoc($result2))
 				{
 					//$questionID == $row['q_id'] &&
-
-					if (isset($_SESSION['logged_in'])  && $_SESSION['valid'] == 1)
+					if ($_SESSION['username'] == $row['q_asker'] && isset($_SESSION['logged_in'])  && $_SESSION['valid'] == 1)
 					{
-						
-							//$_SESSION['answer_ID'] = $row['a_order'];
-							//$_SESSION['answer_ID'][$row['a_order']] = $row['a_order'];
-							//var_dump($_SESSION['answer_ID']);
-
 							
 							echo '<section class="comment-list">
 									<article class="row">
@@ -248,6 +242,63 @@
 							                     <i class="fa fa-usd"></i> '.$row['a_rating']. '
 							                    <br>
 							                    <div>
+							                    <form method="post" action="voteTest.php">
+							                    	<i class="fa fa-chevron-circle-up fa-2x"></i><input type="submit" name="up" value="$">
+							                    	<input type="hidden" name="id" value="'.$row['a_order']. '">
+							                    </form>
+							                    </div>
+							                    <div>					
+							                    <form method="post" action="voteTest.php">
+							                    	<i class="fa fa-chevron-circle-down fa-2x"></i><input type="submit" name="down" value="$">
+							                    	<input type="hidden" name="id" value="'.$row['a_order']. '">
+							                    </form>
+							                    </div>
+							                    <div>
+							                    <form method="post" action="submitBest.php">
+							                    	<i class="fa fa-trophy fa-2x"></i><input type="submit" name="select" value="#">
+							                    	<input type="hidden" name="id" value="'.$row['a_order']. '">
+							                    	<input type="hidden" name="best" value="'.$row['a_best']. '">
+							                    </form>
+							                    </div>
+							                  </header>
+							                  <div class="comment-post">
+							                    <p>'. $row['a_content'] .'</p>
+							                  </div>
+							                  
+							                 ';
+							
+								echo '	
+							                 
+							                </div>
+							              </div>
+							            </div>
+							            <div class="col-md-2 col-sm-2 hidden-xs">
+							              <figure class="thumbnail">
+							                '. get_avatar($row['a_asker'],$_SESSION['github'],0).'
+							                <figcaption class="text-center">'.$row['a_asker'].'</figcaption>
+							              </figure>
+							            </div>
+							          </article>
+						          	</section>
+									  ';
+							
+
+
+					}
+
+					else if ($_SESSION['username'] != $row['q_asker'] && isset($_SESSION['logged_in'])  && $_SESSION['valid'] == 1)
+					{
+						
+					
+							echo '<section class="comment-list">
+									<article class="row">
+							            <div class="col-md-10 col-sm-10">
+							              <div class="panel panel-default arrow right">
+							                <div class="panel-body">
+							                  <header class="text-right">
+							                     <i class="fa fa-usd"></i> '.$row['a_rating']. '
+							                    <br>
+												<div>
 							                    <form method="post" action="voteTest.php">
 							                    	<i class="fa fa-chevron-circle-up fa-2x"></i><input type="submit" name="up" value="$">
 							                    	<input type="hidden" name="id" value="'.$row['a_order']. '">
@@ -285,7 +336,7 @@
 
 					}
 					//$questionID == $row['q_id'] &&
-					else if (!isset($_SESSION['logged_in']) || $_SESSION['valid'] != 1)
+					else if ($_SESSION['username'] != $row['q_asker'] && !isset($_SESSION['logged_in']) && $_SESSION['valid'] != 1)
 					{
 						echo '<section class="comment-list">
 									<article class="row">
@@ -321,12 +372,9 @@
 
 
 					}
-					//unset($_SESSION['answer_ID']);
-					//elseif ($flag == 0)
-					//{
-						//echo "No answers posted yet";
-						//break;
-					//}
+
+					
+
 				}
 				mysqli_free_result($result2);
 
