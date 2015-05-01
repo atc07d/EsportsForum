@@ -9,14 +9,15 @@
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	$conn1 = new mysqli($servername, $username, $password, $dbname);
+	
 
 	// Check connection
-	if ($conn->connect_error || $conn1->connect_error) 
+	if ($conn->connect_error || $conn1->connect_error || $conn2->connect_error) 
 	{
 		die("Connection failed: " . $conn->connect_error);
 	} 
 
-	$sql = "SELECT user_id,user_name,user_pw FROM users";
+	$sql = "SELECT * FROM users";
 
 	$result = $conn->query($sql);
 
@@ -61,7 +62,8 @@
 		{
 			echo "0 results";
 		}
-		$conn->close();
+		
+		mysqli_close($conn);
 
 		echo '<br></br><p>Login failed</p>
 			<form action=index.php>
@@ -159,14 +161,43 @@
 	        echo $json1['updated_at'];
 	        */
 
+	        $flag = 0;
+	        while($row = $result->fetch_assoc()) 
+	        {
+	        	if ($row['user_name'] == $json1['login'])
+	        	{
+	        		++$flag;
+	        	}
+
+
+	        }
+
+	        mysqli_close($conn);
+	        // Could search for currentUserID - 1 to check for user existing already
 	        $tempUser = currentUserID();
 
-	       $sql1 = "INSERT INTO users (user_id,user_name,user_pw,user_email,user_valid,user_avatar_url,user_location,user_last_login)
-			 VALUES ('$tempUser','$json1[login]', '@github','$json1[email]', '1','$json1[avatar_url]', '$json1[location]', '$json1[updated_at]')";
+	        if ($flag == 0)
+	        {
+	        	$sql1 = "INSERT INTO users (user_id,user_name,user_pw,user_email,user_valid,user_avatar_url,user_location,user_last_login)
+			 	VALUES ('$tempUser','$json1[login]', '@github','$json1[email]', '1','$json1[avatar_url]', '$json1[location]', '$json1[updated_at]')";
 
-	        $result1 = $conn1->query($sql1);
+	        	$result1 = $conn1->query($sql1);
+	        	mysqli_close($conn1);
 
-	        mysqli_close($conn1);
+	        }
+	        // Update values
+	        $tempNAME = $json1['login'];
+	        else if ($flag != 0)
+	        {
+	        	$sql1 = "UPDATE users
+	        			 SET user_email = '$json1[email]', user_avatar_url = '$json1[avatar_url]', user_location = '$json1[location]', user_last_login = '$json1[updated_at]'
+	        			 WHERE user_name = '$tempNAME'";
+
+	        	$result1 = $conn1->query($sql1);
+	        	mysqli_close($conn1);
+
+	        }
+
 
     		$_SESSION['username'] = $json1['login'];
 			$_SESSION['userID'] = $tempUser;
