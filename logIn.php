@@ -65,14 +65,11 @@
 		}
 		
 		mysqli_close($conn);
-
-		echo '<br></br><p>Login failed</p>
-			<form action=index.php>
-				<input type="submit" value="Home">  
-			</form>
+		header ("Location: index.php");
+		
 					
 		
-			';
+			
 	}
 
 	else if($_POST["github-submit"] && !isset($_GET['code'])) 
