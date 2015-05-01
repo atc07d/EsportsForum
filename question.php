@@ -9,8 +9,8 @@
 	//$questionID = 
 	
 	$conn1 = new mysqli($servername, $username, $password, $dbname);
-			$sql1 = "INSERT INTO question (q_asker,q_title, q_content,q_type, q_tags)
-					VALUES ('$_SESSION[username]','$_POST[title]', '$_POST[content]','$_POST[t_name]', '$_POST[tagcontent]')";
+			$sql1 = "INSERT INTO question (q_asker,q_title, q_content, q_tags)
+					VALUES ('$_SESSION[username]','$_POST[title]', '$_POST[content]', '$_POST[tagcontent]')";
 
 	if ($conn1->query($sql1) === TRUE) 
 		{

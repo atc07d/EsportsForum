@@ -192,7 +192,8 @@
 						              <div class="panel panel-default ">
 										<form method="post" action="submitAnswer.php" method="post">
 								         <br><textarea class="form-control" rows="3" name="answer" /></textarea>
-								         <input type="submit" name="submit"	value="Submit" />
+								         <input type="submit" name="submit"	value="Submit" >
+								         <input type="hidden" name="id" value="'.$_SESSION['questionNum']. '">
 										 </form>
 						              </div>
 						            </div>
@@ -202,7 +203,6 @@
 						}
 					}
 						
-					
 				}
 
 			?>
