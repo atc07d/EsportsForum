@@ -14,23 +14,42 @@
 			 SET a_rating = a_rating - 1
        WHERE a_order = '$_POST[id]'";
 
+  $postId = $_POST['id'];
+  //$_SESSION['vote'][$postId] = 0;
 
-    if(isset($_POST['up']))
+  //var_dump($_SESSION['vote'][$postId]);
+  //echo $_SESSION['vote'][$postId] ;
+
+  //echo $postID;
+
+    if(isset($_POST['up']) && $_SESSION['vote'][$postId] != 1)
     {
       $conn->query($sql1);
       //echo $_POST['id'];
+      $_SESSION['vote'][$postId] = 1;
+      //echo $_SESSION['vote'][$postId];
+     // echo 'hi';
       header("Location: $url");
     }
 
-    elseif(isset($_POST['down']))
+    if(isset($_POST['down']) && $_SESSION['vote'][$postId] != 1)
     {
       $conn->query($sql2);
       //echo $_POST['id'];
+      $_SESSION['vote'][$postId] = 1;
+       //echo $_SESSION['vote'][$postId];
       header("Location: $url");
+    }
+
+    else
+    {
+      header("Location: $url");
+      //echo 'errir';
+      //echo $_SESSION['vote'][$postId];
     }
     
     unset($_SESSION['questionNum']);
-	   mysqli_close($conn);
+	  mysqli_close($conn);
     die();
   
 

@@ -37,6 +37,8 @@
 					$_SESSION['userID'] = $row["user_id"];
 					$_SESSION['logged_in'] = 1;
 					$_SESSION['github'] = 0;
+					$_SESSION['vote'] = array();
+					$_SESSION['Qvote'] = array();
 					//echo "<p>Successful Login!</p>" ;
 					//echo "<p>Successful Login!</p>" . $_SESSION['username'] . $_SESSION['userID'] ;
 					//header("Location: $referer");
@@ -181,6 +183,8 @@
 			$_SESSION['location'] = $json1['location'];
 			$_SESSION['updated_at'] = $json1['updated_at'];
 			$_SESSION['email'] = $json1['email'];
+			$_SESSION['vote'] = array();
+			$_SESSION['Qvote'] = array();
 
 			echo '
 					<form action=index.php>

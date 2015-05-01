@@ -14,19 +14,29 @@
 			 SET q_value = q_value - 1
        WHERE q_id = '$_POST[id]'";
 
+  $postId = $_POST['id'];
 
-    if(isset($_POST['up']))
+    if(isset($_POST['up']) && $_SESSION['Qvote'][$postId] != 1)
     {
       $conn->query($sql1);
-      //echo $_POST['id'];
+      $_SESSION['Qvote'][$postId] = 1;
+
       header("Location: $url");
     }
 
-    elseif(isset($_POST['down']))
+    if(isset($_POST['down']) && $_SESSION['Qvote'][$postId] != 1)
     {
       $conn->query($sql2);
-      //echo $_POST['id'];
+      $_SESSION['Qvote'][$postId] = 1;
+
       header("Location: $url");
+    }
+
+    else
+    {
+      header("Location: $url");
+      //echo 'errir';
+      //echo $_SESSION['vote'][$postId];
     }
     
     unset($_SESSION['questionNum']);

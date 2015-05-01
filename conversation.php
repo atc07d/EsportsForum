@@ -270,7 +270,7 @@
 							            </div>
 							            <div class="col-md-2 col-sm-2 hidden-xs">
 							              <figure class="thumbnail">
-							                '. get_avatar($row['q_asker'],$_SESSION['github'],0).'
+							                '. get_avatar($row['a_asker'],$_SESSION['github'],0).'
 							                <figcaption class="text-center">'.$row['a_asker'].'</figcaption>
 							              </figure>
 							            </div>
@@ -306,7 +306,7 @@
 							            </div>
 							            <div class="col-md-2 col-sm-2 hidden-xs">
 							              <figure class="thumbnail">
-							                '. get_avatar($row['q_asker'],$_SESSION['github'],0).'
+							                '. get_avatar($row['a_asker'],$_SESSION['github'],0).'
 							                <figcaption class="text-center">'.$row['a_asker'].'</figcaption>
 							              </figure>
 							            </div>
