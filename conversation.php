@@ -230,7 +230,7 @@
 				while($row = mysqli_fetch_assoc($result2))
 				{
 					//$questionID == $row['q_id'] &&
-					if ($_SESSION['username'] == $row['q_asker'] && isset($_SESSION['logged_in'])  && $_SESSION['valid'] == 1)
+					if ($_SESSION['username'] == $row['q_asker'] && (isset($_SESSION['logged_in'])  || $_SESSION['valid'] == 1))
 					{
 							
 							echo '<section class="comment-list">
