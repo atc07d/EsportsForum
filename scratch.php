@@ -126,3 +126,68 @@
 
 </body>
 </html>
+
+<?/* Print name of user being searched for
+		// STRONG HAS BEEN DEPRECATED
+		$sql2 = "SELECT *
+				FROM users 
+				WHERE user_name = '$UN' ";
+
+		$result2 = $conn2->query($sql2);
+
+		if ($result2 === FALSE)
+		{
+			echo $conn2->error;
+		}
+
+		$row2 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
+		//echo empty($row2);
+		//echo is_array($row2);
+		//echo count(array_filter($row2));
+
+		echo  '<br></><strong>Profile for: </strong><mark>' . $_GET['searchname'] . '</mark><br></br>' ;
+		// Show avatar
+		echo  '<br></><strong>Avatar: </strong>' ;
+		echo '<img src="data:image/jpeg;base64,'.base64_encode( $row2['user_avatar'] ).'" width="42" height="42"/>';
+		// Show score
+		echo  '<br></><strong>Score: </strong>' . $row2['user_score'] . '<br></br>' ;
+
+		
+		
+		// Query DB for user with SESSION var user name to obtain all related question data
+		$sql = "SELECT *
+				FROM users u
+                LEFT JOIN question q
+                ON u.user_name = q.q_asker
+				WHERE u.user_name = '$UN' ";
+
+		
+		$result = $conn->query($sql);
+		// STRONG HAS BEEN DEPRECATED!!!
+		echo '<strong>Question Data: <br></>(VALUE|TITLE|GAME) </strong><br></br> ';
+		$count = 0;
+
+		while($row = $result->fetch_assoc()) 
+		{
+			
+			
+			if(empty($row["q_id"]))
+			{
+
+				$count = $count + 1;
+				
+			}
+			else
+			{
+				echo ' ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_type'] . '<br></br>' ;
+				
+			}
+
+		}
+
+		if($count != 0)
+		{
+			echo 'No post history';
+		}
+		*/
+?>

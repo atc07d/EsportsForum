@@ -94,8 +94,14 @@
                 ON u.user_name = q.q_asker
 				WHERE u.user_name = '$UN' ";
 
+		$sql9 = "SELECT *
+				FROM answer       
+				WHERE a_asker = '$UN'";
+
 		
 		$result = $conn->query($sql);
+		$result9 = $conn9->query($sql9);
+
 		$result2 = mysqli_query($conn, $sql);		
 		
 		echo "<div class='panel panel-info'>
@@ -113,21 +119,30 @@
 		// STRONG HAS BEEN DEPRECATED!!!
 		echo '</div>
 			  <div class="panel-body">
-				<br><strong>Question Data: <br>(VALUE|TITLE|GAME) </strong><br> ';
+				<br><strong>Question Data: <br>(SCORE|TITLE|TAGS) </strong><br> ';
 
 		while($row = $result->fetch_assoc()) 
 		{
 			
-			echo ' ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_type'] . '<br>' ;
+			echo ' ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_tags'] . '<br>' ;
 
 		}
 
-		
+		echo '<br><strong>Answer Data: <br>(SCORE|BEST|CONTENT) </strong><br>';
 
-		echo '</div>
-			  
+		while($row9 = $result9->fetch_assoc()) 
+		{
+			
+			echo ' ' . $row9['a_rating'] . ' | ' . $row9['a_best'] . ' | ' . $row9['a_content'] . '<br>' ;
+
+		}
+
+		echo  '</div>
 			  </div>
-			  </div>';
+			  <br>';
+
+	    mysqli_close($conn);
+	    mysqli_close($conn9);
 
 
 	}
@@ -229,7 +244,9 @@
 
 		}
 
-	 echo ' 
+		mysqli_close($conn);
+		mysqli_close($conn9);
+	 	echo ' 
 	 		</div>
 	 		</div>
 
@@ -307,6 +324,7 @@
 			  
 			  </div>
 			  </div>';
+	  	mysqli_close($conn);
 
 	}
 	else
@@ -324,8 +342,6 @@
 	
 
 
-$conn->close();
-$conn9->close();
 
 echo ' </body>
 

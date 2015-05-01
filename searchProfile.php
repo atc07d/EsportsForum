@@ -65,8 +65,7 @@
 	include_once 'getAvatar.php';
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	$conn2 = new mysqli($servername, $username, $password, $dbname);
-	
-
+	$conn9 = new mysqli($servername, $username, $password, $dbname);
 	
 	if(isset($_GET["searchname"]))
 	{
@@ -78,32 +77,6 @@
 				<div class="col-md-4 col-md-offset-2">
 			';
 		
-		/* Print name of user being searched for
-		// STRONG HAS BEEN DEPRECATED
-		$sql2 = "SELECT *
-				FROM users 
-				WHERE user_name = '$UN' ";
-
-		$result2 = $conn2->query($sql2);
-
-		if ($result2 === FALSE)
-		{
-			echo $conn2->error;
-		}
-
-		$row2 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
-		//echo empty($row2);
-		//echo is_array($row2);
-		//echo count(array_filter($row2));
-
-		echo  '<br></><strong>Profile for: </strong><mark>' . $_GET['searchname'] . '</mark><br></br>' ;
-		// Show avatar
-		echo  '<br></><strong>Avatar: </strong>' ;
-		echo '<img src="data:image/jpeg;base64,'.base64_encode( $row2['user_avatar'] ).'" width="42" height="42"/>';
-		// Show score
-		echo  '<br></><strong>Score: </strong>' . $row2['user_score'] . '<br></br>' ;
-
-		
 		
 		// Query DB for user with SESSION var user name to obtain all related question data
 		$sql = "SELECT *
@@ -112,45 +85,13 @@
                 ON u.user_name = q.q_asker
 				WHERE u.user_name = '$UN' ";
 
+		$sql9 = "SELECT *
+				FROM answer       
+				WHERE a_asker = '$UN'";
 		
 		$result = $conn->query($sql);
-		// STRONG HAS BEEN DEPRECATED!!!
-		echo '<strong>Question Data: <br></>(VALUE|TITLE|GAME) </strong><br></br> ';
-		$count = 0;
-
-		while($row = $result->fetch_assoc()) 
-		{
-			
-			
-			if(empty($row["q_id"]))
-			{
-
-				$count = $count + 1;
-				
-			}
-			else
-			{
-				echo ' ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_type'] . '<br></br>' ;
-				
-			}
-
-		}
-
-		if($count != 0)
-		{
-			echo 'No post history';
-		}
-		*/
-		// Query DB for user with SESSION var user name to obtain all related question data
-		$sql = "SELECT *
-				FROM users u
-                LEFT JOIN question q
-                ON u.user_name = q.q_asker
-				WHERE u.user_name = '$UN' ";
-
-		
-		$result = $conn->query($sql);
-		$result2 = mysqli_query($conn, $sql);		
+		$result2 = mysqli_query($conn, $sql);
+		$result9 = $conn9->query($sql9);		
 		
 		echo "<div class='panel panel-info'>
   			  <div class='panel-heading'>
@@ -167,7 +108,7 @@
 		// STRONG HAS BEEN DEPRECATED!!!
 		echo '</div>
 			  <div class="panel-body">
-				<br><strong>Question Data: <br>(VALUE|TITLE|GAME) </strong><br> ';
+				<br><strong>Question Data: <br>(VALUE|TITLE|TAGS) </strong><br> ';
 
 		while($row = $result->fetch_assoc()) 
 		{
@@ -175,21 +116,50 @@
 			if(empty($row["q_id"]))
 			{
 
-				$count = $count + 1;
+				$count++;
 				
 			}
+			
 
 			else
 			{
-				echo ' ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_type'] . '<br>' ;
+				echo ' ' . $row['q_value'] . ' | ' . $row['q_title'] . ' | ' . $row['q_tags'] . '<br>' ;
 			}
 
 		}
-
-
+		//echo $count;
 		if($count != 0)
 		{
-			echo 'No post history';
+			echo '<p class="text-danger">No post history</p>';
+		}
+
+		$count = 0;
+		echo '<br><strong>Answer Data: <br>(SCORE|BEST|CONTENT) </strong><br>';
+
+		while($row9 = $result9->fetch_assoc()) 
+		{
+			
+			if($row9["a_asker"] == $UN)
+			{
+
+				$count++;
+				echo ' ' . $row9['a_rating'] . ' | ' . $row9['a_best'] . ' | ' . $row9['a_content'] . '<br>' ;
+				
+			}
+			
+
+			else
+			{
+				//echo ' ' . $row9['a_rating'] . ' | ' . $row9['a_best'] . ' | ' . $row9['a_content'] . '<br>' ;
+			}
+			
+
+		}
+
+		//echo $count;
+		if($count == 0)
+		{
+			echo '<p class="text-danger">No post history</p>';
 		}
 		
 
@@ -197,7 +167,10 @@
 			  
 			  </div>
 			  </div>';
-		
+
+		mysqli_close($conn);
+		mysqli_close($conn2);
+	    mysqli_close($conn9);
 
 	}
 	else 
