@@ -99,16 +99,11 @@
 if (isset($_POST["submit"]) && (!empty($_POST['inputEmail'])) )
 {
 
-    if ($_POST['inputEmail'] == $_SESSION['email'])
-    {
+    //if ($_POST['inputEmail'] == $_SESSION['email'])
+    //{
       if($result = $conn->query($sql))
       {
-         echo '<br>
-            <div class="row">
-            <div class="col-md-3 col-md-offset-3">
-              <p class="text-success">Validation success!</p>
-            </div>
-            </div>';
+         header ("Location: index.php");
 
       }
 
@@ -116,16 +111,16 @@ if (isset($_POST["submit"]) && (!empty($_POST['inputEmail'])) )
       {
         echo "Validation query failed";
       }
-    }
+    //}
 
-    else
-    {
-      echo "Emails do not match. Try again";
-    }
+   // else
+    //{
+      //echo "Emails do not match. Try again";
+    //}
 
 }
 
-
+mysqli_close($conn);
  
 
 
