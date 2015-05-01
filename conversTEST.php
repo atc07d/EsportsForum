@@ -96,6 +96,8 @@
 				//$sql = "SELECT a_id,a_asker,a_title, a_content,a_type  FROM answer";
 				$result = $conn->query($sql);
 
+				//Set session wuth question id for answer
+
 				//Exit php to call sync script to rate question
 				?> 
 				<!--

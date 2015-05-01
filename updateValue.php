@@ -35,7 +35,9 @@
         echo "Error: " . $sql1 . "<br>" . $conn->error;
     }
 
-    unset($_SESSION['answer_ID']);
+    //unset($_SESSION['answer_ID']);
+    mysqli_close($conn);
+    die();
   }
 
 
@@ -57,12 +59,14 @@
       {
           echo "Error: " . $sql2 . "<br>" . $conn->error;
       }
-    unset($_SESSION['answer_ID']);
+      //unset($_SESSION['answer_ID']);
+      mysqli_close($conn);
+      die();
   }
     
 	
    //unset($_SESSION['answer_ID']);
-  die();
+  //die();
   
   
 ?>

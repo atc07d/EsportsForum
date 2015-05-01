@@ -96,7 +96,7 @@
 	{
 		while($row = mysqli_fetch_assoc($result))
 		{
-			 echo '<tr><td><a href="conversTEST.php?var=' . $row['q_id'] . '">' . $row['q_title'] . '</a></td><td>' . $row['q_asker'] . 
+			 echo '<tr><td><a href="conversation.php?var=' . $row['q_id'] . '">' . $row['q_title'] . '</a></td><td>' . $row['q_asker'] . 
 			 '</td><td>' . $row['q_value'] . '</td><td>' . 
 			 '<a href="tagCollection.php?var='. $row['q_tags'] . '">' . $row['q_tags'] . '</a></td></tr>'; 
 
