@@ -46,7 +46,13 @@
 
 		if ($option == 0)
 		{
-			if ($tempChoice == 0)
+			if ($tempGH !== NULL)
+			{
+				$tempUrl = '<img src="'. $tempGH .'" />';
+				return $tempUrl;
+			}
+
+			elseif ($tempChoice == 0)
 			{
 				$tempUrl = '<img src="http://www.gravatar.com/avatar/00000000000000000000000000000000" />';
 				return $tempUrl;
@@ -63,12 +69,13 @@
 				$tempUrl = '<img src="'. $tempGrav .'" />';
 				return $tempUrl;
 			}
-			// More for conversation use when need to display avatar with asker and responders
+			//More for conversation use when need to display avatar with asker and responders
 			elseif ($gitstatus == 1) 
 			{
 				$tempUrl = '<img src="'. $tempGH .'" />';
 				return $tempUrl;
 			}
+			
 
 			else
 			{
