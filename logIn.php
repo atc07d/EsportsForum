@@ -187,7 +187,7 @@
 	        }
 	        // Update values
 	        $tempNAME = $json1['login'];
-	        else if ($flag != 0)
+	        if ($flag != 0)
 	        {
 	        	$sql1 = "UPDATE users
 	        			 SET user_email = '$json1[email]', user_avatar_url = '$json1[avatar_url]', user_location = '$json1[location]', user_last_login = '$json1[updated_at]'
