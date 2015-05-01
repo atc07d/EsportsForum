@@ -221,7 +221,7 @@
 					JOIN answer
 					ON question.q_id = answer.a_id
 					WHERE question.q_id = '$questionID'
-					ORDER BY answer.a_rating DESC";	
+					ORDER BY a_best DESC, a_rating DESC";	
 
 			
 			if ($result2 = mysqli_query($conn1,$sql2))
