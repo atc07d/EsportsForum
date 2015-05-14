@@ -55,7 +55,7 @@
 
 
       $(document).ready(function(){
-        $("#id").ready(function(){asynchronouslyUpdate("get");});
+      $("#id").ready(function(){asynchronouslyUpdate("get");});
       
       
     });
@@ -72,14 +72,14 @@
 
 <?php
 	
-	session_start();
-	include_once 'connect.php';
+  session_start();
+  include_once 'connect.php';
   include_once 'getGravatar.php';
   include_once 'getAvatar.php';
   error_reporting(0);
 
 	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
+ $conn = new mysqli($servername, $username, $password, $dbname);
   $conn1 = new mysqli($servername, $username, $password, $dbname);
 	// Check connection
 	if ($conn->connect_error || $conn1->connect_error ) 
@@ -118,20 +118,14 @@ if (isset($_SESSION['username']) and $_SESSION['github'] != 1)
   	{
 
   		$UNF = $_SESSION['username'];
-  		//echo $_SESSION['username'];
   		$imgData = addslashes(file_get_contents($_FILES['mkfile']['tmp_name']));
   		$imageProperties = getimageSize($_FILES['mkfile']['tmp_name']);
-  		//$sql = "INSERT INTO users(user_avatar)
-  		//		VALUES('$imgData')
-  		//		WHERE user_name = '$UNF'";
-  		//$result = $conn->query($sql) 
 
   		$sql = "UPDATE users
   				SET user_avatar = '$imgData'
   				WHERE user_name = '$UNF'";
   		if($conn->query($sql) === TRUE) 
   		{
-  			//echo 'success';
   			header("Location: index.php");
   		}
   		else
