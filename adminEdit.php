@@ -26,7 +26,6 @@
 	
 	$gotID = $_GET['qselect'];
 	$_SESSION['qselect'] = $_GET['qselect'];
-	//echo $_SESSION['qselect'];
 
 	$sql = "SELECT q_id, q_content, q_title
 			FROM question
@@ -50,7 +49,6 @@
 		
 		if (isset($_GET['qselect']))
 		{
-			//echo $_GET['qselect'];
 			$result = $conn->query($sql);
 			$row = mysqli_fetch_array($result,MYSQLI_NUM);
 	
@@ -59,7 +57,6 @@
 				  <form  action="makeEdit.php" method="get" >
 				  <h3><u>Edit</u>:<mark> ' . $row[2] . '</mark></h3>
 				  <textarea class="form-control" rows="3" name="edcontent">';
-			//printf ("%s (%s)\n",$row[0],$row[1]); 
 			echo $row[1];
 			echo '</textarea>
 				  <input type="submit" name="subedit"	value="Submit" />
