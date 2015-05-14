@@ -10,6 +10,7 @@ This repo is the result of a web development course taken at ODU in the spring o
   
 ##Languages:
 * HTML
+* CSS
 * PHP
 * JavaScript
 
