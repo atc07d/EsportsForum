@@ -17,11 +17,16 @@ This repo is the result of a web development course taken at ODU in the spring o
 ##Functionality:
 * New user registration
 * Email validation
+* Admininstrator account with admin privelages like freezing a question
 * Question creation
 * Answer creation
+* Question and answer voting
+* Best answer selection by question asker
 * User profile
 * Upload avatar
-* Choose among default, custom,l or gravatar avatar
+* Choose among default, custom, or gravatar avatar
 * GitHub authentication
 * Unique profile for GitHub users
+* Live user search on home page
+
   
