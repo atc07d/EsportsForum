@@ -1,9 +1,9 @@
 <?php
   
-	include_once "connect.php";
+  include_once "connect.php";
   session_start();
 	
-	//$UN = $_SESSION['username'];
+
   $url = "conversation.php?var=" . intval($_SESSION['questionNum']);
   
   $conn = new mysqli($servername, $username, $password, $dbname);
@@ -35,8 +35,6 @@
     else
     {
       header("Location: $url");
-      //echo 'errir';
-      //echo $_SESSION['vote'][$postId];
     }
     
     unset($_SESSION['questionNum']);
