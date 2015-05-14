@@ -1,19 +1,19 @@
-##eSports-Forum
+#eSports-Forum
 This repo is the result of a web development course taken at ODU in the spring of 2015. 
 
-#Tools:
+##Tools:
 * XAMPP
   * Apache
   * MySQL
 * Sublime
 * Chrome
   
-#Languages:
+##Languages:
 * HTML
 * PHP
 * JavaScript
 
-#Functionality:
+##Functionality:
 * New user registration
 * Email validation
 * Question creation
