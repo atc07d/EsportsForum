@@ -28,5 +28,7 @@ This repo is the result of a web development course taken at ODU in the spring o
 * GitHub authentication
 * Unique profile for GitHub users
 * Live user search on home page
+* Categorize question with custom tags
+* Search for questions based on tags
 
   
