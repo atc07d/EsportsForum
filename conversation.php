@@ -215,7 +215,6 @@
 			// Show answers
 			
 			$conn1 = new mysqli($servername, $username, $password, $dbname);
-			//$sql1 = "SELECT * FROM answer";
 			$sql2 = "SELECT * 
 					FROM question
 					JOIN answer
@@ -226,10 +225,8 @@
 			
 			if ($result2 = mysqli_query($conn1,$sql2))
 			{
-				//$_SESSION['answer_ID'] = array();
 				while($row = mysqli_fetch_assoc($result2))
 				{
-					//$questionID == $row['q_id'] &&
 					if ($_SESSION['username'] == $row['q_asker'] && (isset($_SESSION['logged_in'])  || $_SESSION['valid'] == 1))
 					{
 							
@@ -337,7 +334,6 @@
 
 
 					}
-					//$questionID == $row['q_id'] &&
 					else if ($_SESSION['username'] != $row['q_asker'] && (!isset($_SESSION['logged_in']) || $_SESSION['valid'] != 1))
 					{
 						echo '<section class="comment-list">
