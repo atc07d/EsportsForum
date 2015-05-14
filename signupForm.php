@@ -30,7 +30,7 @@
 			</div>
 
 		</form>
-		<br></>
+		<br>
 		<a href="uploadBlob.php">Upload Avatar</a>
 	</body>
 </html>
