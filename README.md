@@ -1,2 +1,1 @@
-# WebProgramming
-For ODU course in web development. Spring 2015
+#For ODU course in web development. Spring 2015
